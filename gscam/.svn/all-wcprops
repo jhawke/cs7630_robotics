@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1864/trunk/experimental/gscam
+END
+manifest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/1023/trunk/experimental/gscam/manifest.xml
+END
+camera_parameters.txt
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/1864/trunk/experimental/gscam/camera_parameters.txt
+END
+README.txt
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/654/trunk/experimental/gscam/README.txt
+END
+rosdep.yaml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/1023/trunk/experimental/gscam/rosdep.yaml
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/1745/trunk/experimental/gscam/CMakeLists.txt
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/1746/trunk/experimental/gscam/Makefile
+END
