@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/dev/ros_workspace/gscam/src/gscam.cpp" "/home/dev/ros_workspace/gscam/build/CMakeFiles/gscam.dir/src/gscam.o"
+  "/home/dev/cs7630_robotics/gscam/src/gscam.cpp" "/home/dev/cs7630_robotics/gscam/build/CMakeFiles/gscam.dir/src/gscam.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

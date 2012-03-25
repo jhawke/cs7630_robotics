@@ -1,0 +1,17 @@
+<launch>
+	<!-- Edit the parameters here for your Rovio -->
+	<param name="/rovio_shared/host" type="string" value="192.168.1.3"/>
+	<param name="/rovio_shared/user" type="string" value="admin"/>
+	<param name="/rovio_shared/pass" type="string" value="wowwee"/>
+	
+	<!-- Point this to your rovio_av 'wav' directory -->
+	<param name="/rovio_shared/rovio_wav" type="string" value="/home/rctoris/Documents/WPI/RAIL/ROS/rovio/rovio_av/wav"/>
+
+	<!-- Create an instance of each appropriate node -->
+  	<node name="rovio_move" pkg="rovio_ctrl" type="rovio_move" respawn="false" output="screen"/>
+	<node name="rovio_head" pkg="rovio_ctrl" type="rovio_head" respawn="false" output="screen"/>
+	<node name="rovio_teleop" pkg="rovio_ctrl" type="rovio_teleop" respawn="false" output="screen"/>
+	<node name="rovio_audio" pkg="rovio_av" type="rovio_audio" respawn="false" output="screen"/>
+	<node name="joy_node" pkg="joy" type="joy_node" respawn="false" output="screen"/>
+</launch>
+

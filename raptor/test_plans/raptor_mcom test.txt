@@ -1,0 +1,23 @@
+Test plan for raptor_mcom
+
+[x] The test for raptor_mcom shall determine the following.
+
+[x] Group A: Finding the highest point in the behavioral field
+[x]   1) That a point is chosen correctly if it is the highest point in the behavioral inputs field.
+      -cc:0,158,159,199,200,359
+[x]   2) That the behavioral inputs field correctly sums multiple inputs.
+[x]   3) That 1) above applies when multiple points exist and are equally high.
+      -cc:178,179,180 chosen over 165, 195
+
+[x] Group B: Correctly interpreting obstacle arrays.
+[x]   0) That the obstacle code does not run if the desired point is not in FOV.
+[x]   1) That an obstructed point is not chosen as a drive goal.
+[x]   2) That the closest non-obstructed point in the FOV is chosen.
+      -cc:159,199 as non-obstructed points.
+[x]   3) That an entirely obstructed frame results in a shift left if the point is less than 180 and right otherwise.
+
+[x] Group C: PI control
+[x]   1) That the PI control generates a command that would reduce the error from 180 to the desired heading.
+
+[x] Group D: Twist output
+[x]   1) That a correctly formed Twist command is generated onto the cmd_vel topic.

@@ -1,0 +1,219 @@
+/*!
+ * \file raptor_mcom_testbench.cpp
+ * \brief Motor controller testbench routine
+ *
+ * raptor_mcom creates a node that subscribes to various behavioral nodes and generates a motor command to the rovio_move node.
+ *
+ * \author omernick
+ * \date March 22,2012
+ */
+
+#include <geometry_msgs/Twist.h>
+#include <math.h>
+#include <ros/ros.h>
+#include <rovio_shared/man_drv.h>
+#include <raptor/raptor_mcom_testbench.h>
+#include <raptor/polar_histogram.h>
+#include <raptor/obstacle_histogram.h>
+#include <raptor/twist_srv.h>
+#include <string>
+#include <limits.h>
+#include <boost/array.hpp>
+
+#define FOV_START 159
+
+using namespace std;
+
+raptor_mcom_testbench::raptor_mcom_testbench()
+{
+  
+    testgen_1 = node.advertiseService("mcom_tester_1",&raptor_mcom_testbench::tester_1,this);
+    testgen_2 = node.advertiseService("mcom_tester_2",&raptor_mcom_testbench::tester_2,this);
+    testgen_3 = node.advertiseService("obstacle_detection_srv",&raptor_mcom_testbench::tester_obs,this);
+    output_srv = node.advertiseService("rovio_move_srv",&raptor_mcom_testbench::move_com,this);
+    test_index = 0;
+    test_index2 = 0;
+    test_index3 = 0;
+    ROS_INFO("Tester initialized. Number of tests is %d",NUM_TESTS);
+}
+
+raptor_mcom_testbench::~raptor_mcom_testbench()
+{
+  
+}
+
+bool raptor_mcom_testbench::move_com(raptor::twist_srv::Request &req, raptor::twist_srv::Response &res)
+{
+
+  ROS_DEBUG("Recieved a move command of l:[%g,%g,%g] r:[%g,%g,%g]",req.linear.x,req.linear.y,req.linear.z,req.angular.x,req.angular.y,req.angular.z);
+    
+  return true;
+}
+
+bool raptor_mcom_testbench::tester_1(raptor::polar_histogram::Request &req, raptor::polar_histogram::Response &res)
+{
+  ROS_INFO("\n\n-------------------------------------------------");
+ 
+  
+  boost::array<int16_t,360> t1 = {0};
+  if(test_index>NUM_TESTS){test_index=0;}
+  test_index++;
+  ROS_INFO("Tester 1: Test index is %d",test_index-1);
+  
+  switch((test_index-1))
+  {
+    case 0:
+	t1[0] = 50;
+	ROS_DEBUG("Result should be 60@0");
+	break;
+    case 1:
+	t1[158] = 40;
+	ROS_DEBUG("Result should be 40@158");
+	break;
+    case 2:
+	t1[159] = 25;
+	ROS_DEBUG("Result should be 25@159");
+	break;
+    case 3:
+	t1[199] = 500;
+	ROS_DEBUG("Result should be 500@199");
+	break;
+    case 4:
+	t1[200] = 200;
+	ROS_DEBUG("Result should be 200@200");
+	break;
+    case 5:
+      ROS_DEBUG("Result should be 10@359");
+	t1[359] = 10;
+      break;
+    case 6:
+      ROS_DEBUG("Result should be 20@178");
+	t1[165] = 20;
+	t1[178] = 20;
+      break;
+     case 7:
+       ROS_DEBUG("Result should be 20@180");
+	t1[195] = 20;
+	t1[180] = 20;
+      break;
+     case 8:
+       ROS_DEBUG("Result should be 20@179");
+	t1[195] = 20;
+	t1[178] = 20;
+	t1[179] = 20;
+	t1[180] = 20;
+      break;
+     case 9:
+       ROS_DEBUG("Highest point is 50@170");
+       t1[170] = 50;
+       break;
+     case 10:
+       ROS_DEBUG("Highest point is 50@161");
+       t1[161] = 50;
+       break;
+     case 11:
+       ROS_DEBUG("Highest point is 50@197");
+       t1[197] = 50;
+       break;
+     case 12:
+       ROS_DEBUG("Highest point is 100@165");
+       t1[165]=100;
+       break;
+     case 13:
+       ROS_DEBUG("Highest point is 100@185");
+       t1[185]=100;
+       break;
+     default:
+       ROS_ERROR("Bad test case ID!");
+      break;
+  }
+  
+  res.hist = t1;
+  
+  
+  return true;
+}
+
+bool raptor_mcom_testbench::tester_2(raptor::polar_histogram::Request &req, raptor::polar_histogram::Response &res)
+{
+  
+  boost::array<int16_t,360> t2 = {0};
+  t2[0] = 0;
+  switch(test_index-1)
+  {
+    case 0:
+	t2[0] = 10;
+      break;
+  }
+    
+  ROS_DEBUG("Tester 2: Test index is %d",(test_index-1));
+  res.hist = t2;
+  test_index2++;
+  return true;
+}
+
+bool raptor_mcom_testbench::tester_obs(raptor::obstacle_histogram::Request &req, raptor::obstacle_histogram::Response &res)
+{
+  
+  boost::array<int16_t,41> to = {0};
+  to[0] = 0;
+  int temp_index = test_index-1;
+  ROS_DEBUG("Obstacle Tester: Test index is %d",temp_index);
+  switch(temp_index)
+  {
+    case 9:
+     ROS_DEBUG("Nearest non-obstructed point is 174");
+     for(int i = (162-FOV_START); i<(174-FOV_START);i++)
+     {
+       to[i] = 1;
+     }
+     break;
+     case 10:
+     ROS_DEBUG("Nearest non-obstructed point is 159");
+     for(int i = (160-FOV_START); i<(190-FOV_START);i++)
+     {
+       to[i] = 1;
+     }
+     break;
+     case 11:
+     ROS_DEBUG("Nearest non-obstructed point is 199");
+     for(int i = (160-FOV_START); i<(199-FOV_START);i++)
+     {
+       to[i] = 1;
+     }
+      break;
+     case 12:
+     ROS_DEBUG("Nearest non-obstructed point is 199");
+     for(int i = (159-FOV_START); i<(200-FOV_START);i++)
+     {
+       to[i] = 1;
+     }
+      break;
+     case 13:
+     ROS_DEBUG("Nearest non-obstructed point is 199");
+     for(int i = (159-FOV_START); i<(200-FOV_START);i++)
+     {
+       to[i] = 1;
+     }
+      break;
+  }
+
+  
+  test_index3++;
+  if(test_index3>=NUM_TESTS){test_index3=0;}
+  res.hist = to;
+  return true;
+}
+
+int main(int argc, char **argv)
+  {
+    
+    // initialize ROS and the node
+    ros::init(argc, argv, "raptor_mcom_testbench");
+    
+    // initialize the Rovio controller
+    raptor_mcom_testbench mcom_testbench;
+    
+    ros::spin();
+    return EXIT_SUCCESS;
+  }

@@ -1,2 +1,2 @@
 ---
-bool[40] hist
+int16[40] hist

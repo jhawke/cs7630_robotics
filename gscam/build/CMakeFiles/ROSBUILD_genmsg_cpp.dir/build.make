@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dev/ros_workspace/gscam
+CMAKE_SOURCE_DIR = /home/dev/cs7630_robotics/gscam
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dev/ros_workspace/gscam/build
+CMAKE_BINARY_DIR = /home/dev/cs7630_robotics/gscam/build
 
 # Utility rule file for ROSBUILD_genmsg_cpp.
 
@@ -54,6 +54,6 @@ CMakeFiles/ROSBUILD_genmsg_cpp.dir/clean:
 .PHONY : CMakeFiles/ROSBUILD_genmsg_cpp.dir/clean
 
 CMakeFiles/ROSBUILD_genmsg_cpp.dir/depend:
-	cd /home/dev/ros_workspace/gscam/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dev/ros_workspace/gscam /home/dev/ros_workspace/gscam /home/dev/ros_workspace/gscam/build /home/dev/ros_workspace/gscam/build /home/dev/ros_workspace/gscam/build/CMakeFiles/ROSBUILD_genmsg_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/dev/cs7630_robotics/gscam/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dev/cs7630_robotics/gscam /home/dev/cs7630_robotics/gscam /home/dev/cs7630_robotics/gscam/build /home/dev/cs7630_robotics/gscam/build /home/dev/cs7630_robotics/gscam/build/CMakeFiles/ROSBUILD_genmsg_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ROSBUILD_genmsg_cpp.dir/depend
 

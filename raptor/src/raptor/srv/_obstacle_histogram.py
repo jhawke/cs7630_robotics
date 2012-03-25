@@ -93,14 +93,14 @@ import struct
 
 
 class obstacle_histogramResponse(roslib.message.Message):
-  _md5sum = "72a9ca006e68c1dccee9d542f2c99d30"
+  _md5sum = "32b16adfe6c7edca7f8b7db3d2790f8a"
   _type = "raptor/obstacle_histogramResponse"
   _has_header = False #flag to mark the presence of a Header object
-  _full_text = """int16[40] hist
+  _full_text = """int16[41] hist
 
 """
   __slots__ = ['hist']
-  _slot_types = ['int16[40]']
+  _slot_types = ['int16[41]']
 
   def __init__(self, *args, **kwds):
     """
@@ -120,9 +120,9 @@ class obstacle_histogramResponse(roslib.message.Message):
       super(obstacle_histogramResponse, self).__init__(*args, **kwds)
       #message fields cannot be None, assign default values for those that are
       if self.hist is None:
-        self.hist = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        self.hist = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     else:
-      self.hist = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+      self.hist = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
   def _get_types(self):
     """
@@ -137,7 +137,7 @@ class obstacle_histogramResponse(roslib.message.Message):
     @type  buff: StringIO
     """
     try:
-      buff.write(_struct_40h.pack(*self.hist))
+      buff.write(_struct_41h.pack(*self.hist))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -150,8 +150,8 @@ class obstacle_histogramResponse(roslib.message.Message):
     try:
       end = 0
       start = end
-      end += 80
-      self.hist = _struct_40h.unpack(str[start:end])
+      end += 82
+      self.hist = _struct_41h.unpack(str[start:end])
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
@@ -181,16 +181,16 @@ class obstacle_histogramResponse(roslib.message.Message):
     try:
       end = 0
       start = end
-      end += 80
-      self.hist = numpy.frombuffer(str[start:end], dtype=numpy.int16, count=40)
+      end += 82
+      self.hist = numpy.frombuffer(str[start:end], dtype=numpy.int16, count=41)
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = roslib.message.struct_I
-_struct_40h = struct.Struct("<40h")
+_struct_41h = struct.Struct("<41h")
 class obstacle_histogram(roslib.message.ServiceDefinition):
   _type          = 'raptor/obstacle_histogram'
-  _md5sum = '72a9ca006e68c1dccee9d542f2c99d30'
+  _md5sum = '32b16adfe6c7edca7f8b7db3d2790f8a'
   _request_class  = obstacle_histogramRequest
   _response_class = obstacle_histogramResponse

@@ -32,10 +32,10 @@
   "raptor/obstacle_histogramRequest")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<obstacle_histogram-request>)))
   "Returns md5sum for a message object of type '<obstacle_histogram-request>"
-  "72a9ca006e68c1dccee9d542f2c99d30")
+  "32b16adfe6c7edca7f8b7db3d2790f8a")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'obstacle_histogram-request)))
   "Returns md5sum for a message object of type 'obstacle_histogram-request"
-  "72a9ca006e68c1dccee9d542f2c99d30")
+  "32b16adfe6c7edca7f8b7db3d2790f8a")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<obstacle_histogram-request>)))
   "Returns full string definition for message of type '<obstacle_histogram-request>"
   (cl:format cl:nil "~%~%"))
@@ -56,7 +56,7 @@
     :reader hist
     :initarg :hist
     :type (cl:vector cl:fixnum)
-   :initform (cl:make-array 40 :element-type 'cl:fixnum :initial-element 0)))
+   :initform (cl:make-array 41 :element-type 'cl:fixnum :initial-element 0)))
 )
 
 (cl:defclass obstacle_histogram-response (<obstacle_histogram-response>)
@@ -81,9 +81,9 @@
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <obstacle_histogram-response>) istream)
   "Deserializes a message object of type '<obstacle_histogram-response>"
-  (cl:setf (cl:slot-value msg 'hist) (cl:make-array 40))
+  (cl:setf (cl:slot-value msg 'hist) (cl:make-array 41))
   (cl:let ((vals (cl:slot-value msg 'hist)))
-    (cl:dotimes (i 40)
+    (cl:dotimes (i 41)
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
@@ -98,16 +98,16 @@
   "raptor/obstacle_histogramResponse")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<obstacle_histogram-response>)))
   "Returns md5sum for a message object of type '<obstacle_histogram-response>"
-  "72a9ca006e68c1dccee9d542f2c99d30")
+  "32b16adfe6c7edca7f8b7db3d2790f8a")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'obstacle_histogram-response)))
   "Returns md5sum for a message object of type 'obstacle_histogram-response"
-  "72a9ca006e68c1dccee9d542f2c99d30")
+  "32b16adfe6c7edca7f8b7db3d2790f8a")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<obstacle_histogram-response>)))
   "Returns full string definition for message of type '<obstacle_histogram-response>"
-  (cl:format cl:nil "int16[40] hist~%~%~%"))
+  (cl:format cl:nil "int16[41] hist~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'obstacle_histogram-response)))
   "Returns full string definition for message of type 'obstacle_histogram-response"
-  (cl:format cl:nil "int16[40] hist~%~%~%"))
+  (cl:format cl:nil "int16[41] hist~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <obstacle_histogram-response>))
   (cl:+ 0
      0 (cl:reduce #'cl:+ (cl:slot-value msg 'hist) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ 2)))

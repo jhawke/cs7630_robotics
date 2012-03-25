@@ -1,6 +1,9 @@
 FILE(REMOVE_RECURSE
+  "../msg_gen"
   "../srv_gen"
+  "../src/raptor/msg"
   "../src/raptor/srv"
+  "../msg_gen"
   "../srv_gen"
   "CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o"
   "../bin/raptor_mcom.pdb"

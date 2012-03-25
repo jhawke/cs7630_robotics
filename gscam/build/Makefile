@@ -36,10 +36,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dev/ros_workspace/gscam
+CMAKE_SOURCE_DIR = /home/dev/cs7630_robotics/gscam
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dev/ros_workspace/gscam/build
+CMAKE_BINARY_DIR = /home/dev/cs7630_robotics/gscam/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -66,9 +66,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/ros_workspace/gscam/build/CMakeFiles /home/dev/ros_workspace/gscam/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/gscam/build/CMakeFiles /home/dev/cs7630_robotics/gscam/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/ros_workspace/gscam/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/gscam/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

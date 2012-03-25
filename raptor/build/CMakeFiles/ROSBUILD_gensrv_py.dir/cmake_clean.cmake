@@ -1,11 +1,15 @@
 FILE(REMOVE_RECURSE
+  "../msg_gen"
   "../srv_gen"
+  "../src/raptor/msg"
   "../src/raptor/srv"
+  "../msg_gen"
   "../srv_gen"
   "CMakeFiles/ROSBUILD_gensrv_py"
   "../src/raptor/srv/__init__.py"
   "../src/raptor/srv/_obstacle_histogram.py"
   "../src/raptor/srv/_polar_histogram.py"
+  "../src/raptor/srv/_twist_srv.py"
 )
 
 # Per-language clean rules from dependency scanning.

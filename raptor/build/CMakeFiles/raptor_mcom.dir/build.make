@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dev/ros_workspace/raptor
+CMAKE_SOURCE_DIR = /home/dev/cs7630_robotics/raptor
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dev/ros_workspace/raptor/build
+CMAKE_BINARY_DIR = /home/dev/cs7630_robotics/raptor/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/raptor_mcom.dir/depend.make
@@ -63,7 +63,7 @@ CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/ros_comm/
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /home/dev/ros_workspace/wpi-rail-ros-pkg/rovio/rovio_shared/manifest.xml
+CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/manifest.xml
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/ros/tools/rosclean/manifest.xml
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
@@ -82,18 +82,18 @@ CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/ros_comm/
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/image_common/image_transport/manifest.xml
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/common_rosdeps/manifest.xml
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/image_common/camera_calibration_parsers/manifest.xml
-CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /home/dev/ros_workspace/gscam/manifest.xml
-CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /home/dev/ros_workspace/wpi-rail-ros-pkg/rovio/rovio_av/manifest.xml
+CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /home/dev/cs7630_robotics/gscam/manifest.xml
+CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_av/manifest.xml
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/manifest.xml
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/joystick_drivers/joy/manifest.xml
-CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /home/dev/ros_workspace/wpi-rail-ros-pkg/rovio/rovio_ctrl/manifest.xml
+CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_ctrl/manifest.xml
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /home/dev/ros_workspace/wpi-rail-ros-pkg/rovio/rovio_shared/msg_gen/generated
-CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /home/dev/ros_workspace/wpi-rail-ros-pkg/rovio/rovio_shared/srv_gen/generated
+CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/msg_gen/generated
+CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/srv_gen/generated
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/generated
@@ -101,17 +101,17 @@ CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/common_ms
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/msg_gen/generated
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/srv_gen/generated
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o: /opt/ros/electric/stacks/joystick_drivers/joy/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/ros_workspace/raptor/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o -c /home/dev/ros_workspace/raptor/src/raptor_mcom.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o -c /home/dev/cs7630_robotics/raptor/src/raptor_mcom.cpp
 
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raptor_mcom.dir/src/raptor_mcom.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/dev/ros_workspace/raptor/src/raptor_mcom.cpp > CMakeFiles/raptor_mcom.dir/src/raptor_mcom.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/dev/cs7630_robotics/raptor/src/raptor_mcom.cpp > CMakeFiles/raptor_mcom.dir/src/raptor_mcom.i
 
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raptor_mcom.dir/src/raptor_mcom.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/dev/ros_workspace/raptor/src/raptor_mcom.cpp -o CMakeFiles/raptor_mcom.dir/src/raptor_mcom.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/dev/cs7630_robotics/raptor/src/raptor_mcom.cpp -o CMakeFiles/raptor_mcom.dir/src/raptor_mcom.s
 
 CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o.requires:
 .PHONY : CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o.requires
@@ -147,6 +147,6 @@ CMakeFiles/raptor_mcom.dir/clean:
 .PHONY : CMakeFiles/raptor_mcom.dir/clean
 
 CMakeFiles/raptor_mcom.dir/depend:
-	cd /home/dev/ros_workspace/raptor/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dev/ros_workspace/raptor /home/dev/ros_workspace/raptor /home/dev/ros_workspace/raptor/build /home/dev/ros_workspace/raptor/build /home/dev/ros_workspace/raptor/build/CMakeFiles/raptor_mcom.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/dev/cs7630_robotics/raptor/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dev/cs7630_robotics/raptor /home/dev/cs7630_robotics/raptor /home/dev/cs7630_robotics/raptor/build /home/dev/cs7630_robotics/raptor/build /home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_mcom.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/raptor_mcom.dir/depend
 

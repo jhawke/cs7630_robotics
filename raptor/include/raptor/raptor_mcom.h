@@ -36,8 +36,8 @@ private:
 
   ros::NodeHandle node;
   ros::ServiceClient obstacle_detector;
+  ros::ServiceClient drive_commander;
   std::vector<ros::ServiceClient> behavioral_modules;
-  ros::Publisher drive_commander;
   double sigma;
   
 };

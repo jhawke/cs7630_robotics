@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dev/ros_workspace/raptor
+CMAKE_SOURCE_DIR = /home/dev/cs7630_robotics/raptor
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dev/ros_workspace/raptor/build
+CMAKE_BINARY_DIR = /home/dev/cs7630_robotics/raptor/build
 
 # Utility rule file for tests.
 
@@ -54,6 +54,6 @@ CMakeFiles/tests.dir/clean:
 .PHONY : CMakeFiles/tests.dir/clean
 
 CMakeFiles/tests.dir/depend:
-	cd /home/dev/ros_workspace/raptor/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dev/ros_workspace/raptor /home/dev/ros_workspace/raptor /home/dev/ros_workspace/raptor/build /home/dev/ros_workspace/raptor/build /home/dev/ros_workspace/raptor/build/CMakeFiles/tests.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/dev/cs7630_robotics/raptor/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dev/cs7630_robotics/raptor /home/dev/cs7630_robotics/raptor /home/dev/cs7630_robotics/raptor/build /home/dev/cs7630_robotics/raptor/build /home/dev/cs7630_robotics/raptor/build/CMakeFiles/tests.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/tests.dir/depend
 

@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/dev/ros_workspace/gscam/src/gscam.cpp
+/home/dev/cs7630_robotics/gscam/src/gscam.cpp
 stdlib.h
 -
 unistd.h

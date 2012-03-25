@@ -36,10 +36,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dev/ros_workspace/raptor
+CMAKE_SOURCE_DIR = /home/dev/cs7630_robotics/raptor
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dev/ros_workspace/raptor/build
+CMAKE_BINARY_DIR = /home/dev/cs7630_robotics/raptor/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -66,9 +66,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/ros_workspace/raptor/build/CMakeFiles /home/dev/ros_workspace/raptor/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles /home/dev/cs7630_robotics/raptor/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/ros_workspace/raptor/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -120,6 +120,19 @@ ROSBUILD_genmsg_lisp: cmake_check_build_system
 ROSBUILD_genmsg_lisp/fast:
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_lisp.dir/build.make CMakeFiles/ROSBUILD_genmsg_lisp.dir/build
 .PHONY : ROSBUILD_genmsg_lisp/fast
+
+#=============================================================================
+# Target rules for targets named ROSBUILD_genmsg_py
+
+# Build rule for target.
+ROSBUILD_genmsg_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ROSBUILD_genmsg_py
+.PHONY : ROSBUILD_genmsg_py
+
+# fast build rule for target.
+ROSBUILD_genmsg_py/fast:
+	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_py.dir/build.make CMakeFiles/ROSBUILD_genmsg_py.dir/build
+.PHONY : ROSBUILD_genmsg_py/fast
 
 #=============================================================================
 # Target rules for targets named ROSBUILD_gensrv_cpp
@@ -185,6 +198,19 @@ raptor_mcom: cmake_check_build_system
 raptor_mcom/fast:
 	$(MAKE) -f CMakeFiles/raptor_mcom.dir/build.make CMakeFiles/raptor_mcom.dir/build
 .PHONY : raptor_mcom/fast
+
+#=============================================================================
+# Target rules for targets named raptor_mcom_testbench
+
+# Build rule for target.
+raptor_mcom_testbench: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 raptor_mcom_testbench
+.PHONY : raptor_mcom_testbench
+
+# fast build rule for target.
+raptor_mcom_testbench/fast:
+	$(MAKE) -f CMakeFiles/raptor_mcom_testbench.dir/build.make CMakeFiles/raptor_mcom_testbench.dir/build
+.PHONY : raptor_mcom_testbench/fast
 
 #=============================================================================
 # Target rules for targets named rosbuild_precompile
@@ -357,6 +383,21 @@ src/raptor_mcom.s:
 	$(MAKE) -f CMakeFiles/raptor_mcom.dir/build.make CMakeFiles/raptor_mcom.dir/src/raptor_mcom.s
 .PHONY : src/raptor_mcom.s
 
+# target to build an object file
+src/raptor_mcom_testbench.o:
+	$(MAKE) -f CMakeFiles/raptor_mcom_testbench.dir/build.make CMakeFiles/raptor_mcom_testbench.dir/src/raptor_mcom_testbench.o
+.PHONY : src/raptor_mcom_testbench.o
+
+# target to preprocess a source file
+src/raptor_mcom_testbench.i:
+	$(MAKE) -f CMakeFiles/raptor_mcom_testbench.dir/build.make CMakeFiles/raptor_mcom_testbench.dir/src/raptor_mcom_testbench.i
+.PHONY : src/raptor_mcom_testbench.i
+
+# target to generate assembly for a file
+src/raptor_mcom_testbench.s:
+	$(MAKE) -f CMakeFiles/raptor_mcom_testbench.dir/build.make CMakeFiles/raptor_mcom_testbench.dir/src/raptor_mcom_testbench.s
+.PHONY : src/raptor_mcom_testbench.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -365,12 +406,14 @@ help:
 	@echo "... depend"
 	@echo "... ROSBUILD_genmsg_cpp"
 	@echo "... ROSBUILD_genmsg_lisp"
+	@echo "... ROSBUILD_genmsg_py"
 	@echo "... ROSBUILD_gensrv_cpp"
 	@echo "... ROSBUILD_gensrv_lisp"
 	@echo "... ROSBUILD_gensrv_py"
 	@echo "... clean-test-results"
 	@echo "... edit_cache"
 	@echo "... raptor_mcom"
+	@echo "... raptor_mcom_testbench"
 	@echo "... rebuild_cache"
 	@echo "... rosbuild_precompile"
 	@echo "... rosbuild_premsgsrvgen"
@@ -387,6 +430,9 @@ help:
 	@echo "... src/raptor_mcom.o"
 	@echo "... src/raptor_mcom.i"
 	@echo "... src/raptor_mcom.s"
+	@echo "... src/raptor_mcom_testbench.o"
+	@echo "... src/raptor_mcom_testbench.i"
+	@echo "... src/raptor_mcom_testbench.s"
 .PHONY : help
 
 
