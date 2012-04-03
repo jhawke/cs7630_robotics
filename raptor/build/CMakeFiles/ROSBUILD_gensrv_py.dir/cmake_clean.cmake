@@ -8,6 +8,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/ROSBUILD_gensrv_py"
   "../src/raptor/srv/__init__.py"
   "../src/raptor/srv/_obstacle_histogram.py"
+  "../src/raptor/srv/_position_request_srv.py"
   "../src/raptor/srv/_polar_histogram.py"
   "../src/raptor/srv/_twist_srv.py"
 )

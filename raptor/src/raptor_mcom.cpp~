@@ -8,7 +8,7 @@
  * \date March 22,2012
  */
 
-#include <raptor/twist_srv.h>
+#include <rovio_shared/twist_srv.h>
 #include <math.h>
 #include <ros/ros.h>
 #include <rovio_shared/man_drv.h>
@@ -54,13 +54,12 @@ raptor_mcom::raptor_mcom()
   //TESTBENCH CODE BELOW.
   
   behavioral_modules[0] = node.serviceClient<raptor::polar_histogram>("mcom_tester_1");
-  behavioral_modules[1] = node.serviceClient<raptor::polar_histogram>("mcom_tester_2");
   
   /**************************************/
   
   
   //Publish drive command data.
-  drive_commander = node.advertise<geometry_msgs::Twist>("cmd_vel",1);
+  drive_commander = node.serviceClient<raptor::twist_srv>("rovio_move_srv");
   
   //Initialize the error sum to 0.
   sigma = 0;
@@ -219,6 +218,8 @@ void raptor_mcom::system_heartbeat()
     d_com.request.angular.z = ang_rot;
     
     ROS_DEBUG("Twist command is l:[%g,%g,%g] r:[%g,%g,%g]",d_com.request.linear.x,d_com.request.linear.y,d_com.request.linear.z,d_com.request.angular.x,d_com.request.angular.y,d_com.request.angular.z);
+    
+    drive_commander.call(d_com);
     
     //todo: service to rovio
     

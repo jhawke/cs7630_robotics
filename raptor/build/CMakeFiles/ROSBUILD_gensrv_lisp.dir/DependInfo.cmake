@@ -8,6 +8,7 @@ SET(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/home/dev/cs7630_robotics/raptor/srv_gen/lisp/_package.lisp" "/home/dev/cs7630_robotics/raptor/srv_gen/lisp/obstacle_histogram.lisp"
   "/home/dev/cs7630_robotics/raptor/srv_gen/lisp/_package_obstacle_histogram.lisp" "/home/dev/cs7630_robotics/raptor/srv_gen/lisp/obstacle_histogram.lisp"
   "/home/dev/cs7630_robotics/raptor/srv_gen/lisp/_package_polar_histogram.lisp" "/home/dev/cs7630_robotics/raptor/srv_gen/lisp/polar_histogram.lisp"
+  "/home/dev/cs7630_robotics/raptor/srv_gen/lisp/_package_position_request_srv.lisp" "/home/dev/cs7630_robotics/raptor/srv_gen/lisp/position_request_srv.lisp"
   "/home/dev/cs7630_robotics/raptor/srv_gen/lisp/_package_twist_srv.lisp" "/home/dev/cs7630_robotics/raptor/srv_gen/lisp/twist_srv.lisp"
   )
 

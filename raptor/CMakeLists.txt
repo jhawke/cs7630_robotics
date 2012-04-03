@@ -23,7 +23,10 @@ rosbuild_gensrv()
 
 rosbuild_add_executable(raptor_mcom src/raptor_mcom.cpp)
 rosbuild_add_executable(raptor_mcom_testbench src/raptor_mcom_testbench.cpp)
-
+rosbuild_add_executable(raptor_waypointer src/raptor_waypointer.cpp)
+rosbuild_add_executable(raptor_waypointer_testbench src/raptor_waypointer_testbench.cpp)
+rosbuild_add_executable(raptor_drive_testbench src/raptor_drive_testbench.cpp)
+rosbuild_add_executable(raptor_generic_ip src/raptor_generic_ip)
 #common commands for building c++ executables and libraries
 #rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
 #target_link_libraries(${PROJECT_NAME} another_library)

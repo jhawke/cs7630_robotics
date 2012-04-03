@@ -1,0 +1,14 @@
+Test plan for raptor_waypointer
+
+The test for raptor_waypointer shall determine the following.
+
+[] Group A: Calculating the correct relative theta for a given set waypoint.
+[]  1) That a goal-current pair creates a correct theta.
+    --test w/ x!=y
+
+[] Group B: Handling waypoint expiration and reset correctly.
+[]  1) That a waypoint is inactive after its set time.
+[]  2) That a waypoint is replaced after a call to the waypoint set service.
+
+[] Group C: Correctly outputting a fuzzified vector set.
+[]   1) That the vector set output by the unit is 8 elements to the side of the target, each element equal to .9 of the next inner.

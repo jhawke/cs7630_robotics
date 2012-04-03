@@ -8,7 +8,7 @@
  * \date March 22,2012
  */
 
-#include <raptor/twist_srv.h>
+#include <rovio_shared/twist_srv.h>
 #include <math.h>
 #include <ros/ros.h>
 #include <rovio_shared/man_drv.h>
@@ -54,13 +54,12 @@ raptor_mcom::raptor_mcom()
   //TESTBENCH CODE BELOW.
   
   behavioral_modules[0] = node.serviceClient<raptor::polar_histogram>("mcom_tester_1");
-  behavioral_modules[1] = node.serviceClient<raptor::polar_histogram>("mcom_tester_2");
   
   /**************************************/
   
   
   //Publish drive command data.
-  drive_commander = node.serviceClient<raptor::twist_srv>("rovio_move_srv");
+  drive_commander = node.serviceClient<rovio_shared::twist_srv>("rovio_move_srv");
   
   //Initialize the error sum to 0.
   sigma = 0;
@@ -142,7 +141,7 @@ void raptor_mcom::system_heartbeat()
   ROS_DEBUG("Maximum location is %d with value %d",max_loc,max_vect);
   //We have a goal. Now generate a drive command.
   int goal_loc = max_loc;
-  raptor::twist_srv d_com;
+  rovio_shared::twist_srv d_com;
   d_com.request.linear.x = 0; //x
   d_com.request.linear.y = 0; //y
   d_com.request.linear.z = 0; //z

@@ -149,13 +149,13 @@ clean: CMakeFiles/ROSBUILD_genmsg_py.dir/clean
 CMakeFiles/ROSBUILD_gensrv_cpp.dir/all: CMakeFiles/rosbuild_premsgsrvgen.dir/all
 	$(MAKE) -f CMakeFiles/ROSBUILD_gensrv_cpp.dir/build.make CMakeFiles/ROSBUILD_gensrv_cpp.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_gensrv_cpp.dir/build.make CMakeFiles/ROSBUILD_gensrv_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  5 6 7
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  5 6 7 8
 	@echo "Built target ROSBUILD_gensrv_cpp"
 .PHONY : CMakeFiles/ROSBUILD_gensrv_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ROSBUILD_gensrv_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ROSBUILD_gensrv_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 0
 .PHONY : CMakeFiles/ROSBUILD_gensrv_cpp.dir/rule
@@ -180,13 +180,13 @@ clean: CMakeFiles/ROSBUILD_gensrv_cpp.dir/clean
 CMakeFiles/ROSBUILD_gensrv_lisp.dir/all: CMakeFiles/rosbuild_premsgsrvgen.dir/all
 	$(MAKE) -f CMakeFiles/ROSBUILD_gensrv_lisp.dir/build.make CMakeFiles/ROSBUILD_gensrv_lisp.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_gensrv_lisp.dir/build.make CMakeFiles/ROSBUILD_gensrv_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  8 9 10
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  9 10 11 12
 	@echo "Built target ROSBUILD_gensrv_lisp"
 .PHONY : CMakeFiles/ROSBUILD_gensrv_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ROSBUILD_gensrv_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ROSBUILD_gensrv_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 0
 .PHONY : CMakeFiles/ROSBUILD_gensrv_lisp.dir/rule
@@ -211,13 +211,13 @@ clean: CMakeFiles/ROSBUILD_gensrv_lisp.dir/clean
 CMakeFiles/ROSBUILD_gensrv_py.dir/all: CMakeFiles/rosbuild_premsgsrvgen.dir/all
 	$(MAKE) -f CMakeFiles/ROSBUILD_gensrv_py.dir/build.make CMakeFiles/ROSBUILD_gensrv_py.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_gensrv_py.dir/build.make CMakeFiles/ROSBUILD_gensrv_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  11 12 13 14
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  13 14 15 16 17
 	@echo "Built target ROSBUILD_gensrv_py"
 .PHONY : CMakeFiles/ROSBUILD_gensrv_py.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ROSBUILD_gensrv_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ROSBUILD_gensrv_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 0
 .PHONY : CMakeFiles/ROSBUILD_gensrv_py.dir/rule
@@ -267,13 +267,83 @@ clean: CMakeFiles/clean-test-results.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/raptor_drive_testbench.dir
+
+# All Build rule for target.
+CMakeFiles/raptor_drive_testbench.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+	$(MAKE) -f CMakeFiles/raptor_drive_testbench.dir/build.make CMakeFiles/raptor_drive_testbench.dir/depend
+	$(MAKE) -f CMakeFiles/raptor_drive_testbench.dir/build.make CMakeFiles/raptor_drive_testbench.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  18
+	@echo "Built target raptor_drive_testbench"
+.PHONY : CMakeFiles/raptor_drive_testbench.dir/all
+
+# Include target in all.
+all: CMakeFiles/raptor_drive_testbench.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/raptor_drive_testbench.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 18
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/raptor_drive_testbench.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 0
+.PHONY : CMakeFiles/raptor_drive_testbench.dir/rule
+
+# Convenience name for target.
+raptor_drive_testbench: CMakeFiles/raptor_drive_testbench.dir/rule
+.PHONY : raptor_drive_testbench
+
+# clean rule for target.
+CMakeFiles/raptor_drive_testbench.dir/clean:
+	$(MAKE) -f CMakeFiles/raptor_drive_testbench.dir/build.make CMakeFiles/raptor_drive_testbench.dir/clean
+.PHONY : CMakeFiles/raptor_drive_testbench.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/raptor_drive_testbench.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/raptor_generic_ip.dir
+
+# All Build rule for target.
+CMakeFiles/raptor_generic_ip.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+	$(MAKE) -f CMakeFiles/raptor_generic_ip.dir/build.make CMakeFiles/raptor_generic_ip.dir/depend
+	$(MAKE) -f CMakeFiles/raptor_generic_ip.dir/build.make CMakeFiles/raptor_generic_ip.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  19
+	@echo "Built target raptor_generic_ip"
+.PHONY : CMakeFiles/raptor_generic_ip.dir/all
+
+# Include target in all.
+all: CMakeFiles/raptor_generic_ip.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/raptor_generic_ip.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 18
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/raptor_generic_ip.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 0
+.PHONY : CMakeFiles/raptor_generic_ip.dir/rule
+
+# Convenience name for target.
+raptor_generic_ip: CMakeFiles/raptor_generic_ip.dir/rule
+.PHONY : raptor_generic_ip
+
+# clean rule for target.
+CMakeFiles/raptor_generic_ip.dir/clean:
+	$(MAKE) -f CMakeFiles/raptor_generic_ip.dir/build.make CMakeFiles/raptor_generic_ip.dir/clean
+.PHONY : CMakeFiles/raptor_generic_ip.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/raptor_generic_ip.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/raptor_mcom.dir
 
 # All Build rule for target.
 CMakeFiles/raptor_mcom.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/raptor_mcom.dir/build.make CMakeFiles/raptor_mcom.dir/depend
 	$(MAKE) -f CMakeFiles/raptor_mcom.dir/build.make CMakeFiles/raptor_mcom.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  15
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  20
 	@echo "Built target raptor_mcom"
 .PHONY : CMakeFiles/raptor_mcom.dir/all
 
@@ -283,7 +353,7 @@ all: CMakeFiles/raptor_mcom.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/raptor_mcom.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 18
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/raptor_mcom.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 0
 .PHONY : CMakeFiles/raptor_mcom.dir/rule
@@ -308,7 +378,7 @@ clean: CMakeFiles/raptor_mcom.dir/clean
 CMakeFiles/raptor_mcom_testbench.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/raptor_mcom_testbench.dir/build.make CMakeFiles/raptor_mcom_testbench.dir/depend
 	$(MAKE) -f CMakeFiles/raptor_mcom_testbench.dir/build.make CMakeFiles/raptor_mcom_testbench.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  16
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  21
 	@echo "Built target raptor_mcom_testbench"
 .PHONY : CMakeFiles/raptor_mcom_testbench.dir/all
 
@@ -318,7 +388,7 @@ all: CMakeFiles/raptor_mcom_testbench.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/raptor_mcom_testbench.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 18
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/raptor_mcom_testbench.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 0
 .PHONY : CMakeFiles/raptor_mcom_testbench.dir/rule
@@ -337,6 +407,76 @@ clean: CMakeFiles/raptor_mcom_testbench.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/raptor_waypointer.dir
+
+# All Build rule for target.
+CMakeFiles/raptor_waypointer.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+	$(MAKE) -f CMakeFiles/raptor_waypointer.dir/build.make CMakeFiles/raptor_waypointer.dir/depend
+	$(MAKE) -f CMakeFiles/raptor_waypointer.dir/build.make CMakeFiles/raptor_waypointer.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  22
+	@echo "Built target raptor_waypointer"
+.PHONY : CMakeFiles/raptor_waypointer.dir/all
+
+# Include target in all.
+all: CMakeFiles/raptor_waypointer.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/raptor_waypointer.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 18
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/raptor_waypointer.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 0
+.PHONY : CMakeFiles/raptor_waypointer.dir/rule
+
+# Convenience name for target.
+raptor_waypointer: CMakeFiles/raptor_waypointer.dir/rule
+.PHONY : raptor_waypointer
+
+# clean rule for target.
+CMakeFiles/raptor_waypointer.dir/clean:
+	$(MAKE) -f CMakeFiles/raptor_waypointer.dir/build.make CMakeFiles/raptor_waypointer.dir/clean
+.PHONY : CMakeFiles/raptor_waypointer.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/raptor_waypointer.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/raptor_waypointer_testbench.dir
+
+# All Build rule for target.
+CMakeFiles/raptor_waypointer_testbench.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+	$(MAKE) -f CMakeFiles/raptor_waypointer_testbench.dir/build.make CMakeFiles/raptor_waypointer_testbench.dir/depend
+	$(MAKE) -f CMakeFiles/raptor_waypointer_testbench.dir/build.make CMakeFiles/raptor_waypointer_testbench.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  23
+	@echo "Built target raptor_waypointer_testbench"
+.PHONY : CMakeFiles/raptor_waypointer_testbench.dir/all
+
+# Include target in all.
+all: CMakeFiles/raptor_waypointer_testbench.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/raptor_waypointer_testbench.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 18
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/raptor_waypointer_testbench.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 0
+.PHONY : CMakeFiles/raptor_waypointer_testbench.dir/rule
+
+# Convenience name for target.
+raptor_waypointer_testbench: CMakeFiles/raptor_waypointer_testbench.dir/rule
+.PHONY : raptor_waypointer_testbench
+
+# clean rule for target.
+CMakeFiles/raptor_waypointer_testbench.dir/clean:
+	$(MAKE) -f CMakeFiles/raptor_waypointer_testbench.dir/build.make CMakeFiles/raptor_waypointer_testbench.dir/clean
+.PHONY : CMakeFiles/raptor_waypointer_testbench.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/raptor_waypointer_testbench.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/rosbuild_precompile.dir
 
 # All Build rule for target.
@@ -351,7 +491,7 @@ CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_genmsg_libexe.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/rosbuild_precompile.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rosbuild_precompile.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 0
 .PHONY : CMakeFiles/rosbuild_precompile.dir/rule
@@ -514,7 +654,7 @@ CMakeFiles/rospack_gensrv.dir/all: CMakeFiles/ROSBUILD_gensrv_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/rospack_gensrv.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rospack_gensrv.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 0
 .PHONY : CMakeFiles/rospack_gensrv.dir/rule
@@ -549,7 +689,7 @@ all: CMakeFiles/rospack_gensrv_all.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/rospack_gensrv_all.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rospack_gensrv_all.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 0
 .PHONY : CMakeFiles/rospack_gensrv_all.dir/rule

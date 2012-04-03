@@ -1,0 +1,6 @@
+<launch>
+	<!-- Create an instance of each appropriate node -->
+  	<node name="raptor_waypointer" pkg="raptor" type="raptor_waypointer" respawn="false" output="screen"/>
+	<node name="raptor_waypointer_testbench" pkg="raptor" type="raptor_waypointer_testbench" respawn="false" output="screen"/>
+</launch>
+

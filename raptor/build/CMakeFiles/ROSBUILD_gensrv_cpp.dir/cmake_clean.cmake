@@ -7,6 +7,7 @@ FILE(REMOVE_RECURSE
   "../srv_gen"
   "CMakeFiles/ROSBUILD_gensrv_cpp"
   "../srv_gen/cpp/include/raptor/obstacle_histogram.h"
+  "../srv_gen/cpp/include/raptor/position_request_srv.h"
   "../srv_gen/cpp/include/raptor/polar_histogram.h"
   "../srv_gen/cpp/include/raptor/twist_srv.h"
 )

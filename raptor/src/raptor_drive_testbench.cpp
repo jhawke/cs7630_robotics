@@ -1,0 +1,70 @@
+/*!
+ * \file raptor_drive_testbench.cpp
+ * \brief Motor driver testbench routine
+ *
+ * Testbench for integration between mcom and the drive subsystem.
+ *
+ * \author omernick
+ * \date March 22,2012
+ */
+
+#include <raptor/raptor_drive_testbench.h>
+
+#include <geometry_msgs/Twist.h>
+#include <math.h>
+#include <ros/ros.h>
+#include <rovio_shared/man_drv.h>
+#include <raptor/polar_histogram.h>
+#include <raptor/obstacle_histogram.h>
+#include <raptor/twist_srv.h>
+#include <string>
+#include <limits.h>
+#include <boost/array.hpp>
+
+#define FOV_START 159
+
+using namespace std;
+
+raptor_drive_testbench::raptor_drive_testbench()
+{
+  testgen_1 = node.advertiseService("mcom_tester_1",&raptor_drive_testbench::tester_1,this);
+  testgen_3 = node.advertiseService("obstacle_detection_srv",&raptor_drive_testbench::tester_obs,this);
+}
+
+raptor_drive_testbench::~raptor_drive_testbench()
+{
+  
+}
+
+bool raptor_drive_testbench::tester_1(raptor::polar_histogram::Request &req, raptor::polar_histogram::Response &res)
+{
+  
+  boost::array<int16_t,360> t1 = {0};
+  
+  t1[160] = 100;
+  
+  res.hist = t1;
+  return true;
+}
+
+bool raptor_drive_testbench::tester_obs(raptor::obstacle_histogram::Request &req, raptor::obstacle_histogram::Response &res)
+{
+  
+  boost::array<int16_t,41> to = {0};
+  
+  res.hist = to;
+  return true;
+}
+
+int main(int argc, char **argv)
+  {
+    
+    // initialize ROS and the node
+    ros::init(argc, argv, "raptor_drive_testbench");
+    
+    // initialize the Rovio controller
+    raptor_drive_testbench drive_testbench;
+    
+    ros::spin();
+    return EXIT_SUCCESS;
+  }

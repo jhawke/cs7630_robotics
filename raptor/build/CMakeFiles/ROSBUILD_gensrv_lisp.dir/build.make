@@ -42,6 +42,9 @@ CMAKE_BINARY_DIR = /home/dev/cs7630_robotics/raptor/build
 CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/obstacle_histogram.lisp
 CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package.lisp
 CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_obstacle_histogram.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/position_request_srv.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_position_request_srv.lisp
 CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/polar_histogram.lisp
 CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package.lisp
 CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_polar_histogram.lisp
@@ -67,7 +70,6 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_twist_srv.lisp
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../srv_gen/lisp/obstacle_histogram.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/manifest.xml
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
@@ -80,6 +82,7 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_twist_srv.lisp
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
+../srv_gen/lisp/obstacle_histogram.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/manifest.xml
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/common_msgs/sensor_msgs/manifest.xml
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/pluginlib/manifest.xml
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/ros_comm/utilities/message_filters/manifest.xml
@@ -96,10 +99,10 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_twist_srv.lisp
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../srv_gen/lisp/obstacle_histogram.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/msg_gen/generated
-../srv_gen/lisp/obstacle_histogram.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/srv_gen/generated
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
+../srv_gen/lisp/obstacle_histogram.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/msg_gen/generated
+../srv_gen/lisp/obstacle_histogram.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/srv_gen/generated
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/generated
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/common_msgs/sensor_msgs/srv_gen/generated
 ../srv_gen/lisp/obstacle_histogram.lisp: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/msg_gen/generated
@@ -112,6 +115,70 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_twist_srv.lisp
 ../srv_gen/lisp/_package.lisp: ../srv_gen/lisp/obstacle_histogram.lisp
 
 ../srv_gen/lisp/_package_obstacle_histogram.lisp: ../srv_gen/lisp/obstacle_histogram.lisp
+
+../srv_gen/lisp/position_request_srv.lisp: ../srv/position_request_srv.srv
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../srv_gen/lisp/position_request_srv.lisp: ../manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/ros/core/roslib/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/ros/core/roslang/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/common_msgs/sensor_msgs/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/pluginlib/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/utilities/message_filters/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/image_common/image_transport/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/common_rosdeps/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/image_common/camera_calibration_parsers/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /home/dev/cs7630_robotics/gscam/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_av/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/joystick_drivers/joy/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_ctrl/manifest.xml
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
+../srv_gen/lisp/position_request_srv.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/msg_gen/generated
+../srv_gen/lisp/position_request_srv.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/srv_gen/generated
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/generated
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/common_msgs/sensor_msgs/srv_gen/generated
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/msg_gen/generated
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/srv_gen/generated
+../srv_gen/lisp/position_request_srv.lisp: /opt/ros/electric/stacks/joystick_drivers/joy/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/lisp/position_request_srv.lisp, ../srv_gen/lisp/_package.lisp, ../srv_gen/lisp/_package_position_request_srv.lisp"
+	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/dev/cs7630_robotics/raptor/srv/position_request_srv.srv
+
+../srv_gen/lisp/_package.lisp: ../srv_gen/lisp/position_request_srv.lisp
+
+../srv_gen/lisp/_package_position_request_srv.lisp: ../srv_gen/lisp/position_request_srv.lisp
 
 ../srv_gen/lisp/polar_histogram.lisp: ../srv/polar_histogram.srv
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py
@@ -131,7 +198,6 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_twist_srv.lisp
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../srv_gen/lisp/polar_histogram.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/manifest.xml
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
@@ -144,6 +210,7 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_twist_srv.lisp
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
+../srv_gen/lisp/polar_histogram.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/manifest.xml
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/common_msgs/sensor_msgs/manifest.xml
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/pluginlib/manifest.xml
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/ros_comm/utilities/message_filters/manifest.xml
@@ -160,16 +227,16 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_twist_srv.lisp
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../srv_gen/lisp/polar_histogram.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/msg_gen/generated
-../srv_gen/lisp/polar_histogram.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/srv_gen/generated
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
+../srv_gen/lisp/polar_histogram.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/msg_gen/generated
+../srv_gen/lisp/polar_histogram.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/srv_gen/generated
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/generated
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/common_msgs/sensor_msgs/srv_gen/generated
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/msg_gen/generated
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/srv_gen/generated
 ../srv_gen/lisp/polar_histogram.lisp: /opt/ros/electric/stacks/joystick_drivers/joy/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/lisp/polar_histogram.lisp, ../srv_gen/lisp/_package.lisp, ../srv_gen/lisp/_package_polar_histogram.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/dev/cs7630_robotics/raptor/srv/polar_histogram.srv
 
@@ -196,7 +263,6 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_twist_srv.lisp
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../srv_gen/lisp/twist_srv.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/manifest.xml
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
@@ -209,6 +275,7 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_twist_srv.lisp
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
+../srv_gen/lisp/twist_srv.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/manifest.xml
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/common_msgs/sensor_msgs/manifest.xml
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/pluginlib/manifest.xml
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/ros_comm/utilities/message_filters/manifest.xml
@@ -225,16 +292,16 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_twist_srv.lisp
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-../srv_gen/lisp/twist_srv.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/msg_gen/generated
-../srv_gen/lisp/twist_srv.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/srv_gen/generated
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
+../srv_gen/lisp/twist_srv.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/msg_gen/generated
+../srv_gen/lisp/twist_srv.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/srv_gen/generated
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/generated
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/common_msgs/sensor_msgs/srv_gen/generated
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/msg_gen/generated
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/srv_gen/generated
 ../srv_gen/lisp/twist_srv.lisp: /opt/ros/electric/stacks/joystick_drivers/joy/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/lisp/twist_srv.lisp, ../srv_gen/lisp/_package.lisp, ../srv_gen/lisp/_package_twist_srv.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/dev/cs7630_robotics/raptor/srv/twist_srv.srv
 
@@ -246,6 +313,9 @@ ROSBUILD_gensrv_lisp: CMakeFiles/ROSBUILD_gensrv_lisp
 ROSBUILD_gensrv_lisp: ../srv_gen/lisp/obstacle_histogram.lisp
 ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package.lisp
 ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_obstacle_histogram.lisp
+ROSBUILD_gensrv_lisp: ../srv_gen/lisp/position_request_srv.lisp
+ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package.lisp
+ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_position_request_srv.lisp
 ROSBUILD_gensrv_lisp: ../srv_gen/lisp/polar_histogram.lisp
 ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package.lisp
 ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_polar_histogram.lisp

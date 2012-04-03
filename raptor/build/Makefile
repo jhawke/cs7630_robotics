@@ -187,6 +187,32 @@ clean-test-results/fast:
 .PHONY : clean-test-results/fast
 
 #=============================================================================
+# Target rules for targets named raptor_drive_testbench
+
+# Build rule for target.
+raptor_drive_testbench: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 raptor_drive_testbench
+.PHONY : raptor_drive_testbench
+
+# fast build rule for target.
+raptor_drive_testbench/fast:
+	$(MAKE) -f CMakeFiles/raptor_drive_testbench.dir/build.make CMakeFiles/raptor_drive_testbench.dir/build
+.PHONY : raptor_drive_testbench/fast
+
+#=============================================================================
+# Target rules for targets named raptor_generic_ip
+
+# Build rule for target.
+raptor_generic_ip: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 raptor_generic_ip
+.PHONY : raptor_generic_ip
+
+# fast build rule for target.
+raptor_generic_ip/fast:
+	$(MAKE) -f CMakeFiles/raptor_generic_ip.dir/build.make CMakeFiles/raptor_generic_ip.dir/build
+.PHONY : raptor_generic_ip/fast
+
+#=============================================================================
 # Target rules for targets named raptor_mcom
 
 # Build rule for target.
@@ -211,6 +237,32 @@ raptor_mcom_testbench: cmake_check_build_system
 raptor_mcom_testbench/fast:
 	$(MAKE) -f CMakeFiles/raptor_mcom_testbench.dir/build.make CMakeFiles/raptor_mcom_testbench.dir/build
 .PHONY : raptor_mcom_testbench/fast
+
+#=============================================================================
+# Target rules for targets named raptor_waypointer
+
+# Build rule for target.
+raptor_waypointer: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 raptor_waypointer
+.PHONY : raptor_waypointer
+
+# fast build rule for target.
+raptor_waypointer/fast:
+	$(MAKE) -f CMakeFiles/raptor_waypointer.dir/build.make CMakeFiles/raptor_waypointer.dir/build
+.PHONY : raptor_waypointer/fast
+
+#=============================================================================
+# Target rules for targets named raptor_waypointer_testbench
+
+# Build rule for target.
+raptor_waypointer_testbench: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 raptor_waypointer_testbench
+.PHONY : raptor_waypointer_testbench
+
+# fast build rule for target.
+raptor_waypointer_testbench/fast:
+	$(MAKE) -f CMakeFiles/raptor_waypointer_testbench.dir/build.make CMakeFiles/raptor_waypointer_testbench.dir/build
+.PHONY : raptor_waypointer_testbench/fast
 
 #=============================================================================
 # Target rules for targets named rosbuild_precompile
@@ -369,6 +421,36 @@ tests/fast:
 .PHONY : tests/fast
 
 # target to build an object file
+src/raptor_drive_testbench.o:
+	$(MAKE) -f CMakeFiles/raptor_drive_testbench.dir/build.make CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o
+.PHONY : src/raptor_drive_testbench.o
+
+# target to preprocess a source file
+src/raptor_drive_testbench.i:
+	$(MAKE) -f CMakeFiles/raptor_drive_testbench.dir/build.make CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.i
+.PHONY : src/raptor_drive_testbench.i
+
+# target to generate assembly for a file
+src/raptor_drive_testbench.s:
+	$(MAKE) -f CMakeFiles/raptor_drive_testbench.dir/build.make CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.s
+.PHONY : src/raptor_drive_testbench.s
+
+# target to build an object file
+src/raptor_generic_ip.o:
+	$(MAKE) -f CMakeFiles/raptor_generic_ip.dir/build.make CMakeFiles/raptor_generic_ip.dir/src/raptor_generic_ip.o
+.PHONY : src/raptor_generic_ip.o
+
+# target to preprocess a source file
+src/raptor_generic_ip.i:
+	$(MAKE) -f CMakeFiles/raptor_generic_ip.dir/build.make CMakeFiles/raptor_generic_ip.dir/src/raptor_generic_ip.i
+.PHONY : src/raptor_generic_ip.i
+
+# target to generate assembly for a file
+src/raptor_generic_ip.s:
+	$(MAKE) -f CMakeFiles/raptor_generic_ip.dir/build.make CMakeFiles/raptor_generic_ip.dir/src/raptor_generic_ip.s
+.PHONY : src/raptor_generic_ip.s
+
+# target to build an object file
 src/raptor_mcom.o:
 	$(MAKE) -f CMakeFiles/raptor_mcom.dir/build.make CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o
 .PHONY : src/raptor_mcom.o
@@ -398,6 +480,36 @@ src/raptor_mcom_testbench.s:
 	$(MAKE) -f CMakeFiles/raptor_mcom_testbench.dir/build.make CMakeFiles/raptor_mcom_testbench.dir/src/raptor_mcom_testbench.s
 .PHONY : src/raptor_mcom_testbench.s
 
+# target to build an object file
+src/raptor_waypointer.o:
+	$(MAKE) -f CMakeFiles/raptor_waypointer.dir/build.make CMakeFiles/raptor_waypointer.dir/src/raptor_waypointer.o
+.PHONY : src/raptor_waypointer.o
+
+# target to preprocess a source file
+src/raptor_waypointer.i:
+	$(MAKE) -f CMakeFiles/raptor_waypointer.dir/build.make CMakeFiles/raptor_waypointer.dir/src/raptor_waypointer.i
+.PHONY : src/raptor_waypointer.i
+
+# target to generate assembly for a file
+src/raptor_waypointer.s:
+	$(MAKE) -f CMakeFiles/raptor_waypointer.dir/build.make CMakeFiles/raptor_waypointer.dir/src/raptor_waypointer.s
+.PHONY : src/raptor_waypointer.s
+
+# target to build an object file
+src/raptor_waypointer_testbench.o:
+	$(MAKE) -f CMakeFiles/raptor_waypointer_testbench.dir/build.make CMakeFiles/raptor_waypointer_testbench.dir/src/raptor_waypointer_testbench.o
+.PHONY : src/raptor_waypointer_testbench.o
+
+# target to preprocess a source file
+src/raptor_waypointer_testbench.i:
+	$(MAKE) -f CMakeFiles/raptor_waypointer_testbench.dir/build.make CMakeFiles/raptor_waypointer_testbench.dir/src/raptor_waypointer_testbench.i
+.PHONY : src/raptor_waypointer_testbench.i
+
+# target to generate assembly for a file
+src/raptor_waypointer_testbench.s:
+	$(MAKE) -f CMakeFiles/raptor_waypointer_testbench.dir/build.make CMakeFiles/raptor_waypointer_testbench.dir/src/raptor_waypointer_testbench.s
+.PHONY : src/raptor_waypointer_testbench.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -412,8 +524,12 @@ help:
 	@echo "... ROSBUILD_gensrv_py"
 	@echo "... clean-test-results"
 	@echo "... edit_cache"
+	@echo "... raptor_drive_testbench"
+	@echo "... raptor_generic_ip"
 	@echo "... raptor_mcom"
 	@echo "... raptor_mcom_testbench"
+	@echo "... raptor_waypointer"
+	@echo "... raptor_waypointer_testbench"
 	@echo "... rebuild_cache"
 	@echo "... rosbuild_precompile"
 	@echo "... rosbuild_premsgsrvgen"
@@ -427,12 +543,24 @@ help:
 	@echo "... test-results"
 	@echo "... test-results-run"
 	@echo "... tests"
+	@echo "... src/raptor_drive_testbench.o"
+	@echo "... src/raptor_drive_testbench.i"
+	@echo "... src/raptor_drive_testbench.s"
+	@echo "... src/raptor_generic_ip.o"
+	@echo "... src/raptor_generic_ip.i"
+	@echo "... src/raptor_generic_ip.s"
 	@echo "... src/raptor_mcom.o"
 	@echo "... src/raptor_mcom.i"
 	@echo "... src/raptor_mcom.s"
 	@echo "... src/raptor_mcom_testbench.o"
 	@echo "... src/raptor_mcom_testbench.i"
 	@echo "... src/raptor_mcom_testbench.s"
+	@echo "... src/raptor_waypointer.o"
+	@echo "... src/raptor_waypointer.i"
+	@echo "... src/raptor_waypointer.s"
+	@echo "... src/raptor_waypointer_testbench.o"
+	@echo "... src/raptor_waypointer_testbench.i"
+	@echo "... src/raptor_waypointer_testbench.s"
 .PHONY : help
 
 
