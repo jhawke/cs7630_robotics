@@ -9,7 +9,9 @@ FILE(REMOVE_RECURSE
   "../srv_gen/cpp/include/raptor/obstacle_histogram.h"
   "../srv_gen/cpp/include/raptor/position_request_srv.h"
   "../srv_gen/cpp/include/raptor/polar_histogram.h"
+  "../srv_gen/cpp/include/raptor/distance_adv_srv.h"
   "../srv_gen/cpp/include/raptor/twist_srv.h"
+  "../srv_gen/cpp/include/raptor/state_set_srv.h"
 )
 
 # Per-language clean rules from dependency scanning.

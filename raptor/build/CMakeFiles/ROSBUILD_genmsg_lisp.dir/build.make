@@ -86,6 +86,8 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_Vector3.lisp
 ../msg_gen/lisp/Vector3.lisp: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
 ../msg_gen/lisp/Vector3.lisp: /opt/ros/electric/stacks/joystick_drivers/joy/manifest.xml
 ../msg_gen/lisp/Vector3.lisp: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_ctrl/manifest.xml
+../msg_gen/lisp/Vector3.lisp: /opt/ros/electric/stacks/vision_opencv/opencv2/manifest.xml
+../msg_gen/lisp/Vector3.lisp: /opt/ros/electric/stacks/vision_opencv/cv_bridge/manifest.xml
 ../msg_gen/lisp/Vector3.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../msg_gen/lisp/Vector3.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../msg_gen/lisp/Vector3.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated

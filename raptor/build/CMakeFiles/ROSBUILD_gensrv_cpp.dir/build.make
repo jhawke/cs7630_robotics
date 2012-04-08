@@ -42,7 +42,9 @@ CMAKE_BINARY_DIR = /home/dev/cs7630_robotics/raptor/build
 CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/raptor/obstacle_histogram.h
 CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/raptor/position_request_srv.h
 CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/raptor/polar_histogram.h
+CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/raptor/distance_adv_srv.h
 CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/raptor/twist_srv.h
+CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/raptor/state_set_srv.h
 
 ../srv_gen/cpp/include/raptor/obstacle_histogram.h: ../srv/obstacle_histogram.srv
 ../srv_gen/cpp/include/raptor/obstacle_histogram.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py
@@ -88,6 +90,8 @@ CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/raptor/twist_srv.h
 ../srv_gen/cpp/include/raptor/obstacle_histogram.h: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
 ../srv_gen/cpp/include/raptor/obstacle_histogram.h: /opt/ros/electric/stacks/joystick_drivers/joy/manifest.xml
 ../srv_gen/cpp/include/raptor/obstacle_histogram.h: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_ctrl/manifest.xml
+../srv_gen/cpp/include/raptor/obstacle_histogram.h: /opt/ros/electric/stacks/vision_opencv/opencv2/manifest.xml
+../srv_gen/cpp/include/raptor/obstacle_histogram.h: /opt/ros/electric/stacks/vision_opencv/cv_bridge/manifest.xml
 ../srv_gen/cpp/include/raptor/obstacle_histogram.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../srv_gen/cpp/include/raptor/obstacle_histogram.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../srv_gen/cpp/include/raptor/obstacle_histogram.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
@@ -149,6 +153,8 @@ CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/raptor/twist_srv.h
 ../srv_gen/cpp/include/raptor/position_request_srv.h: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
 ../srv_gen/cpp/include/raptor/position_request_srv.h: /opt/ros/electric/stacks/joystick_drivers/joy/manifest.xml
 ../srv_gen/cpp/include/raptor/position_request_srv.h: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_ctrl/manifest.xml
+../srv_gen/cpp/include/raptor/position_request_srv.h: /opt/ros/electric/stacks/vision_opencv/opencv2/manifest.xml
+../srv_gen/cpp/include/raptor/position_request_srv.h: /opt/ros/electric/stacks/vision_opencv/cv_bridge/manifest.xml
 ../srv_gen/cpp/include/raptor/position_request_srv.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../srv_gen/cpp/include/raptor/position_request_srv.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../srv_gen/cpp/include/raptor/position_request_srv.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
@@ -210,6 +216,8 @@ CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/raptor/twist_srv.h
 ../srv_gen/cpp/include/raptor/polar_histogram.h: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
 ../srv_gen/cpp/include/raptor/polar_histogram.h: /opt/ros/electric/stacks/joystick_drivers/joy/manifest.xml
 ../srv_gen/cpp/include/raptor/polar_histogram.h: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_ctrl/manifest.xml
+../srv_gen/cpp/include/raptor/polar_histogram.h: /opt/ros/electric/stacks/vision_opencv/opencv2/manifest.xml
+../srv_gen/cpp/include/raptor/polar_histogram.h: /opt/ros/electric/stacks/vision_opencv/cv_bridge/manifest.xml
 ../srv_gen/cpp/include/raptor/polar_histogram.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../srv_gen/cpp/include/raptor/polar_histogram.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../srv_gen/cpp/include/raptor/polar_histogram.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
@@ -226,6 +234,69 @@ CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/raptor/twist_srv.h
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/cpp/include/raptor/polar_histogram.h"
 	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py /home/dev/cs7630_robotics/raptor/srv/polar_histogram.srv
+
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: ../srv/distance_adv_srv.srv
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: ../manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/ros/core/roslib/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/ros/core/roslang/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/ros/tools/rosclean/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/ros/tools/rosunit/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/common_msgs/sensor_msgs/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/pluginlib/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/utilities/message_filters/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/image_common/image_transport/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/common_rosdeps/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/image_common/camera_calibration_parsers/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /home/dev/cs7630_robotics/gscam/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_av/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/joystick_drivers/joy/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_ctrl/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/vision_opencv/opencv2/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/vision_opencv/cv_bridge/manifest.xml
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/msg_gen/generated
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/srv_gen/generated
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/generated
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/common_msgs/sensor_msgs/srv_gen/generated
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/msg_gen/generated
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/srv_gen/generated
+../srv_gen/cpp/include/raptor/distance_adv_srv.h: /opt/ros/electric/stacks/joystick_drivers/joy/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/cpp/include/raptor/distance_adv_srv.h"
+	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py /home/dev/cs7630_robotics/raptor/srv/distance_adv_srv.srv
 
 ../srv_gen/cpp/include/raptor/twist_srv.h: ../srv/twist_srv.srv
 ../srv_gen/cpp/include/raptor/twist_srv.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py
@@ -272,6 +343,8 @@ CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/raptor/twist_srv.h
 ../srv_gen/cpp/include/raptor/twist_srv.h: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
 ../srv_gen/cpp/include/raptor/twist_srv.h: /opt/ros/electric/stacks/joystick_drivers/joy/manifest.xml
 ../srv_gen/cpp/include/raptor/twist_srv.h: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_ctrl/manifest.xml
+../srv_gen/cpp/include/raptor/twist_srv.h: /opt/ros/electric/stacks/vision_opencv/opencv2/manifest.xml
+../srv_gen/cpp/include/raptor/twist_srv.h: /opt/ros/electric/stacks/vision_opencv/cv_bridge/manifest.xml
 ../srv_gen/cpp/include/raptor/twist_srv.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../srv_gen/cpp/include/raptor/twist_srv.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../srv_gen/cpp/include/raptor/twist_srv.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
@@ -285,15 +358,80 @@ CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/raptor/twist_srv.h
 ../srv_gen/cpp/include/raptor/twist_srv.h: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/msg_gen/generated
 ../srv_gen/cpp/include/raptor/twist_srv.h: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/srv_gen/generated
 ../srv_gen/cpp/include/raptor/twist_srv.h: /opt/ros/electric/stacks/joystick_drivers/joy/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/cpp/include/raptor/twist_srv.h"
 	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py /home/dev/cs7630_robotics/raptor/srv/twist_srv.srv
+
+../srv_gen/cpp/include/raptor/state_set_srv.h: ../srv/state_set_srv.srv
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../srv_gen/cpp/include/raptor/state_set_srv.h: ../manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/ros/core/roslib/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/ros/core/roslang/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/ros/tools/rosclean/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/ros/tools/rosunit/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/common_msgs/sensor_msgs/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/pluginlib/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/utilities/message_filters/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/image_common/image_transport/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/common_rosdeps/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/image_common/camera_calibration_parsers/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /home/dev/cs7630_robotics/gscam/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_av/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/joystick_drivers/joy/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_ctrl/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/vision_opencv/opencv2/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/vision_opencv/cv_bridge/manifest.xml
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
+../srv_gen/cpp/include/raptor/state_set_srv.h: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/msg_gen/generated
+../srv_gen/cpp/include/raptor/state_set_srv.h: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/srv_gen/generated
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/generated
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/common_msgs/sensor_msgs/srv_gen/generated
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/msg_gen/generated
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/srv_gen/generated
+../srv_gen/cpp/include/raptor/state_set_srv.h: /opt/ros/electric/stacks/joystick_drivers/joy/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/cpp/include/raptor/state_set_srv.h"
+	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/gensrv_cpp.py /home/dev/cs7630_robotics/raptor/srv/state_set_srv.srv
 
 ROSBUILD_gensrv_cpp: CMakeFiles/ROSBUILD_gensrv_cpp
 ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/raptor/obstacle_histogram.h
 ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/raptor/position_request_srv.h
 ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/raptor/polar_histogram.h
+ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/raptor/distance_adv_srv.h
 ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/raptor/twist_srv.h
+ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/raptor/state_set_srv.h
 ROSBUILD_gensrv_cpp: CMakeFiles/ROSBUILD_gensrv_cpp.dir/build.make
 .PHONY : ROSBUILD_gensrv_cpp
 

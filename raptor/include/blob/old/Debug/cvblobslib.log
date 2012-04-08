@@ -1,0 +1,40 @@
+﻿Build started 3/24/2012 8:04:21 PM.
+     1>Project "C:\Users\drumhead\Documents\Visual Studio 11\Projects\ConsoleApplication2\ConsoleApplication2\cvblobslib_OpenCV_v6\cvblobslib.vcxproj" on node 2 (Build target(s)).
+     1>InitializeBuildStatus:
+         Creating ".\Debug\cvblobslib.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"c:\Archivos de programa\OpenCV\cv\include" /I"c:\Archivos de programa\OpenCV\cxcore\include\\" /I"c:\Archivos de programa\OpenCV\OtherLibs\HighGUI\\" /I"c:\Archivos de programa\OpenCV\cv\include\\" /I..\inspecta\matrix /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _VC80_UPGRADE=0x0600 /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /Gy- /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Debug\\" /Fd".\Debug\vc110.pdb" /FR".\Debug\\" /Gd /TP /analyze- /errorReport:prompt  /Qopenmp   /Qopenmp blob.cpp BlobExtraction.cpp BlobResult.cpp
+     1>cl : Command line warning D9002: ignoring unknown option '/Qopenmp'
+     1>cl : Command line warning D9002: ignoring unknown option '/Qopenmp'
+         BlobResult.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+     1>c:\users\drumhead\documents\visual studio 11\projects\consoleapplication2\consoleapplication2\cvblobslib_opencv_v6\blobresult.cpp(865): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+         BlobExtraction.cpp
+         blob.cpp
+     1>c:\opencv2.2\include\opencv2\flann\logger.h(66): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+         Generating Code...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:".\Debug\cvblobslib.lib" /NOLOGO .\Debug\blob.obj
+         .\Debug\BlobExtraction.obj
+         .\Debug\BlobResult.obj
+         cvblobslib.vcxproj -> C:\Users\drumhead\Documents\Visual Studio 11\Projects\ConsoleApplication2\ConsoleApplication2\cvblobslib_OpenCV_v6\.\Debug\cvblobslib.lib
+       BscMake:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\bscmake.exe /nologo /o".\Debug\cvblobslib.bsc" .\Debug\blob.sbr .\Debug\BlobExtraction.sbr .\Debug\BlobResult.sbr
+       PostBuildEvent:
+         mkdir lib
+         echo copiant Debug\cvblobslib.lib a lib\cvblobslib.lib
+         copy Debug\cvblobslib.lib lib\cvblobslib.lib
+         :VCEnd
+         A subdirectory or file lib already exists.
+         copiant Debug\cvblobslib.lib a lib\cvblobslib.lib
+                 1 file(s) copied.
+       FinalizeBuildStatus:
+         Deleting file ".\Debug\cvblobslib.unsuccessfulbuild".
+         Touching ".\Debug\cvblobslib.lastbuildstate".
+     1>Done Building Project "C:\Users\drumhead\Documents\Visual Studio 11\Projects\ConsoleApplication2\ConsoleApplication2\cvblobslib_OpenCV_v6\cvblobslib.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:13.86

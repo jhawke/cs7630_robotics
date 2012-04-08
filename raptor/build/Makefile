@@ -187,6 +187,19 @@ clean-test-results/fast:
 .PHONY : clean-test-results/fast
 
 #=============================================================================
+# Target rules for targets named ip_test
+
+# Build rule for target.
+ip_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ip_test
+.PHONY : ip_test
+
+# fast build rule for target.
+ip_test/fast:
+	$(MAKE) -f CMakeFiles/ip_test.dir/build.make CMakeFiles/ip_test.dir/build
+.PHONY : ip_test/fast
+
+#=============================================================================
 # Target rules for targets named raptor_drive_testbench
 
 # Build rule for target.
@@ -198,6 +211,19 @@ raptor_drive_testbench: cmake_check_build_system
 raptor_drive_testbench/fast:
 	$(MAKE) -f CMakeFiles/raptor_drive_testbench.dir/build.make CMakeFiles/raptor_drive_testbench.dir/build
 .PHONY : raptor_drive_testbench/fast
+
+#=============================================================================
+# Target rules for targets named raptor_find_dark
+
+# Build rule for target.
+raptor_find_dark: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 raptor_find_dark
+.PHONY : raptor_find_dark
+
+# fast build rule for target.
+raptor_find_dark/fast:
+	$(MAKE) -f CMakeFiles/raptor_find_dark.dir/build.make CMakeFiles/raptor_find_dark.dir/build
+.PHONY : raptor_find_dark/fast
 
 #=============================================================================
 # Target rules for targets named raptor_generic_ip
@@ -237,6 +263,32 @@ raptor_mcom_testbench: cmake_check_build_system
 raptor_mcom_testbench/fast:
 	$(MAKE) -f CMakeFiles/raptor_mcom_testbench.dir/build.make CMakeFiles/raptor_mcom_testbench.dir/build
 .PHONY : raptor_mcom_testbench/fast
+
+#=============================================================================
+# Target rules for targets named raptor_ml
+
+# Build rule for target.
+raptor_ml: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 raptor_ml
+.PHONY : raptor_ml
+
+# fast build rule for target.
+raptor_ml/fast:
+	$(MAKE) -f CMakeFiles/raptor_ml.dir/build.make CMakeFiles/raptor_ml.dir/build
+.PHONY : raptor_ml/fast
+
+#=============================================================================
+# Target rules for targets named raptor_stalk
+
+# Build rule for target.
+raptor_stalk: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 raptor_stalk
+.PHONY : raptor_stalk
+
+# fast build rule for target.
+raptor_stalk/fast:
+	$(MAKE) -f CMakeFiles/raptor_stalk.dir/build.make CMakeFiles/raptor_stalk.dir/build
+.PHONY : raptor_stalk/fast
 
 #=============================================================================
 # Target rules for targets named raptor_waypointer
@@ -421,6 +473,21 @@ tests/fast:
 .PHONY : tests/fast
 
 # target to build an object file
+src/ip_test.o:
+	$(MAKE) -f CMakeFiles/ip_test.dir/build.make CMakeFiles/ip_test.dir/src/ip_test.o
+.PHONY : src/ip_test.o
+
+# target to preprocess a source file
+src/ip_test.i:
+	$(MAKE) -f CMakeFiles/ip_test.dir/build.make CMakeFiles/ip_test.dir/src/ip_test.i
+.PHONY : src/ip_test.i
+
+# target to generate assembly for a file
+src/ip_test.s:
+	$(MAKE) -f CMakeFiles/ip_test.dir/build.make CMakeFiles/ip_test.dir/src/ip_test.s
+.PHONY : src/ip_test.s
+
+# target to build an object file
 src/raptor_drive_testbench.o:
 	$(MAKE) -f CMakeFiles/raptor_drive_testbench.dir/build.make CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o
 .PHONY : src/raptor_drive_testbench.o
@@ -434,6 +501,21 @@ src/raptor_drive_testbench.i:
 src/raptor_drive_testbench.s:
 	$(MAKE) -f CMakeFiles/raptor_drive_testbench.dir/build.make CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.s
 .PHONY : src/raptor_drive_testbench.s
+
+# target to build an object file
+src/raptor_find_dark.o:
+	$(MAKE) -f CMakeFiles/raptor_find_dark.dir/build.make CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.o
+.PHONY : src/raptor_find_dark.o
+
+# target to preprocess a source file
+src/raptor_find_dark.i:
+	$(MAKE) -f CMakeFiles/raptor_find_dark.dir/build.make CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.i
+.PHONY : src/raptor_find_dark.i
+
+# target to generate assembly for a file
+src/raptor_find_dark.s:
+	$(MAKE) -f CMakeFiles/raptor_find_dark.dir/build.make CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.s
+.PHONY : src/raptor_find_dark.s
 
 # target to build an object file
 src/raptor_generic_ip.o:
@@ -481,6 +563,36 @@ src/raptor_mcom_testbench.s:
 .PHONY : src/raptor_mcom_testbench.s
 
 # target to build an object file
+src/raptor_ml.o:
+	$(MAKE) -f CMakeFiles/raptor_ml.dir/build.make CMakeFiles/raptor_ml.dir/src/raptor_ml.o
+.PHONY : src/raptor_ml.o
+
+# target to preprocess a source file
+src/raptor_ml.i:
+	$(MAKE) -f CMakeFiles/raptor_ml.dir/build.make CMakeFiles/raptor_ml.dir/src/raptor_ml.i
+.PHONY : src/raptor_ml.i
+
+# target to generate assembly for a file
+src/raptor_ml.s:
+	$(MAKE) -f CMakeFiles/raptor_ml.dir/build.make CMakeFiles/raptor_ml.dir/src/raptor_ml.s
+.PHONY : src/raptor_ml.s
+
+# target to build an object file
+src/raptor_stalk.o:
+	$(MAKE) -f CMakeFiles/raptor_stalk.dir/build.make CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o
+.PHONY : src/raptor_stalk.o
+
+# target to preprocess a source file
+src/raptor_stalk.i:
+	$(MAKE) -f CMakeFiles/raptor_stalk.dir/build.make CMakeFiles/raptor_stalk.dir/src/raptor_stalk.i
+.PHONY : src/raptor_stalk.i
+
+# target to generate assembly for a file
+src/raptor_stalk.s:
+	$(MAKE) -f CMakeFiles/raptor_stalk.dir/build.make CMakeFiles/raptor_stalk.dir/src/raptor_stalk.s
+.PHONY : src/raptor_stalk.s
+
+# target to build an object file
 src/raptor_waypointer.o:
 	$(MAKE) -f CMakeFiles/raptor_waypointer.dir/build.make CMakeFiles/raptor_waypointer.dir/src/raptor_waypointer.o
 .PHONY : src/raptor_waypointer.o
@@ -524,10 +636,14 @@ help:
 	@echo "... ROSBUILD_gensrv_py"
 	@echo "... clean-test-results"
 	@echo "... edit_cache"
+	@echo "... ip_test"
 	@echo "... raptor_drive_testbench"
+	@echo "... raptor_find_dark"
 	@echo "... raptor_generic_ip"
 	@echo "... raptor_mcom"
 	@echo "... raptor_mcom_testbench"
+	@echo "... raptor_ml"
+	@echo "... raptor_stalk"
 	@echo "... raptor_waypointer"
 	@echo "... raptor_waypointer_testbench"
 	@echo "... rebuild_cache"
@@ -543,9 +659,15 @@ help:
 	@echo "... test-results"
 	@echo "... test-results-run"
 	@echo "... tests"
+	@echo "... src/ip_test.o"
+	@echo "... src/ip_test.i"
+	@echo "... src/ip_test.s"
 	@echo "... src/raptor_drive_testbench.o"
 	@echo "... src/raptor_drive_testbench.i"
 	@echo "... src/raptor_drive_testbench.s"
+	@echo "... src/raptor_find_dark.o"
+	@echo "... src/raptor_find_dark.i"
+	@echo "... src/raptor_find_dark.s"
 	@echo "... src/raptor_generic_ip.o"
 	@echo "... src/raptor_generic_ip.i"
 	@echo "... src/raptor_generic_ip.s"
@@ -555,6 +677,12 @@ help:
 	@echo "... src/raptor_mcom_testbench.o"
 	@echo "... src/raptor_mcom_testbench.i"
 	@echo "... src/raptor_mcom_testbench.s"
+	@echo "... src/raptor_ml.o"
+	@echo "... src/raptor_ml.i"
+	@echo "... src/raptor_ml.s"
+	@echo "... src/raptor_stalk.o"
+	@echo "... src/raptor_stalk.i"
+	@echo "... src/raptor_stalk.s"
 	@echo "... src/raptor_waypointer.o"
 	@echo "... src/raptor_waypointer.i"
 	@echo "... src/raptor_waypointer.s"

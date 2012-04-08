@@ -25,7 +25,7 @@
 
 //FOV parameters. Needs to be synced with histogram message types.
 #define FOV_START 		159
-#define FOV_END			199
+#define FOV_END			200
 #define FOV_CENTER		179
 #define FOV_SIZE		41
 #define BEHAVIORAL_SUBDIVISIONS	360
@@ -53,13 +53,13 @@ raptor_mcom::raptor_mcom()
   /**************************************/
   //TESTBENCH CODE BELOW.
   
-  behavioral_modules[0] = node.serviceClient<raptor::polar_histogram>("mcom_tester_1");
+  behavioral_modules[0] = node.serviceClient<raptor::polar_histogram>("raptor_stalk_srv");
   
   /**************************************/
   
   
   //Publish drive command data.
-  drive_commander = node.serviceClient<raptor::twist_srv>("rovio_move_srv");
+  drive_commander = node.serviceClient<rovio_shared::twist_srv>("rovio_move_srv");
   
   //Initialize the error sum to 0.
   sigma = 0;
@@ -141,7 +141,7 @@ void raptor_mcom::system_heartbeat()
   ROS_DEBUG("Maximum location is %d with value %d",max_loc,max_vect);
   //We have a goal. Now generate a drive command.
   int goal_loc = max_loc;
-  raptor::twist_srv d_com;
+  rovio_shared::twist_srv d_com;
   d_com.request.linear.x = 0; //x
   d_com.request.linear.y = 0; //y
   d_com.request.linear.z = 0; //z
@@ -152,7 +152,8 @@ void raptor_mcom::system_heartbeat()
     raptor::obstacle_histogram obst_srv;
     if(obstacle_detector.call(obst_srv))
     {
-      boost::array<int16_t,FOV_SIZE> is_free = obst_srv.response.hist;
+      //boost::array<int16_t,FOV_SIZE> is_free = obst_srv.response.hist;
+      boost::array<int16_t,FOV_SIZE> is_free = {0};
       //Briefly check if the entire histogram is full.
       bool is_all_block = true;
       for(int i = 0; i<FOV_SIZE; i++)

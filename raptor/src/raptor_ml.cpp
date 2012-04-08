@@ -1,0 +1,203 @@
+/*!
+ * \file raptor_ml.cpp
+ * \brief RAPTOR machine learning node.
+ *
+ * Creates a node that determines follow distance through basic machine learning principles.
+ *
+ * \author omernick
+ * \date 4/7/12
+ */
+
+#include <raptor/raptor_ml.h>
+
+#include <ros/ros.h>
+#include <raptor/state_set_srv.h>
+#include <raptor/distance_adv_srv.h>
+#include <std_msgs/Bool.h>
+
+#include <time.h>
+#include <math.h>
+#include <boost/array.hpp>
+#include <map>
+#include <stdlib.h>
+#include <float.h>
+#include <string>
+
+#define ALPHA .5
+#define GAMMA 1
+
+#define MOVE_COST 1
+#define PENALTY_CONSTANT 10
+#define STUPIDITY_FACTOR .3
+
+using namespace std;
+
+raptor_ml::raptor_ml()
+{
+  //Initialize
+  current_state = -1;
+  model_id = 0;
+  went_forward = false;
+  
+  srand(time(NULL));
+  //Advertise state-setter function
+  state_getter = node.advertiseService("ml_setstate",&raptor_ml::recieve_new_state,this);
+  //Subscribe to reward publisher
+  reward_listener = node.subscribe<std_msgs::Bool> ("ml_reward", 1, &raptor_ml::reward_callback, this);
+  //Advertise distance advisor
+  dist_advisor = node.advertiseService("ml_getdistance",&raptor_ml::advise_distance,this);
+}
+
+raptor_ml::~raptor_ml()
+{
+
+  //Free all the arrays (ALL THE ARRAYS!!!)
+
+}
+
+bool raptor_ml::recieve_new_state(raptor::state_set_srv::Request &req, raptor::state_set_srv::Response &res)
+{ 
+  //If size==0 or the model id doesn't exist in the map, we need a new state.
+  if((markov_holder.size()==0)||(markov_holder.find(req.model)==markov_holder.end()))
+  {
+    ROS_DEBUG("New array is being created.");
+    Markov_Array *new_array = new Markov_Array;
+    std::fill((*new_array).begin(), (*new_array).end(),0.0);
+    markov_holder.insert(pair<int,Markov_Array>(req.model,*new_array));
+  }
+
+  model_id = req.model;
+  current_state = req.state;
+  last_state = -1;
+  ROS_DEBUG("Model is %d; state is %d.",model_id,current_state);
+  return true;
+}
+
+bool raptor_ml::advise_distance(raptor::distance_adv_srv::Request &req, raptor::distance_adv_srv::Response &res)
+{
+  ROS_DEBUG("Advising distance with %d.",current_state);
+  res.distance = current_state;
+  return true;
+}
+
+void raptor_ml::reward_callback(const std_msgs::Bool::ConstPtr &msg)
+{
+  ROS_DEBUG("\n");
+  ROS_DEBUG("Reward callback update.");
+  ROS_DEBUG("Current state is %d; last state was %d.",current_state,last_state);
+  float reward;
+  //The message is 'was_successful'. A true means +ve feedback, a false -ve.
+  if(msg->data == true)
+  {
+    reward = ((float)current_state)/10;
+  }
+  else
+  {
+    reward = -((((float)current_state)/10)*PENALTY_CONSTANT);
+  }
+  
+  ROS_DEBUG("The message was %d and the reward was %f",msg->data,reward);
+  //if(last_state!=-1)
+  //{
+    last_state = current_state;
+    //ROS_DEBUG("The last state is %f",markov_holder[model_id][last_state]);
+    //markov_holder[model_id][current_state]+=reward;
+    //ROS_DEBUG("The current state was updated to %f",markov_holder[model_id][current_state]);
+    if(reward<0)
+    {
+	for(int i = 1; i<11; i++)
+	{
+	  markov_holder[model_id][current_state+i]+=ALPHA*(reward+GAMMA*markov_holder[model_id][current_state+i]-markov_holder[model_id][current_state+i]);
+	  ROS_DEBUG("State %d was updated to %f",current_state+i,markov_holder[model_id][current_state+i]);
+	  
+	}
+    }
+    markov_holder[model_id][last_state]=markov_holder[model_id][last_state]+ALPHA*(reward+GAMMA*markov_holder[model_id][current_state]-markov_holder[model_id][last_state]);
+    ROS_DEBUG("The last state was updated to %f",markov_holder[model_id][last_state]);
+  //Protect the zero indexes by making anything exactly equal to zero after the update equal to -epsilon.
+    if(markov_holder[model_id][last_state]==0.0)
+    {
+      ROS_DEBUG("Adjusting for the zero. This is pretty rare...");
+    markov_holder[model_id][last_state] = -.000001; 
+    }
+  //}
+  //Determine the next state.
+  float down,stay,up;
+  
+  if(current_state!=0)
+  {
+    down = markov_holder[model_id][current_state-1]-MOVE_COST;
+  }
+  else
+  {
+      down=FLT_MIN;
+  }
+  
+  stay = markov_holder[model_id][current_state];
+  
+  if(current_state!=(MARKOV_ARRAY_SIZE-1))
+  {
+    up = markov_holder[model_id][current_state+1]-MOVE_COST;
+  }
+  else
+  {
+    up = FLT_MIN;
+  }
+  
+  if(markov_holder[model_id][current_state+1] == 0.0) //Unexplored!
+  {
+    ROS_DEBUG("Unexplored state in up direction.");
+    up = markov_holder[model_id][current_state]+1;	//A small incentive to explore, but only when you're not in a negative-cost state.
+  }
+  
+  ROS_DEBUG("Movement values are down = %f, stay = %f, up = %f",down,stay,up);
+  
+  int best;
+  int worst;
+  
+  if((down<stay)&&(up<stay))
+  {
+      best = current_state;
+      worst = (down<up)?(current_state-1):(current_state+1);
+  }
+  else if(down>up)
+  {
+    best = current_state-1;
+    worst = (up<stay)?(current_state+1):current_state;
+  }
+  else
+  {
+    best = current_state+1;
+    worst = (down<stay)?(current_state-1):current_state;
+  }
+  
+  ROS_DEBUG("Best move is %d, worst is %d",best,worst);
+  //Update next state.
+  last_state = current_state;
+  float chance = ((float)rand()/RAND_MAX);
+  if(chance>STUPIDITY_FACTOR)
+  {
+    ROS_DEBUG("Optimal action being taken.");
+    //Do the optimal thing.
+    current_state = best;
+  }
+  else
+  {
+    ROS_DEBUG("AMURICA!");
+     //Do the least optimal thing.
+     current_state = worst;
+  }
+  
+  ROS_DEBUG("State updated to %d",current_state);
+}
+
+int main(int argc, char **argv)
+{
+ ros::init(argc, argv, "raptor_ml_core");
+ 
+ raptor_ml mlc;
+ 
+ ros::spin();
+ 
+ return EXIT_SUCCESS;
+}

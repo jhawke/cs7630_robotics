@@ -18,6 +18,13 @@
 #include <string>
 #include <limits.h>
 #include <boost/array.hpp>
+#include <cxcore.h>
+#include <iostream>
+#include <cv.h>
+#include <highgui.h>
+#include <math.h>
+#include <blob/blob.h>
+#include <blob/BlobResult.h>
 
 class raptor_generic_ip
 {
@@ -26,8 +33,14 @@ public:
   ~raptor_generic_ip();
   
 private:
-  bool get_vector_field(raptor::polar_histogram::Request &req, raptor::polar_histogram::Response &res);
+  bool get_vector_field(raptor::obstacle_histogram::Request &req, raptor::obstacle_histogram::Response &res);
   void handle_new_image(const sensor_msgs::Image::ConstPtr& msg);
+ 
+  IplImage donkey_kong;
+  IplImage* img;
+  
+  bool isFirstImg;
+  int volume;
   
   ros::NodeHandle node;
   

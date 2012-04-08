@@ -1,0 +1,5 @@
+<launch>
+	<!-- Create an instance of each appropriate node -->
+  	<node name="raptor_ml" pkg="raptor" type="raptor_ml" respawn="false" output="screen"/>
+</launch>
+

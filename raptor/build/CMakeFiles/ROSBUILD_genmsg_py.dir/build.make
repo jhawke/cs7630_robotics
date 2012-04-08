@@ -89,6 +89,8 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/raptor/msg/__init__.py
 ../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
 ../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/joystick_drivers/joy/manifest.xml
 ../src/raptor/msg/_Vector3.py: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_ctrl/manifest.xml
+../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/vision_opencv/opencv2/manifest.xml
+../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/vision_opencv/cv_bridge/manifest.xml
 ../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated

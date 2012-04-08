@@ -37,12 +37,12 @@ ros::ServiceClient location_request;
 ros::ServiceServer location_setter;
 ros::ServiceServer vector_output;
 
-bool pointregister_new_location(raptor::position_request_srv::Request &req, raptor::position_request_srv::Response &res);
+bool register_new_location(raptor::position_request_srv::Request &req, raptor::position_request_srv::Response &res);
 bool give_location(raptor::polar_histogram::Request &req, raptor::polar_histogram::Response &res);
 
 int16_t goal_x;
 int16_t goal_y;
-double	stop_time;
+double	stop_timer;
 float	goal_val;
 };
 

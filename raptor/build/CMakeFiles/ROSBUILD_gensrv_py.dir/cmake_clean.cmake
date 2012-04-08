@@ -10,7 +10,9 @@ FILE(REMOVE_RECURSE
   "../src/raptor/srv/_obstacle_histogram.py"
   "../src/raptor/srv/_position_request_srv.py"
   "../src/raptor/srv/_polar_histogram.py"
+  "../src/raptor/srv/_distance_adv_srv.py"
   "../src/raptor/srv/_twist_srv.py"
+  "../src/raptor/srv/_state_set_srv.py"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -15,9 +15,15 @@ FILE(REMOVE_RECURSE
   "../srv_gen/lisp/polar_histogram.lisp"
   "../srv_gen/lisp/_package.lisp"
   "../srv_gen/lisp/_package_polar_histogram.lisp"
+  "../srv_gen/lisp/distance_adv_srv.lisp"
+  "../srv_gen/lisp/_package.lisp"
+  "../srv_gen/lisp/_package_distance_adv_srv.lisp"
   "../srv_gen/lisp/twist_srv.lisp"
   "../srv_gen/lisp/_package.lisp"
   "../srv_gen/lisp/_package_twist_srv.lisp"
+  "../srv_gen/lisp/state_set_srv.lisp"
+  "../srv_gen/lisp/_package.lisp"
+  "../srv_gen/lisp/_package_state_set_srv.lisp"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,0 +1,22 @@
+<package>
+  <description brief="raptor">
+
+     raptor
+
+  </description>
+  <author>Dev-II</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/raptor</url>
+  <depend package="std_msgs"/>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+  <depend package="rovio_av"/>
+  <depend package="rovio_ctrl"/>
+  <depend package="rovio_shared"/>
+  <depend package="cv_bridge"/>
+  <rosdep name="opencv2.3"/>
+
+</package>
+
+
