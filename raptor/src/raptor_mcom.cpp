@@ -21,12 +21,12 @@
 
 #define NUM_BEH_MODS 		2
 
-#define LOOP_RATE 		1
+#define LOOP_RATE 		.1
 
 //FOV parameters. Needs to be synced with histogram message types.
 #define FOV_START 		159
 #define FOV_END			200
-#define FOV_CENTER		179
+#define FOV_CENTER		180
 #define FOV_SIZE		41
 #define BEHAVIORAL_SUBDIVISIONS	360
 
@@ -53,8 +53,8 @@ raptor_mcom::raptor_mcom()
   /**************************************/
   //TESTBENCH CODE BELOW.
   
-  behavioral_modules[0] = node.serviceClient<raptor::polar_histogram>("raptor_stalk_srv");
-  
+  behavioral_modules[0] = node.serviceClient<raptor::polar_histogram>("raptor_relmove_srv");
+  behavioral_modules[1] = node.serviceClient<raptor::polar_histogram>("raptor_absmove_srv"); 
   /**************************************/
   
   
@@ -74,6 +74,7 @@ raptor_mcom::~raptor_mcom()
 
 void raptor_mcom::system_heartbeat()
 {
+  ROS_DEBUG("\n***");
   vector<int16_t> behavioral_commands(BEHAVIORAL_SUBDIVISIONS,0);
   boost::array<int16_t,360> behavioral_inputs = {0};
   bool is_in_fov=false;
@@ -150,8 +151,10 @@ void raptor_mcom::system_heartbeat()
   {
     ROS_DEBUG("Obstacle detection routine running...");
     raptor::obstacle_histogram obst_srv;
-    if(obstacle_detector.call(obst_srv))
+    //if(obstacle_detector.call(obst_srv))
+    if(true)
     {
+      ROS_DEBUG("ODR returned. Processing.");
       //boost::array<int16_t,FOV_SIZE> is_free = obst_srv.response.hist;
       boost::array<int16_t,FOV_SIZE> is_free = {0};
       //Briefly check if the entire histogram is full.
@@ -169,7 +172,9 @@ void raptor_mcom::system_heartbeat()
 	//Bias is toward a path in the FOV, only going out-of-FOV if no non-obstacled path exists.
 	int down=0;
 	int up=0;
-	int start = max_loc-FOV_START;
+	int start = (max_loc-FOV_START);
+	if(start<0){start=0;}
+	if(start>(FOV_SIZE-1)){start=(FOV_SIZE-1);}
 	ROS_DEBUG("Starting downward examination. Start is %d", start);
 	while(((max_loc-down)>=FOV_START)&&(is_free[start-down]!=0))
 	{
@@ -193,15 +198,15 @@ void raptor_mcom::system_heartbeat()
       else	//This is what happens if the entire fov is obstacled.
       {
 	ROS_DEBUG("FOV is all blocked.");
-	goal_loc = (max_loc<180)?(max_loc-FOV_SIZE):(max_loc+FOV_SIZE); //Shift CCW/CW by one camera frame. 
+	goal_loc = (max_loc<FOV_CENTER)?(max_loc-FOV_SIZE):(max_loc+FOV_SIZE); //Shift CCW/CW by one camera frame. 
       } 
     }
   }
     //Calculate the angular rotational command using PI control.
     ROS_DEBUG("Final heading: %d",goal_loc);
     
-    double ang_rot = (max_loc-180)*CONST_P+sigma*CONST_I;
-    sigma+=((max_loc-180));
+    double ang_rot = (max_loc-FOV_CENTER)*CONST_P+sigma*CONST_I;
+    sigma+=((max_loc-FOV_CENTER));
     
     if(ang_rot>0.99)
     {

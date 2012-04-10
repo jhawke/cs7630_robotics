@@ -6,6 +6,8 @@ FILE(REMOVE_RECURSE
   "../msg_gen"
   "../srv_gen"
   "CMakeFiles/ROSBUILD_genmsg_cpp"
+  "../msg_gen/cpp/include/raptor/abs_pos_req.h"
+  "../msg_gen/cpp/include/raptor/rel_pos_req.h"
   "../msg_gen/cpp/include/raptor/Vector3.h"
 )
 

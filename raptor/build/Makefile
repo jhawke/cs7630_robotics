@@ -200,6 +200,19 @@ ip_test/fast:
 .PHONY : ip_test/fast
 
 #=============================================================================
+# Target rules for targets named raptor_absmove
+
+# Build rule for target.
+raptor_absmove: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 raptor_absmove
+.PHONY : raptor_absmove
+
+# fast build rule for target.
+raptor_absmove/fast:
+	$(MAKE) -f CMakeFiles/raptor_absmove.dir/build.make CMakeFiles/raptor_absmove.dir/build
+.PHONY : raptor_absmove/fast
+
+#=============================================================================
 # Target rules for targets named raptor_drive_testbench
 
 # Build rule for target.
@@ -278,6 +291,19 @@ raptor_ml/fast:
 .PHONY : raptor_ml/fast
 
 #=============================================================================
+# Target rules for targets named raptor_relmove
+
+# Build rule for target.
+raptor_relmove: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 raptor_relmove
+.PHONY : raptor_relmove
+
+# fast build rule for target.
+raptor_relmove/fast:
+	$(MAKE) -f CMakeFiles/raptor_relmove.dir/build.make CMakeFiles/raptor_relmove.dir/build
+.PHONY : raptor_relmove/fast
+
+#=============================================================================
 # Target rules for targets named raptor_stalk
 
 # Build rule for target.
@@ -289,19 +315,6 @@ raptor_stalk: cmake_check_build_system
 raptor_stalk/fast:
 	$(MAKE) -f CMakeFiles/raptor_stalk.dir/build.make CMakeFiles/raptor_stalk.dir/build
 .PHONY : raptor_stalk/fast
-
-#=============================================================================
-# Target rules for targets named raptor_waypointer
-
-# Build rule for target.
-raptor_waypointer: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 raptor_waypointer
-.PHONY : raptor_waypointer
-
-# fast build rule for target.
-raptor_waypointer/fast:
-	$(MAKE) -f CMakeFiles/raptor_waypointer.dir/build.make CMakeFiles/raptor_waypointer.dir/build
-.PHONY : raptor_waypointer/fast
 
 #=============================================================================
 # Target rules for targets named raptor_waypointer_testbench
@@ -488,6 +501,21 @@ src/ip_test.s:
 .PHONY : src/ip_test.s
 
 # target to build an object file
+src/raptor_absmove.o:
+	$(MAKE) -f CMakeFiles/raptor_absmove.dir/build.make CMakeFiles/raptor_absmove.dir/src/raptor_absmove.o
+.PHONY : src/raptor_absmove.o
+
+# target to preprocess a source file
+src/raptor_absmove.i:
+	$(MAKE) -f CMakeFiles/raptor_absmove.dir/build.make CMakeFiles/raptor_absmove.dir/src/raptor_absmove.i
+.PHONY : src/raptor_absmove.i
+
+# target to generate assembly for a file
+src/raptor_absmove.s:
+	$(MAKE) -f CMakeFiles/raptor_absmove.dir/build.make CMakeFiles/raptor_absmove.dir/src/raptor_absmove.s
+.PHONY : src/raptor_absmove.s
+
+# target to build an object file
 src/raptor_drive_testbench.o:
 	$(MAKE) -f CMakeFiles/raptor_drive_testbench.dir/build.make CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o
 .PHONY : src/raptor_drive_testbench.o
@@ -578,6 +606,21 @@ src/raptor_ml.s:
 .PHONY : src/raptor_ml.s
 
 # target to build an object file
+src/raptor_relmove.o:
+	$(MAKE) -f CMakeFiles/raptor_relmove.dir/build.make CMakeFiles/raptor_relmove.dir/src/raptor_relmove.o
+.PHONY : src/raptor_relmove.o
+
+# target to preprocess a source file
+src/raptor_relmove.i:
+	$(MAKE) -f CMakeFiles/raptor_relmove.dir/build.make CMakeFiles/raptor_relmove.dir/src/raptor_relmove.i
+.PHONY : src/raptor_relmove.i
+
+# target to generate assembly for a file
+src/raptor_relmove.s:
+	$(MAKE) -f CMakeFiles/raptor_relmove.dir/build.make CMakeFiles/raptor_relmove.dir/src/raptor_relmove.s
+.PHONY : src/raptor_relmove.s
+
+# target to build an object file
 src/raptor_stalk.o:
 	$(MAKE) -f CMakeFiles/raptor_stalk.dir/build.make CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o
 .PHONY : src/raptor_stalk.o
@@ -591,21 +634,6 @@ src/raptor_stalk.i:
 src/raptor_stalk.s:
 	$(MAKE) -f CMakeFiles/raptor_stalk.dir/build.make CMakeFiles/raptor_stalk.dir/src/raptor_stalk.s
 .PHONY : src/raptor_stalk.s
-
-# target to build an object file
-src/raptor_waypointer.o:
-	$(MAKE) -f CMakeFiles/raptor_waypointer.dir/build.make CMakeFiles/raptor_waypointer.dir/src/raptor_waypointer.o
-.PHONY : src/raptor_waypointer.o
-
-# target to preprocess a source file
-src/raptor_waypointer.i:
-	$(MAKE) -f CMakeFiles/raptor_waypointer.dir/build.make CMakeFiles/raptor_waypointer.dir/src/raptor_waypointer.i
-.PHONY : src/raptor_waypointer.i
-
-# target to generate assembly for a file
-src/raptor_waypointer.s:
-	$(MAKE) -f CMakeFiles/raptor_waypointer.dir/build.make CMakeFiles/raptor_waypointer.dir/src/raptor_waypointer.s
-.PHONY : src/raptor_waypointer.s
 
 # target to build an object file
 src/raptor_waypointer_testbench.o:
@@ -637,14 +665,15 @@ help:
 	@echo "... clean-test-results"
 	@echo "... edit_cache"
 	@echo "... ip_test"
+	@echo "... raptor_absmove"
 	@echo "... raptor_drive_testbench"
 	@echo "... raptor_find_dark"
 	@echo "... raptor_generic_ip"
 	@echo "... raptor_mcom"
 	@echo "... raptor_mcom_testbench"
 	@echo "... raptor_ml"
+	@echo "... raptor_relmove"
 	@echo "... raptor_stalk"
-	@echo "... raptor_waypointer"
 	@echo "... raptor_waypointer_testbench"
 	@echo "... rebuild_cache"
 	@echo "... rosbuild_precompile"
@@ -662,6 +691,9 @@ help:
 	@echo "... src/ip_test.o"
 	@echo "... src/ip_test.i"
 	@echo "... src/ip_test.s"
+	@echo "... src/raptor_absmove.o"
+	@echo "... src/raptor_absmove.i"
+	@echo "... src/raptor_absmove.s"
 	@echo "... src/raptor_drive_testbench.o"
 	@echo "... src/raptor_drive_testbench.i"
 	@echo "... src/raptor_drive_testbench.s"
@@ -680,12 +712,12 @@ help:
 	@echo "... src/raptor_ml.o"
 	@echo "... src/raptor_ml.i"
 	@echo "... src/raptor_ml.s"
+	@echo "... src/raptor_relmove.o"
+	@echo "... src/raptor_relmove.i"
+	@echo "... src/raptor_relmove.s"
 	@echo "... src/raptor_stalk.o"
 	@echo "... src/raptor_stalk.i"
 	@echo "... src/raptor_stalk.s"
-	@echo "... src/raptor_waypointer.o"
-	@echo "... src/raptor_waypointer.i"
-	@echo "... src/raptor_waypointer.s"
 	@echo "... src/raptor_waypointer_testbench.o"
 	@echo "... src/raptor_waypointer_testbench.i"
 	@echo "... src/raptor_waypointer_testbench.s"

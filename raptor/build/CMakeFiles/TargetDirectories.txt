@@ -6,14 +6,15 @@
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/ROSBUILD_gensrv_py.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/clean-test-results.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/ip_test.dir
+/home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_absmove.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_drive_testbench.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_find_dark.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_generic_ip.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_mcom.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_mcom_testbench.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_ml.dir
+/home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_relmove.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_stalk.dir
-/home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_waypointer.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_waypointer_testbench.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/rosbuild_precompile.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/rosbuild_premsgsrvgen.dir

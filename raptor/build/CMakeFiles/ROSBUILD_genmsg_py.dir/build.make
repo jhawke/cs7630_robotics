@@ -41,10 +41,136 @@ CMAKE_BINARY_DIR = /home/dev/cs7630_robotics/raptor/build
 
 CMakeFiles/ROSBUILD_genmsg_py: ../src/raptor/msg/__init__.py
 
+../src/raptor/msg/__init__.py: ../src/raptor/msg/_abs_pos_req.py
+../src/raptor/msg/__init__.py: ../src/raptor/msg/_rel_pos_req.py
 ../src/raptor/msg/__init__.py: ../src/raptor/msg/_Vector3.py
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/raptor/msg/__init__.py"
-	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --initpy /home/dev/cs7630_robotics/raptor/msg/Vector3.msg
+	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --initpy /home/dev/cs7630_robotics/raptor/msg/abs_pos_req.msg /home/dev/cs7630_robotics/raptor/msg/rel_pos_req.msg /home/dev/cs7630_robotics/raptor/msg/Vector3.msg
+
+../src/raptor/msg/_abs_pos_req.py: ../msg/abs_pos_req.msg
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../src/raptor/msg/_abs_pos_req.py: ../manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/ros/core/roslib/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/ros/core/roslang/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/ros/tools/rosclean/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/ros/tools/rosunit/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/common_msgs/sensor_msgs/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/pluginlib/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/utilities/message_filters/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/image_common/image_transport/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/common_rosdeps/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/image_common/camera_calibration_parsers/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /home/dev/cs7630_robotics/gscam/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_av/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/joystick_drivers/joy/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_ctrl/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/vision_opencv/opencv2/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/vision_opencv/cv_bridge/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
+../src/raptor/msg/_abs_pos_req.py: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/msg_gen/generated
+../src/raptor/msg/_abs_pos_req.py: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/srv_gen/generated
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/generated
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/common_msgs/sensor_msgs/srv_gen/generated
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/msg_gen/generated
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/srv_gen/generated
+../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/joystick_drivers/joy/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/raptor/msg/_abs_pos_req.py"
+	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --noinitpy /home/dev/cs7630_robotics/raptor/msg/abs_pos_req.msg
+
+../src/raptor/msg/_rel_pos_req.py: ../msg/rel_pos_req.msg
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../src/raptor/msg/_rel_pos_req.py: ../manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/ros/core/roslib/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/ros/core/roslang/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/ros/tools/rosclean/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/ros/tools/rosunit/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/common_msgs/sensor_msgs/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/pluginlib/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/utilities/message_filters/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/image_common/image_transport/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/common_rosdeps/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/image_common/camera_calibration_parsers/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /home/dev/cs7630_robotics/gscam/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_av/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/joystick_drivers/joy/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_ctrl/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/vision_opencv/opencv2/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/vision_opencv/cv_bridge/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
+../src/raptor/msg/_rel_pos_req.py: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/msg_gen/generated
+../src/raptor/msg/_rel_pos_req.py: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/srv_gen/generated
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/generated
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/common_msgs/sensor_msgs/srv_gen/generated
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/msg_gen/generated
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/srv_gen/generated
+../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/joystick_drivers/joy/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/raptor/msg/_rel_pos_req.py"
+	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --noinitpy /home/dev/cs7630_robotics/raptor/msg/rel_pos_req.msg
 
 ../src/raptor/msg/_Vector3.py: ../msg/Vector3.msg
 ../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py
@@ -104,12 +230,14 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/raptor/msg/__init__.py
 ../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/msg_gen/generated
 ../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/srv_gen/generated
 ../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/joystick_drivers/joy/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/raptor/msg/_Vector3.py"
 	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --noinitpy /home/dev/cs7630_robotics/raptor/msg/Vector3.msg
 
 ROSBUILD_genmsg_py: CMakeFiles/ROSBUILD_genmsg_py
 ROSBUILD_genmsg_py: ../src/raptor/msg/__init__.py
+ROSBUILD_genmsg_py: ../src/raptor/msg/_abs_pos_req.py
+ROSBUILD_genmsg_py: ../src/raptor/msg/_rel_pos_req.py
 ROSBUILD_genmsg_py: ../src/raptor/msg/_Vector3.py
 ROSBUILD_genmsg_py: CMakeFiles/ROSBUILD_genmsg_py.dir/build.make
 .PHONY : ROSBUILD_genmsg_py
