@@ -7,6 +7,8 @@ FILE(REMOVE_RECURSE
   "../srv_gen"
   "CMakeFiles/ROSBUILD_genmsg_py"
   "../src/raptor/msg/__init__.py"
+  "../src/raptor/msg/_abs_pos_req.py"
+  "../src/raptor/msg/_rel_pos_req.py"
   "../src/raptor/msg/_Vector3.py"
 )
 

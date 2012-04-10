@@ -1,8 +1,14 @@
 # Hashes of file build rules.
 fe5a12abd5874d241ad8831ac4a930ff ../msg_gen/cpp/include/raptor/Vector3.h
+9068b4b5fced2efad4f911298f9c59ba ../msg_gen/cpp/include/raptor/abs_pos_req.h
+fdb5d43ae6a28dafc7326af57cc30b16 ../msg_gen/cpp/include/raptor/rel_pos_req.h
 63155a1c039a7f872e6d56c52ba71bb6 ../msg_gen/lisp/Vector3.lisp
+5e3eabb93fa11411435ee7f737db8685 ../msg_gen/lisp/abs_pos_req.lisp
+969f32d86a885b2426916941136134ac ../msg_gen/lisp/rel_pos_req.lisp
 fb4ace4dc7027b910e29df5679d62742 ../src/raptor/msg/_Vector3.py
-8c0040f9ca813774aa2e47edb8630eb6 ../src/raptor/msg/__init__.py
+1f3ac03325188cbee816893a5ed2d895 ../src/raptor/msg/__init__.py
+9862d46e353b2758a2dc31b227ce5b3f ../src/raptor/msg/_abs_pos_req.py
+1ae0eae743da6dcb59fae94db28001cd ../src/raptor/msg/_rel_pos_req.py
 fb47801e72ed0c758d1d6ddf3408b647 ../src/raptor/srv/__init__.py
 7cc00ffb02989eff504a88473f87dd4a ../src/raptor/srv/_distance_adv_srv.py
 046ce18c6c6ed0a789f3325e9f80d5c8 ../src/raptor/srv/_obstacle_histogram.py

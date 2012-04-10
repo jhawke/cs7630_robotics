@@ -1,0 +1,16 @@
+<launch>
+	<!-- Edit the parameters here for your Rovio -->
+	<param name="/rovio_shared/host" type="string" value="192.168.10.18"/>
+	<param name="/rovio_shared/user" type="string" value="admin"/>
+	<param name="/rovio_shared/pass" type="string" value="wowwee"/>
+
+	<!-- Create an instance of each appropriate node -->
+  	<node name="rovio_move" pkg="rovio_ctrl" type="rovio_move" respawn="false" output="screen"/>
+	<node name="rovio_head" pkg="rovio_ctrl" type="rovio_head" respawn="false" output="screen"/>
+
+	<!-- Create an instance of each appropriate node -->
+  	<node name="raptor_mcom" pkg="raptor" type="raptor_mcom" respawn="false" output="screen"/>
+	<node name="raptor_relmove" pkg="raptor" type="raptor_relmove" respawn="false" output="screen"/>
+
+</launch>
+
