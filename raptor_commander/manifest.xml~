@@ -1,0 +1,17 @@
+<package>
+  <description brief="raptor_commander">
+
+     raptor_commander
+
+  </description>
+  <author>JDH</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/raptor_commander</url>
+  <depend package="roscpp" />
+  <depend package="rospy" />
+  <depend package="std_msgs" />
+
+</package>
+
+
