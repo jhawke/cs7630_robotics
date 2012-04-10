@@ -1,0 +1,11 @@
+<package>
+	<description brief="Common messages and services used in LfD algorithms.">
+ 	lfd_common contains a set of service and message definitions used in Learning for Demonstration algorithms.
+ 	</description>
+ 	<author>Russell Toris</author>
+ 	<license>BSD</license>
+ 	<review status="unreviewed" notes=""/>
+ 	<url>http://ros.org/wiki/lfd_common</url>
+ 	<depend package="std_msgs"/>
+ 	
+</package>

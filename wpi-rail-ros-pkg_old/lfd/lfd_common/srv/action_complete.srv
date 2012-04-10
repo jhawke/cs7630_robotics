@@ -1,0 +1,6 @@
+# If the user provided a correction
+bool valid_correction
+# The action label for the correction
+int32 a
+---
+# No response needed

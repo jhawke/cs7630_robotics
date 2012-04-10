@@ -1,0 +1,9 @@
+<Modules>
+    <Module path="/opt/ros/cturtle/stacks/ni/ni/openni/lib/libnimMockNodes.so" configDir="/opt/ros/cturtle/stacks/ni/ni/openni/lib" />
+    <Module path="/opt/ros/cturtle/stacks/ni/ni/openni/lib/libnimCodecs.so" configDir="/opt/ros/cturtle/stacks/ni/ni/openni/lib" />
+    <Module path="/opt/ros/cturtle/stacks/ni/ni/openni/lib/libnimRecorder.so" configDir="/opt/ros/cturtle/stacks/ni/ni/openni/lib" />
+    <Module path="/opt/ros/cturtle/stacks/ni/ni/ps_engine/lib/libXnDeviceSensorV2.so" configDir="/opt/ros/cturtle/stacks/ni/ni/ps_engine/lib" />
+    <Module path="/opt/ros/cturtle/stacks/ni/ni/ps_engine/lib/libXnDeviceFile.so" configDir="/opt/ros/cturtle/stacks/ni/ni/ps_engine/lib" />
+    <Module path="/opt/ros/cturtle/stacks/ni/ni/nite/lib/libXnVFeatures.so" configDir="/opt/ros/cturtle/stacks/ni/ni/nite/XnVFeatures" />
+    <Module path="/opt/ros/cturtle/stacks/ni/ni/nite/lib/libXnVHandGenerator.so" configDir="/opt/ros/cturtle/stacks/ni/ni/nite/XnVHandGenerator" />
+</Modules>

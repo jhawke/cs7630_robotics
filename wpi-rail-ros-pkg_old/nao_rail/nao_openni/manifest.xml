@@ -1,0 +1,28 @@
+<package>
+  <description brief="nao_openni">
+
+     nao_openni
+
+  </description>
+  <author>Bener SUAY</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/nao_openni</url>
+  
+  <depend package="roscpp"/>
+  <depend package="roslib"/>
+  <depend package="std_msgs"/>
+  <depend package="nav_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="tf"/>
+  <depend package="nao_ctrl"/>
+  <depend package="nao_description"/>
+  <depend package="message_filters"/>
+  <depend package="robot_state_publisher"/>
+  <depend package="openni"/>
+  <depend package="kdl"/>
+  <depend package="tf"/>
+  
+</package>
+
+

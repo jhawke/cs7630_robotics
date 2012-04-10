@@ -1,0 +1,9 @@
+# The state vector to classify
+state s
+---
+# The confidence value of the classification
+float32 c
+# The classification label
+int32 l
+# The decision boundary label
+int32 db

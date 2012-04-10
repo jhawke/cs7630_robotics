@@ -1,0 +1,7 @@
+/**
+\mainpage
+\htmlinclude manifest.html
+
+\b nao_tools is a ROS package which contains a set of useful tools to interact with the NAO.
+Currently, nao_tools includes a node that allows control of the text-to-speech module over the terminal. The volume and language can also be set from this node. 
+*/

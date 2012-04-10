@@ -1,0 +1,49 @@
+ROS-Package for using natural interface to control Nao
+
+nao_openni, Release 0.0.1, Halit Bener SUAY, December 2010.
+wpi.edu/~benersuay
+
+The most recent code for this package, is available at
+https://github.com/wpi-ros-pkg-git/nao_openni
+
+This package is the first package of the stack wpi_nao. More packages will hopefully be available soon for Human-Robot Interaction and different robot oriented machine learning applications.
+
+1. Purpose:
+
+	The main purpose is to control humanoid robots (Aldebaran Nao in this case) in the most natural way possible, without wearing any kind of device, using arm and leg gestures. The second purpose is to make Human Robot interaction, and teaching new tasks to robots easier, without requiring and robotics knowledge by the user, which is a contribution to Learning from Demonstration field.
+
+2. Functionality:
+	
+	This package is aimed to be more general than just controlling Nao using Microsoft Kinect. It's basically querying a depth camera (Microsoft Kinect in this case), interpreting the user's gestures (angles between limbs), and publishing messages to the robot control node (nao_ctrl in this case).
+
+3. Dependency and background:
+
+	The gesture interpretation code is written in CPP, and the following ROS packages are required:
+		"roscpp", "roslib", "std_msgs", "nav_msgs", "geometry_msgs", "tf", "nao_ctrl", "nao_description", "message_filters", "robot_state_publisher", "openni","kdl","tf".
+
+4. Inside the package:
+	
+	"nao_openni/src/teleop_nao_ni.cpp" is the main and the only code for now. It has tons of comments but it still has lots of room for comments. I would be more than so super mega happy if you read, find mistakes, develop the code, help me go through the To Do list.
+	"nao_openni/nao_ni_walker.py" is the python code that controls the motion and speech of Nao. It should be copied in the folder "PATH_TO_YOUR_ROS_STACKS/FREIBURGS_NAO_PACKAGE/nao_ctrl/scripts". Here, "FREIBURGS_NAO_PACKAGE" is the package devdeloped by University of Freiburg's Armin Hornung (see http://www.ros.org/wiki/nao).
+	"nao_openni/nao_ni_controller.png" shows how to control the robot's navigation. See the video, Section (5.h), to get a better idea.
+	
+5. How to run the code
+	a. If you don't have them already, download the packages written in section (3) with their dependencies using,
+		"rosdep install PACKAGE_NAME"
+		
+	b. Copy "nao_openni/nao_ni_walker.py" to "nao_ctrl/scripts/"
+
+	c. Launch Microsoft Kinect nodes, "roslaunch openni_camera openni_kinect.launch"
+	d. If you'd like to see your self being tracked, which is useful when you control the robot, "rosrun openni Sample-NiUserTracker"
+	e. Turn on Nao, make sure that it's connected to the network, check it's IP number, then
+		"roscd nao_ctrl/scripts" and "./nao_ni_walker.py --pip="YOUR_NAOS_IP_HERE" --pport=9559"
+	f. Make "rosmake nao_openni" and run nao_ni "rosrun nao_openni teleop_nao_ni"
+	g. Stand in standard Psi pose, wait for the nao_ni code to print out "Calibration complete, start tracking user".
+	h. For a short tutorial and to get familiar with the commands, see the video at http://www.youtube.com/watch?v=GdepIXZTJsw
+	
+	IMPORTANT NOTE: Calibration of the nao_ni takes (currently) much longer than Sample-NiUserTracker. It's because the message publishing rate for Nao is relatively low. Don't get confused if you're watching your self on "Sample-NiUserTracker". Wait until you see the "Calibration Complete" message on the terminal you're actually running "nao_ni". The plan is to make it independent from publishing rate and thus faster for the next release.
+	
+6. More information:
+	a. See http://www.ros.org/wiki/nao for more information about nao_ctrl and nao_remote (Special thanks goes to Armin Hornung)
+	b. See http://www.ros.org/wiki/ni for more information about openni (Thanks for everyone who contributed to OpenNI and Microsoft Kinect imports)
+

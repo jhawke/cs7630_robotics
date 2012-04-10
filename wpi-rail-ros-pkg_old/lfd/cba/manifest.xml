@@ -1,0 +1,15 @@
+<package>
+  <description brief="Confidence-Based Autonomy (CBA) implementation for ROS">
+ 	An implementation of the Learning from Demonstration algorithm Confidence-Based Autonomy (CBA) built for ROS.
+  </description>
+  <author>Russell Toris</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/cba</url>
+  <depend package="std_msgs"/>
+  <depend package="roscpp"/>
+  <depend package="lfd_common"/>
+  <depend package="ann"/>
+</package>
+
+

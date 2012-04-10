@@ -1,0 +1,18 @@
+<launch>
+	<!-- Import your PYTHONPATH -->
+	<env name="PYTHONPATH" value="$(env PYTHONPATH)"/> 
+
+	<!-- Edit the parameters here for your Nao -->
+	<param name="/naoqi/host" type="string" value="130.215.29.12"/>
+	<param name="/naoqi/port" value="9559"/>
+	<!-- Optional Parameter if your PYTHONPATH is not setup correctly -->
+	<param name="/naoqi/path" type="string" value="/opt/naoqi-sdk-1.10.52-linux/lib"/>
+
+	<!-- Optional Parameters for Voice -->
+	<param name="/nao_speech/volume" value="0.5"/>
+	<param name="/nao_speech/language" type="string" value="English"/>
+  
+	<!-- Create an instance of each appropriate node -->
+	<node name="nao_speech" pkg="nao_speech" type="nao_speech.py" respawn="false" output="screen"/>
+	<node name="nao_terminal_talk" pkg="nao_tools" type="nao_terminal_talk" respawn="false" output="screen"/>
+</launch>

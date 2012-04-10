@@ -1,0 +1,9 @@
+<stack>
+  <description brief="apps">Applications developed by the RAIL team at WPI.</description>
+  <author>Maintained by Russell Toris</author>
+  <license>BSD</license>  
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/apps</url>
+  <depend stack="ros" />
+
+</stack>

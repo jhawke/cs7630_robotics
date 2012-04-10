@@ -1,0 +1,9 @@
+<stack>
+  <description brief="The RAIL group's NAO packages.">The nao_rail stack contains packages to control and query an Aldebaran NAO. These packages can be used in conjunction with existing NAO stacks and packages to add additional features.</description>
+  <author>Maintained by Russell Toris</author>
+  <license>BSD</license>  
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/nao_rail</url>
+  <depend stack="ros" />
+</stack>
+

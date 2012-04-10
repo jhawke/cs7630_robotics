@@ -1,0 +1,10 @@
+<launch>
+	<param name="/cba/max_data_points" value="1562575" />
+	
+	<!-- Create an instance of each appropriate node -->
+	<node name="cba" pkg="cba" type="cba" respawn="false" output="screen"/>
+  	<node name="mock_classify" pkg="cba" type="mock_classify" respawn="false" output="screen"/>
+  	<node name="mock_state_publisher" pkg="cba" type="mock_state_publisher" respawn="false" output="screen"/>
+  	<node name="mock_agent" pkg="cba" type="mock_agent" respawn="false" output="screen"/>
+</launch>
+

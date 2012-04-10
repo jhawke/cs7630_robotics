@@ -1,0 +1,7 @@
+# The vector of the state that requires a demonstration
+state s
+---
+# If the user provided a demonstration
+bool valid
+# The action label for the demonstration
+int32 a

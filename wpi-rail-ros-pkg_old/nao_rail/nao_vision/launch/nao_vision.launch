@@ -1,0 +1,17 @@
+<launch>
+	<!-- Import your PYTHONPATH -->
+	<env name="PYTHONPATH" value="$(env PYTHONPATH)"/> 
+
+	<!-- Edit the parameters here for your Nao -->
+	<param name="/naoqi/host" type="string" value="130.215.29.12"/>
+	<param name="/naoqi/port" value="9559"/>
+	<!-- Optional Parameter if your PYTHONPATH is not setup correctly -->
+	<param name="/naoqi/path" type="string" value="/opt/naoqi-sdk-1.10.52-linux/lib"/>
+
+	<!-- Optional Parameters for Camera Settings -->
+	<param name="/nao_vision/resolution" value="1"/>
+	<param name="/nao_vision/camera" value="0"/>
+
+	<!-- Create an instance of each appropriate node -->
+  	<node name="nao_vision" pkg="nao_vision" type="nao_vision.py" respawn="false" output="screen"/>
+</launch>

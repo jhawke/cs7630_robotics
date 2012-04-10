@@ -1,0 +1,10 @@
+<package>
+  <description brief="A set of useful tools to interact with the Nao.">Currently, nao_tools includes a node that allows control of the text-to-speech module over the terminal. The volume and language can also be set from this node.</description>
+  <author>Russell Toris</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/nao_tools</url>
+  <depend package="roscpp"/>
+  <depend package="nao_speech"/>
+  <depend package="std_msgs"/>
+</package>
