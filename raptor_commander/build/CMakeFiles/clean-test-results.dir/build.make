@@ -32,15 +32,15 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jdh/cs7630_robotics/raptor_commander
+CMAKE_SOURCE_DIR = /home/dev/cs7630_robotics/raptor_commander
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jdh/cs7630_robotics/raptor_commander/build
+CMAKE_BINARY_DIR = /home/dev/cs7630_robotics/raptor_commander/build
 
 # Utility rule file for clean-test-results.
 
 CMakeFiles/clean-test-results:
-	if ! rm -rf /home/jdh/.ros/test_results/raptor_commander; then echo WARNING:\ failed\ to\ remove\ test-results\ directory ; fi
+	if ! rm -rf /home/dev/.ros/test_results/raptor_commander; then echo WARNING:\ failed\ to\ remove\ test-results\ directory ; fi
 
 clean-test-results: CMakeFiles/clean-test-results
 clean-test-results: CMakeFiles/clean-test-results.dir/build.make
@@ -55,6 +55,6 @@ CMakeFiles/clean-test-results.dir/clean:
 .PHONY : CMakeFiles/clean-test-results.dir/clean
 
 CMakeFiles/clean-test-results.dir/depend:
-	cd /home/jdh/cs7630_robotics/raptor_commander/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jdh/cs7630_robotics/raptor_commander /home/jdh/cs7630_robotics/raptor_commander /home/jdh/cs7630_robotics/raptor_commander/build /home/jdh/cs7630_robotics/raptor_commander/build /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles/clean-test-results.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/dev/cs7630_robotics/raptor_commander/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dev/cs7630_robotics/raptor_commander /home/dev/cs7630_robotics/raptor_commander /home/dev/cs7630_robotics/raptor_commander/build /home/dev/cs7630_robotics/raptor_commander/build /home/dev/cs7630_robotics/raptor_commander/build/CMakeFiles/clean-test-results.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/clean-test-results.dir/depend
 

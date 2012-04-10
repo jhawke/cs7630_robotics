@@ -1,6 +1,6 @@
 FILE(REMOVE_RECURSE
-  "../src/raptor_commander/srv"
   "../srv_gen"
+  "../src/raptor_commander/srv"
   "../srv_gen"
   "CMakeFiles/ROSBUILD_gensrv_cpp"
   "../srv_gen/cpp/include/raptor_commander/getAdviceFLEE.h"
