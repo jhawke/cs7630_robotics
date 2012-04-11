@@ -45,6 +45,9 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_abs_pos_req.lisp
 CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/darkness_region.lisp
 CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
 CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_darkness_region.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/blob_colour.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
+CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_blob_colour.lisp
 CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/rel_pos_req.lisp
 CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
 CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_rel_pos_req.lisp
@@ -143,6 +146,53 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_rel_pos_req.lisp
 
 ../msg_gen/lisp/_package_darkness_region.lisp: ../msg_gen/lisp/darkness_region.lisp
 
+../msg_gen/lisp/blob_colour.lisp: ../msg/blob_colour.msg
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../msg_gen/lisp/blob_colour.lisp: ../manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/ros/core/roslang/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/ros/core/roslib/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /home/jdh/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/manifest.xml
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
+../msg_gen/lisp/blob_colour.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
+../msg_gen/lisp/blob_colour.lisp: /home/jdh/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/msg_gen/generated
+../msg_gen/lisp/blob_colour.lisp: /home/jdh/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/blob_colour.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_blob_colour.lisp"
+	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/jdh/cs7630_robotics/raptor_commander/msg/blob_colour.msg
+
+../msg_gen/lisp/_package.lisp: ../msg_gen/lisp/blob_colour.lisp
+
+../msg_gen/lisp/_package_blob_colour.lisp: ../msg_gen/lisp/blob_colour.lisp
+
 ../msg_gen/lisp/rel_pos_req.lisp: ../msg/rel_pos_req.msg
 ../msg_gen/lisp/rel_pos_req.lisp: /opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py
 ../msg_gen/lisp/rel_pos_req.lisp: /opt/ros/electric/ros/core/roslib/scripts/gendeps
@@ -182,7 +232,7 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_rel_pos_req.lisp
 ../msg_gen/lisp/rel_pos_req.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
 ../msg_gen/lisp/rel_pos_req.lisp: /home/jdh/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/msg_gen/generated
 ../msg_gen/lisp/rel_pos_req.lisp: /home/jdh/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/srv_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/rel_pos_req.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_rel_pos_req.lisp"
 	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/jdh/cs7630_robotics/raptor_commander/msg/rel_pos_req.msg
 
@@ -197,6 +247,9 @@ ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_abs_pos_req.lisp
 ROSBUILD_genmsg_lisp: ../msg_gen/lisp/darkness_region.lisp
 ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
 ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_darkness_region.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/blob_colour.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
+ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_blob_colour.lisp
 ROSBUILD_genmsg_lisp: ../msg_gen/lisp/rel_pos_req.lisp
 ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package.lisp
 ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_rel_pos_req.lisp

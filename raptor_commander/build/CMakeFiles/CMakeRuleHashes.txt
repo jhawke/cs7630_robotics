@@ -1,12 +1,15 @@
 # Hashes of file build rules.
 39f20e5b75a59ba0114aeea0ec8c0ca1 ../msg_gen/cpp/include/raptor_commander/abs_pos_req.h
+13eb111731bca7eec18c645f35540e56 ../msg_gen/cpp/include/raptor_commander/blob_colour.h
 0117964dbef626f7b200bff9b52613ad ../msg_gen/cpp/include/raptor_commander/darkness_region.h
 99236360cd39169d7238a7ec11438f45 ../msg_gen/cpp/include/raptor_commander/rel_pos_req.h
 a3e9d24c1570d1f0bfa73306a43d5ce3 ../msg_gen/lisp/abs_pos_req.lisp
+8397edb45b474abbfbb9c6efa61abd57 ../msg_gen/lisp/blob_colour.lisp
 cf1e9408c1b28d4ab8669b6972d15ae0 ../msg_gen/lisp/darkness_region.lisp
 9f34add6d6823e666a611d5daa1d6491 ../msg_gen/lisp/rel_pos_req.lisp
-aa3aeb9858b7f4ab1fa60697598d2fa4 ../src/raptor_commander/msg/__init__.py
+b2f01a3b6569a8acfc70ada4f11fc491 ../src/raptor_commander/msg/__init__.py
 04ead5b7560d2c3e68ed7eca3bf87f59 ../src/raptor_commander/msg/_abs_pos_req.py
+2f7874d118da3949d23190e5fdc34416 ../src/raptor_commander/msg/_blob_colour.py
 fdf6885646ed9e28e2acdfdc2fc2e90e ../src/raptor_commander/msg/_darkness_region.py
 5ae4bd0dabb540a7a6a691b83e28da95 ../src/raptor_commander/msg/_rel_pos_req.py
 f1bc1557ab4e9aea3a6e7a5c984f56de ../src/raptor_commander/srv/__init__.py
@@ -26,6 +29,7 @@ b3603273d8378e03619f6a2b2a2b9c04 ../srv_gen/lisp/getAdvicePD.lisp
 96ebed9cc6ca744de57d191ab44773f3 CMakeFiles/rosbuild_precompile
 96ebed9cc6ca744de57d191ab44773f3 CMakeFiles/rosbuild_premsgsrvgen
 96ebed9cc6ca744de57d191ab44773f3 CMakeFiles/rospack_genmsg
+96ebed9cc6ca744de57d191ab44773f3 CMakeFiles/rospack_genmsg_all
 96ebed9cc6ca744de57d191ab44773f3 CMakeFiles/rospack_genmsg_libexe
 96ebed9cc6ca744de57d191ab44773f3 CMakeFiles/rospack_gensrv
 96ebed9cc6ca744de57d191ab44773f3 CMakeFiles/rospack_gensrv_all

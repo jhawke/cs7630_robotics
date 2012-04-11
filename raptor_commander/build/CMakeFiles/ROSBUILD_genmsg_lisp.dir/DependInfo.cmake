@@ -7,6 +7,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
 SET(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/home/jdh/cs7630_robotics/raptor_commander/msg_gen/lisp/_package.lisp" "/home/jdh/cs7630_robotics/raptor_commander/msg_gen/lisp/abs_pos_req.lisp"
   "/home/jdh/cs7630_robotics/raptor_commander/msg_gen/lisp/_package_abs_pos_req.lisp" "/home/jdh/cs7630_robotics/raptor_commander/msg_gen/lisp/abs_pos_req.lisp"
+  "/home/jdh/cs7630_robotics/raptor_commander/msg_gen/lisp/_package_blob_colour.lisp" "/home/jdh/cs7630_robotics/raptor_commander/msg_gen/lisp/blob_colour.lisp"
   "/home/jdh/cs7630_robotics/raptor_commander/msg_gen/lisp/_package_darkness_region.lisp" "/home/jdh/cs7630_robotics/raptor_commander/msg_gen/lisp/darkness_region.lisp"
   "/home/jdh/cs7630_robotics/raptor_commander/msg_gen/lisp/_package_rel_pos_req.lisp" "/home/jdh/cs7630_robotics/raptor_commander/msg_gen/lisp/rel_pos_req.lisp"
   )

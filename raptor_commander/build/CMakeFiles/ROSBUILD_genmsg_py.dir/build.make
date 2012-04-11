@@ -43,10 +43,11 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/raptor_commander/msg/__init__.py
 
 ../src/raptor_commander/msg/__init__.py: ../src/raptor_commander/msg/_abs_pos_req.py
 ../src/raptor_commander/msg/__init__.py: ../src/raptor_commander/msg/_darkness_region.py
+../src/raptor_commander/msg/__init__.py: ../src/raptor_commander/msg/_blob_colour.py
 ../src/raptor_commander/msg/__init__.py: ../src/raptor_commander/msg/_rel_pos_req.py
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/raptor_commander/msg/__init__.py"
-	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --initpy /home/jdh/cs7630_robotics/raptor_commander/msg/abs_pos_req.msg /home/jdh/cs7630_robotics/raptor_commander/msg/darkness_region.msg /home/jdh/cs7630_robotics/raptor_commander/msg/rel_pos_req.msg
+	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --initpy /home/jdh/cs7630_robotics/raptor_commander/msg/abs_pos_req.msg /home/jdh/cs7630_robotics/raptor_commander/msg/darkness_region.msg /home/jdh/cs7630_robotics/raptor_commander/msg/blob_colour.msg /home/jdh/cs7630_robotics/raptor_commander/msg/rel_pos_req.msg
 
 ../src/raptor_commander/msg/_abs_pos_req.py: ../msg/abs_pos_req.msg
 ../src/raptor_commander/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py
@@ -134,6 +135,49 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/raptor_commander/msg/__init__.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/raptor_commander/msg/_darkness_region.py"
 	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --noinitpy /home/jdh/cs7630_robotics/raptor_commander/msg/darkness_region.msg
 
+../src/raptor_commander/msg/_blob_colour.py: ../msg/blob_colour.msg
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../src/raptor_commander/msg/_blob_colour.py: ../manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/ros/core/roslang/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/ros/core/roslib/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/ros/tools/rosclean/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/ros/tools/rosunit/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /home/jdh/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/manifest.xml
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
+../src/raptor_commander/msg/_blob_colour.py: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
+../src/raptor_commander/msg/_blob_colour.py: /home/jdh/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/msg_gen/generated
+../src/raptor_commander/msg/_blob_colour.py: /home/jdh/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/raptor_commander/msg/_blob_colour.py"
+	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --noinitpy /home/jdh/cs7630_robotics/raptor_commander/msg/blob_colour.msg
+
 ../src/raptor_commander/msg/_rel_pos_req.py: ../msg/rel_pos_req.msg
 ../src/raptor_commander/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py
 ../src/raptor_commander/msg/_rel_pos_req.py: /opt/ros/electric/ros/core/roslib/scripts/gendeps
@@ -173,7 +217,7 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/raptor_commander/msg/__init__.py
 ../src/raptor_commander/msg/_rel_pos_req.py: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
 ../src/raptor_commander/msg/_rel_pos_req.py: /home/jdh/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/msg_gen/generated
 ../src/raptor_commander/msg/_rel_pos_req.py: /home/jdh/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/srv_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/raptor_commander/msg/_rel_pos_req.py"
 	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --noinitpy /home/jdh/cs7630_robotics/raptor_commander/msg/rel_pos_req.msg
 
@@ -181,6 +225,7 @@ ROSBUILD_genmsg_py: CMakeFiles/ROSBUILD_genmsg_py
 ROSBUILD_genmsg_py: ../src/raptor_commander/msg/__init__.py
 ROSBUILD_genmsg_py: ../src/raptor_commander/msg/_abs_pos_req.py
 ROSBUILD_genmsg_py: ../src/raptor_commander/msg/_darkness_region.py
+ROSBUILD_genmsg_py: ../src/raptor_commander/msg/_blob_colour.py
 ROSBUILD_genmsg_py: ../src/raptor_commander/msg/_rel_pos_req.py
 ROSBUILD_genmsg_py: CMakeFiles/ROSBUILD_genmsg_py.dir/build.make
 .PHONY : ROSBUILD_genmsg_py

@@ -9,6 +9,7 @@ FILE(REMOVE_RECURSE
   "../src/raptor_commander/msg/__init__.py"
   "../src/raptor_commander/msg/_abs_pos_req.py"
   "../src/raptor_commander/msg/_darkness_region.py"
+  "../src/raptor_commander/msg/_blob_colour.py"
   "../src/raptor_commander/msg/_rel_pos_req.py"
 )
 

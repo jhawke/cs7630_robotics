@@ -8,6 +8,7 @@
 /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles/rosbuild_precompile.dir
 /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles/rosbuild_premsgsrvgen.dir
 /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles/rospack_genmsg.dir
+/home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles/rospack_genmsg_all.dir
 /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles/rospack_genmsg_libexe.dir
 /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles/rospack_gensrv.dir
 /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles/rospack_gensrv_all.dir

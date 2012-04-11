@@ -56,13 +56,13 @@ CMAKE_BINARY_DIR = /home/jdh/cs7630_robotics/raptor_commander/build
 CMakeFiles/ROSBUILD_genmsg_cpp.dir/all: CMakeFiles/rosbuild_premsgsrvgen.dir/all
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_cpp.dir/build.make CMakeFiles/ROSBUILD_genmsg_cpp.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_cpp.dir/build.make CMakeFiles/ROSBUILD_genmsg_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles  1 2 3
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles  1 2 3 4
 	@echo "Built target ROSBUILD_genmsg_cpp"
 .PHONY : CMakeFiles/ROSBUILD_genmsg_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ROSBUILD_genmsg_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ROSBUILD_genmsg_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles 0
 .PHONY : CMakeFiles/ROSBUILD_genmsg_cpp.dir/rule
@@ -87,13 +87,13 @@ clean: CMakeFiles/ROSBUILD_genmsg_cpp.dir/clean
 CMakeFiles/ROSBUILD_genmsg_lisp.dir/all: CMakeFiles/rosbuild_premsgsrvgen.dir/all
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_lisp.dir/build.make CMakeFiles/ROSBUILD_genmsg_lisp.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_lisp.dir/build.make CMakeFiles/ROSBUILD_genmsg_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles  4 5 6
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles  5 6 7 8
 	@echo "Built target ROSBUILD_genmsg_lisp"
 .PHONY : CMakeFiles/ROSBUILD_genmsg_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ROSBUILD_genmsg_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ROSBUILD_genmsg_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles 0
 .PHONY : CMakeFiles/ROSBUILD_genmsg_lisp.dir/rule
@@ -118,13 +118,13 @@ clean: CMakeFiles/ROSBUILD_genmsg_lisp.dir/clean
 CMakeFiles/ROSBUILD_genmsg_py.dir/all: CMakeFiles/rosbuild_premsgsrvgen.dir/all
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_py.dir/build.make CMakeFiles/ROSBUILD_genmsg_py.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_py.dir/build.make CMakeFiles/ROSBUILD_genmsg_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles  7 8 9 10
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles  9 10 11 12 13
 	@echo "Built target ROSBUILD_genmsg_py"
 .PHONY : CMakeFiles/ROSBUILD_genmsg_py.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ROSBUILD_genmsg_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ROSBUILD_genmsg_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles 0
 .PHONY : CMakeFiles/ROSBUILD_genmsg_py.dir/rule
@@ -149,7 +149,7 @@ clean: CMakeFiles/ROSBUILD_genmsg_py.dir/clean
 CMakeFiles/ROSBUILD_gensrv_cpp.dir/all: CMakeFiles/rosbuild_premsgsrvgen.dir/all
 	$(MAKE) -f CMakeFiles/ROSBUILD_gensrv_cpp.dir/build.make CMakeFiles/ROSBUILD_gensrv_cpp.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_gensrv_cpp.dir/build.make CMakeFiles/ROSBUILD_gensrv_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles  11 12
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles  14 15
 	@echo "Built target ROSBUILD_gensrv_cpp"
 .PHONY : CMakeFiles/ROSBUILD_gensrv_cpp.dir/all
 
@@ -180,7 +180,7 @@ clean: CMakeFiles/ROSBUILD_gensrv_cpp.dir/clean
 CMakeFiles/ROSBUILD_gensrv_lisp.dir/all: CMakeFiles/rosbuild_premsgsrvgen.dir/all
 	$(MAKE) -f CMakeFiles/ROSBUILD_gensrv_lisp.dir/build.make CMakeFiles/ROSBUILD_gensrv_lisp.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_gensrv_lisp.dir/build.make CMakeFiles/ROSBUILD_gensrv_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles  13 14
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles  16 17
 	@echo "Built target ROSBUILD_gensrv_lisp"
 .PHONY : CMakeFiles/ROSBUILD_gensrv_lisp.dir/all
 
@@ -211,7 +211,7 @@ clean: CMakeFiles/ROSBUILD_gensrv_lisp.dir/clean
 CMakeFiles/ROSBUILD_gensrv_py.dir/all: CMakeFiles/rosbuild_premsgsrvgen.dir/all
 	$(MAKE) -f CMakeFiles/ROSBUILD_gensrv_py.dir/build.make CMakeFiles/ROSBUILD_gensrv_py.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_gensrv_py.dir/build.make CMakeFiles/ROSBUILD_gensrv_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles  15 16 17
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles  18 19 20
 	@echo "Built target ROSBUILD_gensrv_py"
 .PHONY : CMakeFiles/ROSBUILD_gensrv_py.dir/all
 
@@ -271,6 +271,7 @@ clean: CMakeFiles/clean-test-results.dir/clean
 
 # All Build rule for target.
 CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_gensrv.dir/all
+CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_genmsg.dir/all
 CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_genmsg_libexe.dir/all
 	$(MAKE) -f CMakeFiles/rosbuild_precompile.dir/build.make CMakeFiles/rosbuild_precompile.dir/depend
 	$(MAKE) -f CMakeFiles/rosbuild_precompile.dir/build.make CMakeFiles/rosbuild_precompile.dir/build
@@ -280,7 +281,7 @@ CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_genmsg_libexe.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/rosbuild_precompile.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles 20
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rosbuild_precompile.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles 0
 .PHONY : CMakeFiles/rosbuild_precompile.dir/rule
@@ -344,7 +345,7 @@ CMakeFiles/rospack_genmsg.dir/all: CMakeFiles/ROSBUILD_genmsg_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/rospack_genmsg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rospack_genmsg.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles 0
 .PHONY : CMakeFiles/rospack_genmsg.dir/rule
@@ -360,6 +361,41 @@ CMakeFiles/rospack_genmsg.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/rospack_genmsg.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/rospack_genmsg_all.dir
+
+# All Build rule for target.
+CMakeFiles/rospack_genmsg_all.dir/all: CMakeFiles/rospack_genmsg.dir/all
+	$(MAKE) -f CMakeFiles/rospack_genmsg_all.dir/build.make CMakeFiles/rospack_genmsg_all.dir/depend
+	$(MAKE) -f CMakeFiles/rospack_genmsg_all.dir/build.make CMakeFiles/rospack_genmsg_all.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles 
+	@echo "Built target rospack_genmsg_all"
+.PHONY : CMakeFiles/rospack_genmsg_all.dir/all
+
+# Include target in all.
+all: CMakeFiles/rospack_genmsg_all.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/rospack_genmsg_all.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles 13
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rospack_genmsg_all.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles 0
+.PHONY : CMakeFiles/rospack_genmsg_all.dir/rule
+
+# Convenience name for target.
+rospack_genmsg_all: CMakeFiles/rospack_genmsg_all.dir/rule
+.PHONY : rospack_genmsg_all
+
+# clean rule for target.
+CMakeFiles/rospack_genmsg_all.dir/clean:
+	$(MAKE) -f CMakeFiles/rospack_genmsg_all.dir/build.make CMakeFiles/rospack_genmsg_all.dir/clean
+.PHONY : CMakeFiles/rospack_genmsg_all.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/rospack_genmsg_all.dir/clean
 .PHONY : clean
 
 #=============================================================================

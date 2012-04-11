@@ -8,6 +8,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/ROSBUILD_genmsg_cpp"
   "../msg_gen/cpp/include/raptor_commander/abs_pos_req.h"
   "../msg_gen/cpp/include/raptor_commander/darkness_region.h"
+  "../msg_gen/cpp/include/raptor_commander/blob_colour.h"
   "../msg_gen/cpp/include/raptor_commander/rel_pos_req.h"
 )
 
