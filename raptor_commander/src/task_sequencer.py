@@ -56,23 +56,43 @@ class TaskSequencer():
     # Main update rate
     publishRate = 1 # Hz
     
-    # States.
-    RobotStates = Enum(["INIT", "FIND_DARK", "SCAN_FOR_PREY", "FORCE_MOVE", "STALK_PREY", "WAIT", "DETECTED", "FLEE", "KILL"])
+    # FSM States
+    RobotStates = Enum(["INIT", \
+                        "FIND_DARK", \
+                        "REL_MOVE", \
+                        "ABS_MOVE", \
+                        "ALIGN_BRIGHT", \
+                        "WAIT_ALIGN", \
+                        "SCAN_FOR_PREY", \
+                        "STALK_PREY", \
+                        "STALK_LOST_PREY", \
+                        "PLAY_DEAD", \
+                        "PLAY_DEAD_LOST_PREY", \
+                        "FLEE", \
+                        "KILL"])
     currentState = RobotStates.INIT
     
     # Parameters used by the functions to determine state transition conditions. 
     # Pulled from subscriptions to other ros nodes 
-    preyGone = -1
-    preyBack = 0
-    preyFront = 1
+    preyFront = -1
+    preyBack = 1
+    preyGone = 0
     
+    # TIMERS
     currentTime = 0
-    timeLookingForPrey = 0
-    scanForPreyTimeout = 10
-    waitStartTime = 0
-    maxWaitTime = 10
+    
+    scanForPreyStartTime = 0
+    maxScanForPreyTime = 10
+    
+    stalkLostPreyStartTime = 0
+    maxStalkLostPreyTime = 10
+    
+    playDeadLostPreyStartTime = 0
+    maxPlayDeadLostPreyTime = 10
+    
     fleeStartTime = 0
     maxFleeTime = 10
+    
     fdStartTime = 0
     maxFDTime = 10
     
