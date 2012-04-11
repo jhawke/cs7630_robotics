@@ -32,82 +32,66 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dev/cs7630_robotics/raptor_commander
+CMAKE_SOURCE_DIR = /home/jdh/cs7630_robotics/raptor_commander
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dev/cs7630_robotics/raptor_commander/build
+CMAKE_BINARY_DIR = /home/jdh/cs7630_robotics/raptor_commander/build
 
 # Utility rule file for ROSBUILD_gensrv_lisp.
 
-CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/getAdviceFLEE.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/getAdvicePD.lisp
 CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package.lisp
-CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_getAdviceFLEE.lisp
-CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/getAdviceDET.lisp
-CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package.lisp
-CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_getAdviceDET.lisp
+CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_getAdvicePD.lisp
 CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/getAdviceFD.lisp
 CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package.lisp
 CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_getAdviceFD.lisp
 
-../srv_gen/lisp/getAdviceFLEE.lisp: ../srv/getAdviceFLEE.srv
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/ros/core/roslib/scripts/gendeps
-../srv_gen/lisp/getAdviceFLEE.lisp: ../manifest.xml
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/ros/core/rosbuild/manifest.xml
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/ros/core/roslang/manifest.xml
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/ros/tools/rospack/manifest.xml
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/ros/core/roslib/manifest.xml
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
-../srv_gen/lisp/getAdviceFLEE.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor_commander/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/lisp/getAdviceFLEE.lisp, ../srv_gen/lisp/_package.lisp, ../srv_gen/lisp/_package_getAdviceFLEE.lisp"
-	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/dev/cs7630_robotics/raptor_commander/srv/getAdviceFLEE.srv
+../srv_gen/lisp/getAdvicePD.lisp: ../srv/getAdvicePD.srv
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../srv_gen/lisp/getAdvicePD.lisp: ../manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/ros/core/rosbuild/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/ros/core/roslang/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/ros/core/roslib/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /home/jdh/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/manifest.xml
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
+../srv_gen/lisp/getAdvicePD.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
+../srv_gen/lisp/getAdvicePD.lisp: /home/jdh/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/msg_gen/generated
+../srv_gen/lisp/getAdvicePD.lisp: /home/jdh/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/lisp/getAdvicePD.lisp, ../srv_gen/lisp/_package.lisp, ../srv_gen/lisp/_package_getAdvicePD.lisp"
+	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/jdh/cs7630_robotics/raptor_commander/srv/getAdvicePD.srv
 
-../srv_gen/lisp/_package.lisp: ../srv_gen/lisp/getAdviceFLEE.lisp
+../srv_gen/lisp/_package.lisp: ../srv_gen/lisp/getAdvicePD.lisp
 
-../srv_gen/lisp/_package_getAdviceFLEE.lisp: ../srv_gen/lisp/getAdviceFLEE.lisp
-
-../srv_gen/lisp/getAdviceDET.lisp: ../srv/getAdviceDET.srv
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/ros/core/roslib/scripts/gendeps
-../srv_gen/lisp/getAdviceDET.lisp: ../manifest.xml
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/ros/core/rosbuild/manifest.xml
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/ros/core/roslang/manifest.xml
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/stacks/ros_comm/utilities/cpp_common/manifest.xml
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/manifest.xml
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/stacks/ros_comm/utilities/rostime/manifest.xml
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_serialization/manifest.xml
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/ros/tools/rospack/manifest.xml
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/ros/core/roslib/manifest.xml
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/stacks/ros_comm/utilities/xmlrpcpp/manifest.xml
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/manifest.xml
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
-../srv_gen/lisp/getAdviceDET.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor_commander/build/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/lisp/getAdviceDET.lisp, ../srv_gen/lisp/_package.lisp, ../srv_gen/lisp/_package_getAdviceDET.lisp"
-	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/dev/cs7630_robotics/raptor_commander/srv/getAdviceDET.srv
-
-../srv_gen/lisp/_package.lisp: ../srv_gen/lisp/getAdviceDET.lisp
-
-../srv_gen/lisp/_package_getAdviceDET.lisp: ../srv_gen/lisp/getAdviceDET.lisp
+../srv_gen/lisp/_package_getAdvicePD.lisp: ../srv_gen/lisp/getAdvicePD.lisp
 
 ../srv_gen/lisp/getAdviceFD.lisp: ../srv/getAdviceFD.srv
 ../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py
@@ -127,25 +111,39 @@ CMakeFiles/ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_getAdviceFD.lisp
 ../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/manifest.xml
 ../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/manifest.xml
 ../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/ros_comm/clients/rospy/manifest.xml
+../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/ros/tools/rosclean/manifest.xml
+../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosgraph/manifest.xml
+../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosparam/manifest.xml
+../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosmaster/manifest.xml
+../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosout/manifest.xml
+../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/ros_comm/tools/roslaunch/manifest.xml
+../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/ros/tools/rosunit/manifest.xml
+../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/ros_comm/tools/rostest/manifest.xml
+../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/manifest.xml
+../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
+../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
+../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
+../srv_gen/lisp/getAdviceFD.lisp: /home/jdh/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/manifest.xml
 ../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
 ../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor_commander/build/CMakeFiles $(CMAKE_PROGRESS_3)
+../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
+../srv_gen/lisp/getAdviceFD.lisp: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
+../srv_gen/lisp/getAdviceFD.lisp: /home/jdh/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/msg_gen/generated
+../srv_gen/lisp/getAdviceFD.lisp: /home/jdh/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/lisp/getAdviceFD.lisp, ../srv_gen/lisp/_package.lisp, ../srv_gen/lisp/_package_getAdviceFD.lisp"
-	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/dev/cs7630_robotics/raptor_commander/srv/getAdviceFD.srv
+	/opt/ros/electric/stacks/ros_comm/clients/roslisp/scripts/genmsg_lisp.py /home/jdh/cs7630_robotics/raptor_commander/srv/getAdviceFD.srv
 
 ../srv_gen/lisp/_package.lisp: ../srv_gen/lisp/getAdviceFD.lisp
 
 ../srv_gen/lisp/_package_getAdviceFD.lisp: ../srv_gen/lisp/getAdviceFD.lisp
 
 ROSBUILD_gensrv_lisp: CMakeFiles/ROSBUILD_gensrv_lisp
-ROSBUILD_gensrv_lisp: ../srv_gen/lisp/getAdviceFLEE.lisp
+ROSBUILD_gensrv_lisp: ../srv_gen/lisp/getAdvicePD.lisp
 ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package.lisp
-ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_getAdviceFLEE.lisp
-ROSBUILD_gensrv_lisp: ../srv_gen/lisp/getAdviceDET.lisp
-ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package.lisp
-ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_getAdviceDET.lisp
+ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_getAdvicePD.lisp
 ROSBUILD_gensrv_lisp: ../srv_gen/lisp/getAdviceFD.lisp
 ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package.lisp
 ROSBUILD_gensrv_lisp: ../srv_gen/lisp/_package_getAdviceFD.lisp
@@ -161,6 +159,6 @@ CMakeFiles/ROSBUILD_gensrv_lisp.dir/clean:
 .PHONY : CMakeFiles/ROSBUILD_gensrv_lisp.dir/clean
 
 CMakeFiles/ROSBUILD_gensrv_lisp.dir/depend:
-	cd /home/dev/cs7630_robotics/raptor_commander/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dev/cs7630_robotics/raptor_commander /home/dev/cs7630_robotics/raptor_commander /home/dev/cs7630_robotics/raptor_commander/build /home/dev/cs7630_robotics/raptor_commander/build /home/dev/cs7630_robotics/raptor_commander/build/CMakeFiles/ROSBUILD_gensrv_lisp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jdh/cs7630_robotics/raptor_commander/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jdh/cs7630_robotics/raptor_commander /home/jdh/cs7630_robotics/raptor_commander /home/jdh/cs7630_robotics/raptor_commander/build /home/jdh/cs7630_robotics/raptor_commander/build /home/jdh/cs7630_robotics/raptor_commander/build/CMakeFiles/ROSBUILD_gensrv_lisp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ROSBUILD_gensrv_lisp.dir/depend
 

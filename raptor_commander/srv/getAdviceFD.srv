@@ -1,5 +1,5 @@
 ---
+int32 newThreshold
 int32 x
 int32 y
-int32 theta
-int32 value
+int32 bestDark

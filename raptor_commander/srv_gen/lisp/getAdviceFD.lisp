@@ -32,10 +32,10 @@
   "raptor_commander/getAdviceFDRequest")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<getAdviceFD-request>)))
   "Returns md5sum for a message object of type '<getAdviceFD-request>"
-  "030e1a5167ee4ae90c06ed17870ddc58")
+  "cbb8896b89024e908c0848bc425c6cca")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'getAdviceFD-request)))
   "Returns md5sum for a message object of type 'getAdviceFD-request"
-  "030e1a5167ee4ae90c06ed17870ddc58")
+  "cbb8896b89024e908c0848bc425c6cca")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<getAdviceFD-request>)))
   "Returns full string definition for message of type '<getAdviceFD-request>"
   (cl:format cl:nil "~%~%"))
@@ -52,7 +52,12 @@
 ;//! \htmlinclude getAdviceFD-response.msg.html
 
 (cl:defclass <getAdviceFD-response> (roslisp-msg-protocol:ros-message)
-  ((x
+  ((newThreshold
+    :reader newThreshold
+    :initarg :newThreshold
+    :type cl:integer
+    :initform 0)
+   (x
     :reader x
     :initarg :x
     :type cl:integer
@@ -62,14 +67,9 @@
     :initarg :y
     :type cl:integer
     :initform 0)
-   (theta
-    :reader theta
-    :initarg :theta
-    :type cl:integer
-    :initform 0)
-   (value
-    :reader value
-    :initarg :value
+   (bestDark
+    :reader bestDark
+    :initarg :bestDark
     :type cl:integer
     :initform 0))
 )
@@ -82,6 +82,11 @@
   (cl:unless (cl:typep m 'getAdviceFD-response)
     (roslisp-msg-protocol:msg-deprecation-warning "using old message class name raptor_commander-srv:<getAdviceFD-response> is deprecated: use raptor_commander-srv:getAdviceFD-response instead.")))
 
+(cl:ensure-generic-function 'newThreshold-val :lambda-list '(m))
+(cl:defmethod newThreshold-val ((m <getAdviceFD-response>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader raptor_commander-srv:newThreshold-val is deprecated.  Use raptor_commander-srv:newThreshold instead.")
+  (newThreshold m))
+
 (cl:ensure-generic-function 'x-val :lambda-list '(m))
 (cl:defmethod x-val ((m <getAdviceFD-response>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader raptor_commander-srv:x-val is deprecated.  Use raptor_commander-srv:x instead.")
@@ -92,17 +97,18 @@
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader raptor_commander-srv:y-val is deprecated.  Use raptor_commander-srv:y instead.")
   (y m))
 
-(cl:ensure-generic-function 'theta-val :lambda-list '(m))
-(cl:defmethod theta-val ((m <getAdviceFD-response>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader raptor_commander-srv:theta-val is deprecated.  Use raptor_commander-srv:theta instead.")
-  (theta m))
-
-(cl:ensure-generic-function 'value-val :lambda-list '(m))
-(cl:defmethod value-val ((m <getAdviceFD-response>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader raptor_commander-srv:value-val is deprecated.  Use raptor_commander-srv:value instead.")
-  (value m))
+(cl:ensure-generic-function 'bestDark-val :lambda-list '(m))
+(cl:defmethod bestDark-val ((m <getAdviceFD-response>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader raptor_commander-srv:bestDark-val is deprecated.  Use raptor_commander-srv:bestDark instead.")
+  (bestDark m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <getAdviceFD-response>) ostream)
   "Serializes a message object of type '<getAdviceFD-response>"
+  (cl:let* ((signed (cl:slot-value msg 'newThreshold)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
+    )
   (cl:let* ((signed (cl:slot-value msg 'x)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
@@ -115,13 +121,7 @@
     (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
     )
-  (cl:let* ((signed (cl:slot-value msg 'theta)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
-    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
-    )
-  (cl:let* ((signed (cl:slot-value msg 'value)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
+  (cl:let* ((signed (cl:slot-value msg 'bestDark)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
@@ -130,6 +130,12 @@
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <getAdviceFD-response>) istream)
   "Deserializes a message object of type '<getAdviceFD-response>"
+    (cl:let ((unsigned 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'newThreshold) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
@@ -147,13 +153,7 @@
       (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:slot-value msg 'theta) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
-    (cl:let ((unsigned 0))
-      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:slot-value msg 'value) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
+      (cl:setf (cl:slot-value msg 'bestDark) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<getAdviceFD-response>)))
@@ -164,16 +164,16 @@
   "raptor_commander/getAdviceFDResponse")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<getAdviceFD-response>)))
   "Returns md5sum for a message object of type '<getAdviceFD-response>"
-  "030e1a5167ee4ae90c06ed17870ddc58")
+  "cbb8896b89024e908c0848bc425c6cca")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'getAdviceFD-response)))
   "Returns md5sum for a message object of type 'getAdviceFD-response"
-  "030e1a5167ee4ae90c06ed17870ddc58")
+  "cbb8896b89024e908c0848bc425c6cca")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<getAdviceFD-response>)))
   "Returns full string definition for message of type '<getAdviceFD-response>"
-  (cl:format cl:nil "int32 x~%int32 y~%int32 theta~%int32 value~%~%~%~%"))
+  (cl:format cl:nil "int32 newThreshold~%int32 x~%int32 y~%int32 bestDark~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'getAdviceFD-response)))
   "Returns full string definition for message of type 'getAdviceFD-response"
-  (cl:format cl:nil "int32 x~%int32 y~%int32 theta~%int32 value~%~%~%~%"))
+  (cl:format cl:nil "int32 newThreshold~%int32 x~%int32 y~%int32 bestDark~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <getAdviceFD-response>))
   (cl:+ 0
      4
@@ -184,10 +184,10 @@
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <getAdviceFD-response>))
   "Converts a ROS message object to a list"
   (cl:list 'getAdviceFD-response
+    (cl:cons ':newThreshold (newThreshold msg))
     (cl:cons ':x (x msg))
     (cl:cons ':y (y msg))
-    (cl:cons ':theta (theta msg))
-    (cl:cons ':value (value msg))
+    (cl:cons ':bestDark (bestDark msg))
 ))
 (cl:defmethod roslisp-msg-protocol:service-request-type ((msg (cl:eql 'getAdviceFD)))
   'getAdviceFD-request)

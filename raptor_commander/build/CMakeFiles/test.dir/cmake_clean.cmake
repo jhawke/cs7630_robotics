@@ -1,6 +1,9 @@
 FILE(REMOVE_RECURSE
-  "../srv_gen"
+  "../src/raptor_commander/msg"
   "../src/raptor_commander/srv"
+  "../msg_gen"
+  "../srv_gen"
+  "../msg_gen"
   "../srv_gen"
   "CMakeFiles/test"
 )

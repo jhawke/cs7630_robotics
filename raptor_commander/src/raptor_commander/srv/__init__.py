@@ -1,3 +1,2 @@
-from ._getAdviceDET import *
-from ._getAdviceFLEE import *
 from ._getAdviceFD import *
+from ._getAdvicePD import *

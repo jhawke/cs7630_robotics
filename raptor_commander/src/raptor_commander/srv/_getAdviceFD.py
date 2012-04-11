@@ -93,17 +93,17 @@ import struct
 
 
 class getAdviceFDResponse(roslib.message.Message):
-  _md5sum = "030e1a5167ee4ae90c06ed17870ddc58"
+  _md5sum = "cbb8896b89024e908c0848bc425c6cca"
   _type = "raptor_commander/getAdviceFDResponse"
   _has_header = False #flag to mark the presence of a Header object
-  _full_text = """int32 x
+  _full_text = """int32 newThreshold
+int32 x
 int32 y
-int32 theta
-int32 value
+int32 bestDark
 
 
 """
-  __slots__ = ['x','y','theta','value']
+  __slots__ = ['newThreshold','x','y','bestDark']
   _slot_types = ['int32','int32','int32','int32']
 
   def __init__(self, *args, **kwds):
@@ -114,7 +114,7 @@ int32 value
     changes.  You cannot mix in-order arguments and keyword arguments.
     
     The available fields are:
-       x,y,theta,value
+       newThreshold,x,y,bestDark
     
     @param args: complete set of field values, in .msg order
     @param kwds: use keyword arguments corresponding to message field names
@@ -123,19 +123,19 @@ int32 value
     if args or kwds:
       super(getAdviceFDResponse, self).__init__(*args, **kwds)
       #message fields cannot be None, assign default values for those that are
+      if self.newThreshold is None:
+        self.newThreshold = 0
       if self.x is None:
         self.x = 0
       if self.y is None:
         self.y = 0
-      if self.theta is None:
-        self.theta = 0
-      if self.value is None:
-        self.value = 0
+      if self.bestDark is None:
+        self.bestDark = 0
     else:
+      self.newThreshold = 0
       self.x = 0
       self.y = 0
-      self.theta = 0
-      self.value = 0
+      self.bestDark = 0
 
   def _get_types(self):
     """
@@ -151,7 +151,7 @@ int32 value
     """
     try:
       _x = self
-      buff.write(_struct_4i.pack(_x.x, _x.y, _x.theta, _x.value))
+      buff.write(_struct_4i.pack(_x.newThreshold, _x.x, _x.y, _x.bestDark))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -166,7 +166,7 @@ int32 value
       _x = self
       start = end
       end += 16
-      (_x.x, _x.y, _x.theta, _x.value,) = _struct_4i.unpack(str[start:end])
+      (_x.newThreshold, _x.x, _x.y, _x.bestDark,) = _struct_4i.unpack(str[start:end])
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
@@ -182,7 +182,7 @@ int32 value
     """
     try:
       _x = self
-      buff.write(_struct_4i.pack(_x.x, _x.y, _x.theta, _x.value))
+      buff.write(_struct_4i.pack(_x.newThreshold, _x.x, _x.y, _x.bestDark))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -199,7 +199,7 @@ int32 value
       _x = self
       start = end
       end += 16
-      (_x.x, _x.y, _x.theta, _x.value,) = _struct_4i.unpack(str[start:end])
+      (_x.newThreshold, _x.x, _x.y, _x.bestDark,) = _struct_4i.unpack(str[start:end])
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
@@ -208,6 +208,6 @@ _struct_I = roslib.message.struct_I
 _struct_4i = struct.Struct("<4i")
 class getAdviceFD(roslib.message.ServiceDefinition):
   _type          = 'raptor_commander/getAdviceFD'
-  _md5sum = '030e1a5167ee4ae90c06ed17870ddc58'
+  _md5sum = 'cbb8896b89024e908c0848bc425c6cca'
   _request_class  = getAdviceFDRequest
   _response_class = getAdviceFDResponse

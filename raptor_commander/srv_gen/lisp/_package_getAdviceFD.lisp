@@ -1,10 +1,10 @@
 (cl:in-package raptor_commander-srv)
-(cl:export '(X-VAL
+(cl:export '(NEWTHRESHOLD-VAL
+          NEWTHRESHOLD
+          X-VAL
           X
           Y-VAL
           Y
-          THETA-VAL
-          THETA
-          VALUE-VAL
-          VALUE
+          BESTDARK-VAL
+          BESTDARK
 ))
