@@ -18,6 +18,9 @@ FILE(REMOVE_RECURSE
   "../srv_gen/lisp/twist_srv.lisp"
   "../srv_gen/lisp/_package.lisp"
   "../srv_gen/lisp/_package_twist_srv.lisp"
+  "../srv_gen/lisp/man_drv_srv.lisp"
+  "../srv_gen/lisp/_package.lisp"
+  "../srv_gen/lisp/_package_man_drv_srv.lisp"
 )
 
 # Per-language clean rules from dependency scanning.

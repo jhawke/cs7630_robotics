@@ -34,11 +34,14 @@ private:
 
 ros::NodeHandle node;
 ros::ServiceClient location_request;
+ros::Subscriber location_ll_setter;
 ros::Subscriber location_setter;
+ros::Publisher mcom_ll_relmover;
 ros::ServiceServer vector_output;
 
-void register_new_location(const raptor::rel_pos_req::ConstPtr &msg);bool give_location(raptor::polar_histogram::Request &req, raptor::polar_histogram::Response &res);
-
+void register_new_location(const raptor::rel_pos_req::ConstPtr &msg);
+bool give_location(raptor::polar_histogram::Request &req, raptor::polar_histogram::Response &res);
+void register_new_location_ll(const raptor::rel_pos_req::ConstPtr &msg);
 float goal_theta;
 double	stop_time;
 float	goal_val;

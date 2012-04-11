@@ -27,6 +27,8 @@
 #include "cv_bridge/CvBridge.h"
 #include <image_transport/image_transport.h>
 #include <opencv2/imgproc/imgproc.hpp>
+#include <blob/blob.h>
+#include <blob/BlobResult.h>
 
 //Put any local defines here.
 
@@ -107,6 +109,90 @@ double *findDark(int widthRes, int lengthRes, IplImage* img){
 
 }
 
+double *findShadow(IplImage *img, int hue1,int sat1,int val1,int val2,int threshold, double blobLowLimit,double blobHighLimit){
+	// Input HSV value of color blob your seeking, acceptable threshold of that color, and Min and Max blob sizes beeing sought out. 
+	//Ouput: pointer to data array, size[#ofblobs*3+1]; Format data=[Number of Blobs, Area1,X of center1, y of center1, Area2,X of center2,y of center2,...,areaN,X of centerN, Y of centerN];
+
+ cvShowImage("View",img);
+    //cv::imshow("View",cv_ptr->image);
+    cv::waitKey(3);
+    
+
+	// Image variables
+	IplImage* imageSmooth = cvCreateImage( cvGetSize(img),8,3);//Gausian Filtered image
+	IplImage* imageHSV = cvCreateImage( cvGetSize(img),8,3); //HSV image
+	IplImage* i1 = cvCreateImage( cvGetSize(img),8,1);//filtered out for hsv 
+	IplImage* planeH = cvCreateImage(cvGetSize(img),8,1); //Hue
+	IplImage* planeS = cvCreateImage(cvGetSize(img),8,1); //Saturation
+	IplImage* planeV = cvCreateImage(cvGetSize(img),8,1); //Brightness
+
+
+
+
+
+	//Blob variables
+	CBlobResult blobs;
+	CBlob blob;
+	CBlobGetXCenter getXCenter;
+	CBlobGetYCenter getYCenter;
+	//Output Variable
+	//Gausian Filter
+	cvSmooth(img,imageSmooth,CV_GAUSSIAN,7,9,0,0);
+	//Covert RGB to HSV
+	cvCvtColor(imageSmooth,imageHSV,CV_BGR2HSV);
+	cvCvtPixToPlane(imageHSV, planeH,planeS,planeV,0);//Extract the 3 color components
+	//Filter image for desired Color, output image with only desired color highlighted remaining
+	for( int y = 0; y < planeH->height; y++ ){
+		unsigned char* h = &CV_IMAGE_ELEM( planeH, unsigned char, y, 0 );
+		unsigned char* s = &CV_IMAGE_ELEM( planeS, unsigned char, y, 0 );
+		unsigned char* v = &CV_IMAGE_ELEM( planeV, unsigned char, y, 0 );
+		for( int x = 0; x < planeH->width*planeH->nChannels; x += planeH->nChannels ){
+			 int f= HSV_filter(h[x],s[x],v[x],threshold,hue1,sat1,val1);
+			 int g= V_filter(v[x],threshold,val2);
+			 if(f&&g){
+				 ((uchar *)(i1->imageData + y*i1->widthStep))[x]=255;
+			 }else{
+				 ((uchar *)(i1->imageData + y*i1->widthStep))[x]=0;
+			 }
+		}
+	}//debug
+
+	
+	cvNamedWindow("i1",1);
+	cvShowImage("i1",i1);
+	cvWaitKey(3);
+	//Blob stuff
+	blobs = CBlobResult(i1,NULL,0);   //Get blobs of image
+	blobs.Filter(blobs,B_INCLUDE,CBlobGetArea(),B_INSIDE,blobLowLimit,blobHighLimit);  // Filter Blobs with min and max size
+	//Set up data array
+	double *data= new double[blobs.GetNumBlobs()*3+1];
+	data[0]=blobs.GetNumBlobs();// Set first data value to total number of blobs
+	//cout<<data[0]<<"  ";
+	for (int i = 0; i < blobs.GetNumBlobs(); i++ ){ // Get Blob Data 
+	    blob = blobs.GetBlob(i);//cycle through each blob
+		data[i*3+1]=blob.Area();//blob area
+		//cout<<blob.area<<"   ";
+		data[i*3+2]= getXCenter(blob); //X of centroid
+		data[i*3+3]= getYCenter(blob); //Y of centroid
+
+		//debug
+		blob.FillBlob(imageSmooth, cvScalar(255, 0, 0)); // This line will give you a visual marker on image for the blob if you want it for testing or something
+    }
+    cvNamedWindow("imSmooth",1);
+    cvShowImage("imSmooth",imageSmooth);
+    //cv::imshow("View",cv_ptr->image);
+    cv::waitKey(3);
+    
+    
+      cvReleaseImage(&imageSmooth);
+      cvReleaseImage(&imageHSV);
+      cvReleaseImage(&i1);
+      cvReleaseImage(&planeH);
+      cvReleaseImage(&planeS);
+      cvReleaseImage(&planeV);
+	return data; //return pointer to data array
+}
+
 raptor_find_dark::~raptor_find_dark()
 {
   
@@ -119,30 +205,68 @@ bool raptor_find_dark::get_vector_field(raptor::polar_histogram::Request &req, r
   double* Out = new double[360];
 	for(int i=0;i<360;i++)
 		Out[i]=0;
-
+	int H= {67};// H val of floor
+	int S= {205};//s val
+	int V= {219};//V val 
+	int V2[2]= {30,230};
+	int I[2]= {1, -1};// Taxis intensity of color (ie towards/away etc)
+	int threshold = 5000;// color search threshold
+	double blobLowLimit = 500;// blob size limits
+	double blobHighLimit = 1000000;
 	int viewFieldMin = 159;// view range of robot out of 360
 	int viewFieldMax = 199;
-
-	double depthIntensity[5] = {.5,1,.5,0,0};
-	//
-
-	double* dark= findDark(viewFieldMax-viewFieldMin,sizeof(depthIntensity)/sizeof(depthIntensity[0]),img);
-	//[wxl] dark=[(0,0),(0,1),...,(0,l),(1,0),...,(1,l),...,(w,0),...,(w,l)]
-	for(int k=0;k<360;k++){
-		if(k<viewFieldMin)
-			Out[k]=0;
-		else if(k>=viewFieldMax)
-			Out[k]=0;
-		else{
-			for(int j=0;j<sizeof(depthIntensity)/sizeof(depthIntensity[0]);j++){
-				Out[k]+=dark[(k-viewFieldMin)*((sizeof(depthIntensity)/sizeof(depthIntensity[0])))+j]*depthIntensity[j];
+	int triangleSlope = 50; // triangle slope for fuzzyfilter
+	int depthIntensity[5] = {100,100,100,75,50};
+	
+	int blobX;
+	int blobY;
+	//////////////////////////////////////////
+	double* darkVal = findDark(1,8,img); // Jeffs Number
+	int closeDark = darkVal[7];
+	double* lightVal = findDark(1,1,img);
+	int totalDark = lightVal[0]; // jefff other number
+	//////////////////////////////////////////
+	double areaScale = .001;
+	double maxOut = 0;
+	double minOut= 255;
+	//cout<<"size:"<<sizeof(V2)/sizeof(V2[0]);
+	for(int n=0; n<sizeof(V2)/sizeof(V2[0]); n++){
+		double* blob= findShadow(img,H,S,V,V2[n],threshold,blobLowLimit,blobHighLimit);
+		if(blob[0]>0){
+		//	cout<<"blobs#:"<<blob[0]<<"  ";
+			for (int j = 0; j < blob[0]; j++){
+				
+				blobX= blob[j*3+2];
+				blobY= blob[j*3+3];
+		//	cout<<"   "<< blob[j*3+1];
+				int maxV=0;
+				if (I[n]>0)
+					maxV=blob[j*3+1]*areaScale+depthIntensity[(int)blobY/(img->height/(sizeof(depthIntensity)/sizeof(depthIntensity[0])))];// if its positive taxis, then it is more attracted to it farther away it is. 
+				else{
+					maxV=blob[j*3+1]*areaScale+depthIntensity[sizeof(depthIntensity)/sizeof(depthIntensity[0])-1-(int)blobY/(img->height/(sizeof(depthIntensity)/sizeof(depthIntensity[0])))];// if its a negative taxis, then it is more scared of it closer it is
+				}
+				for(int k=0;k<360;k++){
+					int val = maxV-triangleSlope*abs(k-((int)((double)blobX/(double)img->width*(double)(viewFieldMax-viewFieldMin))+viewFieldMin));
+					if(val>0){
+						val*=I[n];
+						//cout<<I[n];
+						Out[k]+=val;
+					}
+					if(Out[k]<minOut)
+						minOut=Out[k];
+					if(Out[k]>maxOut)
+						maxOut=Out[k];
+				}
 			}
-			//if(Out[k]<0)
-				//Out[k]=0;
 		}
 	}
-	for(int i=0;i<360;i++)
-		res.hist[i]=(int)(Out[i]*volume);
+	double range = maxOut-minOut;
+
+	
+	for(int i=0;i<360;i++){
+	  Out[i]+= minOut +range/2;
+	  Out[i]*= (200/range);
+	  res.hist[i]=(int)(Out[i]*volume);}
   //Finally, fill up the array res.hist
   //res.hist = WHATEVER;
   return true;

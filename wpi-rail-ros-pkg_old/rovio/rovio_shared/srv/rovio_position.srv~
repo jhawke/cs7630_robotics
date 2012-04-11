@@ -1,4 +1,4 @@
 ---
-int16 x
-int16 y
-float 	theta
+int16 	x
+int16 	y
+float32 theta

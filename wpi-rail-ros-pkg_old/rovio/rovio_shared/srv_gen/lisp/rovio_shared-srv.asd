@@ -13,4 +13,6 @@
     (:file "_package_head_ctrl" :depends-on ("_package"))
     (:file "twist_srv" :depends-on ("_package_twist_srv"))
     (:file "_package_twist_srv" :depends-on ("_package"))
+    (:file "man_drv_srv" :depends-on ("_package_man_drv_srv"))
+    (:file "_package_man_drv_srv" :depends-on ("_package"))
   ))

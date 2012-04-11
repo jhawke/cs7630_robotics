@@ -77,7 +77,7 @@ private:
 
   bool get_position_callback(rovio_shared::rovio_position::Request &req, rovio_shared::rovio_position::Response &res );
   
-  bool move_controller::motor_drive_callback(rovio_shared::twist_srv::Request	&req, rovio_shared::twist_srv::Response	&res);
+  bool motor_drive_callback(rovio_shared::twist_srv::Request	&req, rovio_shared::twist_srv::Response	&res);
   
   std::string host; /*!< host of the Rovio */
   rovio_http *rovio; /*!< communicates with the Rovio */

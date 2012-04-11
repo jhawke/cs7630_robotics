@@ -5,4 +5,6 @@
           Y
           THETA-VAL
           THETA
+          IS_VALID-VAL
+          IS_VALID
 ))

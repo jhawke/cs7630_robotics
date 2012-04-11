@@ -16,13 +16,17 @@ opencv/cxcore.h
 
 ../include/blob/BlobLibraryConfiguration.h
 
+../include/blob/BlobOperators.h
+blob.h
+../include/blob/blob.h
+
 ../include/blob/BlobResult.h
 BlobLibraryConfiguration.h
 ../include/blob/BlobLibraryConfiguration.h
 math.h
 -
-cxcore.h
-../include/blob/cxcore.h
+opencv/cxcore.h
+-
 matrixCV.h
 ../include/blob/matrixCV.h
 vector
@@ -31,6 +35,18 @@ vector
 -
 functional
 -
+blob.h
+../include/blob/blob.h
+BlobOperators.h
+../include/blob/BlobOperators.h
+ComponentLabeling.h
+../include/blob/ComponentLabeling.h
+
+../include/blob/ComponentLabeling.h
+vector
+../include/blob/vector
+BlobContour.h
+../include/blob/BlobContour.h
 blob.h
 ../include/blob/blob.h
 
