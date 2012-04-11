@@ -3,7 +3,9 @@
 
 CMakeFiles/raptor_generic_ip.dir/src/raptor_generic_ip.o: ../include/blob/BlobContour.h
 CMakeFiles/raptor_generic_ip.dir/src/raptor_generic_ip.o: ../include/blob/BlobLibraryConfiguration.h
+CMakeFiles/raptor_generic_ip.dir/src/raptor_generic_ip.o: ../include/blob/BlobOperators.h
 CMakeFiles/raptor_generic_ip.dir/src/raptor_generic_ip.o: ../include/blob/BlobResult.h
+CMakeFiles/raptor_generic_ip.dir/src/raptor_generic_ip.o: ../include/blob/ComponentLabeling.h
 CMakeFiles/raptor_generic_ip.dir/src/raptor_generic_ip.o: ../include/blob/blob.h
 CMakeFiles/raptor_generic_ip.dir/src/raptor_generic_ip.o: ../include/raptor/raptor_generic_ip.h
 CMakeFiles/raptor_generic_ip.dir/src/raptor_generic_ip.o: ../srv_gen/cpp/include/raptor/obstacle_histogram.h

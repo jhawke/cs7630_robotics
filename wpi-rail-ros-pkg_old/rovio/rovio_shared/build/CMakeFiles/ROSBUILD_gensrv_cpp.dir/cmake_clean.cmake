@@ -10,6 +10,7 @@ FILE(REMOVE_RECURSE
   "../srv_gen/cpp/include/rovio_shared/wav_play.h"
   "../srv_gen/cpp/include/rovio_shared/head_ctrl.h"
   "../srv_gen/cpp/include/rovio_shared/twist_srv.h"
+  "../srv_gen/cpp/include/rovio_shared/man_drv_srv.h"
 )
 
 # Per-language clean rules from dependency scanning.

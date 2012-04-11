@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_av
+CMAKE_SOURCE_DIR = /home/dev/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_av
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_av/build
+CMAKE_BINARY_DIR = /home/dev/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_av/build
 
 # Utility rule file for clean-test-results.
 
@@ -55,6 +55,6 @@ CMakeFiles/clean-test-results.dir/clean:
 .PHONY : CMakeFiles/clean-test-results.dir/clean
 
 CMakeFiles/clean-test-results.dir/depend:
-	cd /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_av/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_av /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_av /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_av/build /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_av/build /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_av/build/CMakeFiles/clean-test-results.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/dev/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_av/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dev/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_av /home/dev/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_av /home/dev/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_av/build /home/dev/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_av/build /home/dev/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_av/build/CMakeFiles/clean-test-results.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/clean-test-results.dir/depend
 

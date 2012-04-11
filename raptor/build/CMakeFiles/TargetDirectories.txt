@@ -15,7 +15,6 @@
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_ml.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_relmove.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_stalk.dir
-/home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_waypointer_testbench.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/rosbuild_precompile.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/rosbuild_premsgsrvgen.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/rospack_genmsg.dir

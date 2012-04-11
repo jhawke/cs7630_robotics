@@ -10,6 +10,7 @@
 
 #include <raptor/raptor_relmove.h>
 
+#include <std_msgs/Float32.h>
 #include <raptor/twist_srv.h>
 #include <math.h>
 #include <ros/ros.h>
@@ -30,7 +31,10 @@ raptor_relmove::raptor_relmove()
    loc_is_registered = false;
     //Advertise the waypoint setting service
     location_setter = node.subscribe<raptor::rel_pos_req>("set_rel_waypoint",1,&raptor_relmove::register_new_location,this);
+    location_ll_setter = node.subscribe<raptor::rel_pos_req>("set_rel_waypoint_ll",1,&raptor_relmove::register_new_location_ll,this);
+    mcom_ll_relmover = node.advertise<std_msgs::Float32>("mcom_ll_relmove",1);
     //Advertise the vector output service
+    
     vector_output = node.advertiseService("raptor_relmove_srv",&raptor_relmove::give_location,this);
     //Subscribe to the locational service
     location_request = node.serviceClient<rovio_shared::rovio_position>("rovio_position");
@@ -41,7 +45,15 @@ raptor_relmove::~raptor_relmove()
 {
   
 }
-
+void raptor_relmove::register_new_location_ll(const raptor::rel_pos_req::ConstPtr &msg)
+{
+  loc_is_registered = true;
+  std_msgs::Float32 msg_out;
+  msg_out.data = msg->theta_rad;
+  mcom_ll_relmover.publish(msg_out);
+      //Get current Rovio location.
+  ROS_DEBUG("Low-level relative rotation request recieved.");
+}
 void raptor_relmove::register_new_location(const raptor::rel_pos_req::ConstPtr &msg)
 {
   loc_is_registered = true;
@@ -53,11 +65,17 @@ void raptor_relmove::register_new_location(const raptor::rel_pos_req::ConstPtr &
   if(location_request.call(srv))
   //if(true)  
   {
+    if(srv.response.is_valid>0)
+    {
       //srv.response.x = 200;
       //srv.response.y = 200;
       //srv.response.theta = 3.1415;
       goal_theta += srv.response.theta;
-    
+    }
+    else
+    {
+      ROS_DEBUG("Northstar signal too low for NS-RELMOVE");
+    }
   }  
   stop_time = (ros::Time::now().toSec())+msg->time_sec;
   ROS_DEBUG("Registered new relative loc. theta = %f, val=%f, time=%f.",goal_theta,goal_val,stop_time);

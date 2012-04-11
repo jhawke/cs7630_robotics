@@ -617,46 +617,11 @@ clean: CMakeFiles/raptor_stalk.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/raptor_waypointer_testbench.dir
-
-# All Build rule for target.
-CMakeFiles/raptor_waypointer_testbench.dir/all: CMakeFiles/rosbuild_precompile.dir/all
-	$(MAKE) -f CMakeFiles/raptor_waypointer_testbench.dir/build.make CMakeFiles/raptor_waypointer_testbench.dir/depend
-	$(MAKE) -f CMakeFiles/raptor_waypointer_testbench.dir/build.make CMakeFiles/raptor_waypointer_testbench.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  40
-	@echo "Built target raptor_waypointer_testbench"
-.PHONY : CMakeFiles/raptor_waypointer_testbench.dir/all
-
-# Include target in all.
-all: CMakeFiles/raptor_waypointer_testbench.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/raptor_waypointer_testbench.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 30
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/raptor_waypointer_testbench.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 0
-.PHONY : CMakeFiles/raptor_waypointer_testbench.dir/rule
-
-# Convenience name for target.
-raptor_waypointer_testbench: CMakeFiles/raptor_waypointer_testbench.dir/rule
-.PHONY : raptor_waypointer_testbench
-
-# clean rule for target.
-CMakeFiles/raptor_waypointer_testbench.dir/clean:
-	$(MAKE) -f CMakeFiles/raptor_waypointer_testbench.dir/build.make CMakeFiles/raptor_waypointer_testbench.dir/clean
-.PHONY : CMakeFiles/raptor_waypointer_testbench.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/raptor_waypointer_testbench.dir/clean
-.PHONY : clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/rosbuild_precompile.dir
 
 # All Build rule for target.
-CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_gensrv.dir/all
 CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_genmsg.dir/all
+CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_gensrv.dir/all
 CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_genmsg_libexe.dir/all
 	$(MAKE) -f CMakeFiles/rosbuild_precompile.dir/build.make CMakeFiles/rosbuild_precompile.dir/depend
 	$(MAKE) -f CMakeFiles/rosbuild_precompile.dir/build.make CMakeFiles/rosbuild_precompile.dir/build

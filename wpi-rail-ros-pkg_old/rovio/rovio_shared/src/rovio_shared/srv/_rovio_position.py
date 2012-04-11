@@ -93,17 +93,17 @@ import struct
 
 
 class rovio_positionResponse(roslib.message.Message):
-  _md5sum = "3685765a49e4490fc51d6759409a036a"
+  _md5sum = "7be1f10596b0f5e8fdacfae4637f8191"
   _type = "rovio_shared/rovio_positionResponse"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """int16 	x
 int16 	y
 float32 theta
-
+int32 is_valid
 
 """
-  __slots__ = ['x','y','theta']
-  _slot_types = ['int16','int16','float32']
+  __slots__ = ['x','y','theta','is_valid']
+  _slot_types = ['int16','int16','float32','int32']
 
   def __init__(self, *args, **kwds):
     """
@@ -113,7 +113,7 @@ float32 theta
     changes.  You cannot mix in-order arguments and keyword arguments.
     
     The available fields are:
-       x,y,theta
+       x,y,theta,is_valid
     
     @param args: complete set of field values, in .msg order
     @param kwds: use keyword arguments corresponding to message field names
@@ -128,10 +128,13 @@ float32 theta
         self.y = 0
       if self.theta is None:
         self.theta = 0.
+      if self.is_valid is None:
+        self.is_valid = 0
     else:
       self.x = 0
       self.y = 0
       self.theta = 0.
+      self.is_valid = 0
 
   def _get_types(self):
     """
@@ -147,7 +150,7 @@ float32 theta
     """
     try:
       _x = self
-      buff.write(_struct_2hf.pack(_x.x, _x.y, _x.theta))
+      buff.write(_struct_2hfi.pack(_x.x, _x.y, _x.theta, _x.is_valid))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -161,8 +164,8 @@ float32 theta
       end = 0
       _x = self
       start = end
-      end += 8
-      (_x.x, _x.y, _x.theta,) = _struct_2hf.unpack(str[start:end])
+      end += 12
+      (_x.x, _x.y, _x.theta, _x.is_valid,) = _struct_2hfi.unpack(str[start:end])
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
@@ -178,7 +181,7 @@ float32 theta
     """
     try:
       _x = self
-      buff.write(_struct_2hf.pack(_x.x, _x.y, _x.theta))
+      buff.write(_struct_2hfi.pack(_x.x, _x.y, _x.theta, _x.is_valid))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -194,16 +197,16 @@ float32 theta
       end = 0
       _x = self
       start = end
-      end += 8
-      (_x.x, _x.y, _x.theta,) = _struct_2hf.unpack(str[start:end])
+      end += 12
+      (_x.x, _x.y, _x.theta, _x.is_valid,) = _struct_2hfi.unpack(str[start:end])
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = roslib.message.struct_I
-_struct_2hf = struct.Struct("<2hf")
+_struct_2hfi = struct.Struct("<2hfi")
 class rovio_position(roslib.message.ServiceDefinition):
   _type          = 'rovio_shared/rovio_position'
-  _md5sum = '3685765a49e4490fc51d6759409a036a'
+  _md5sum = '7be1f10596b0f5e8fdacfae4637f8191'
   _request_class  = rovio_positionRequest
   _response_class = rovio_positionResponse

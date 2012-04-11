@@ -186,7 +186,7 @@ bool move_controller::motor_drive_callback(rovio_shared::twist_srv::Request	&req
   speed = 10-((int)(sqrt(pow(req.linear.x, 2.0) + pow(req.linear.y, 2.0)) * 10));
   if(speed>10){speed=10;}
   if(speed<10){speed=1;}
-  ROS_DEBUG("DSR: %d,%d,%d; rotate incorrect.",drive,speed,rotate);
+  ROS_DEBUG("D/S: %d,%d",drive,speed,rotate);
   
     move_controller::update();
     

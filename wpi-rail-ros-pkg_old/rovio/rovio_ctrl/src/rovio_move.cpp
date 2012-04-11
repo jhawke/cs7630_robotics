@@ -17,11 +17,13 @@
 #include <rovio_shared/rovio_position.h>
 #include <rovio_ctrl/rovio_move.h>
 #include <rovio_shared/twist_srv.h>
+#include <rovio_shared/man_drv_srv.h>
 #include <sstream>
 #include <string>
 
 #define NUM_MSG 1
-
+#define PI 3.14159265
+#define SIG_THRESH 6000
 using namespace std;
 
 move_controller::move_controller()
@@ -58,6 +60,7 @@ move_controller::move_controller()
   
   //Add service to allow mcom to control rovio
   motor_request = node.advertiseService("rovio_move_srv",&move_controller::motor_drive_callback,this);
+  man_driver = node.advertiseService("rovio_man_drv",&move_controller::manual_callback,this);
   
   drive = 0;
   speed = 0;
@@ -186,7 +189,7 @@ bool move_controller::motor_drive_callback(rovio_shared::twist_srv::Request	&req
   speed = 10-((int)(sqrt(pow(req.linear.x, 2.0) + pow(req.linear.y, 2.0)) * 10));
   if(speed>10){speed=10;}
   if(speed<10){speed=1;}
-  ROS_DEBUG("D/S: %d,%d",drive,speed,rotate);
+  ROS_DEBUG("D/S: %d,%d",drive,speed);
   
     move_controller::update();
     
@@ -201,8 +204,11 @@ bool move_controller::get_position_callback(rovio_shared::rovio_position::Reques
     int16_t x_resp = -1;
     int16_t y_resp = -1;
     float   theta_resp  =  0;
+    float   theta_temp = 0;
     int32_t x_sum=0;
     int32_t y_sum=0;
+    uint32_t sig_str = 0;
+    int32_t sig_ok = 0;
     float theta_sum=0;
     rovio_response *buf;
     // build the URL command and send it
@@ -215,21 +221,27 @@ bool move_controller::get_position_callback(rovio_shared::rovio_position::Reques
       sscanf(strstr(buf->data, "x="), "x=%i", &x_resp);
       sscanf(strstr(buf->data, "y="), "y=%i", &y_resp);
       sscanf(strstr(buf->data, "theta="), "theta=%f", &theta_resp);
-      
+      sscanf(strstr(buf->data, "ss="), "ss=%u", &sig_str);
+      theta_temp = (theta_resp-PI/2.0);
       x_sum+=x_resp;
       y_sum+=y_resp;
       theta_sum+=theta_resp;
-      
+      sig_str+=sig_str;
     }
     x_resp = x_sum/NUM_MSG;
     y_resp = y_sum/NUM_MSG;
     theta_resp = theta_sum/NUM_MSG;
+    if((sig_str/NUM_MSG)>SIG_THRESH)
+    {
+      sig_ok = 1;
+    }
     //This is where I'd put error checking... IF I CHECKED ERRORS.
     //Fill the service response
     res.x = x_resp;
     res.y = y_resp;
     res.theta = theta_resp;
-    ROS_DEBUG("Position request response: x,y,th = [%d],[%d], [%f]", res.x,res.y,res.theta);
+    res.is_valid = sig_ok;
+    ROS_DEBUG("Position request response: x,y,th = [%d],[%d], [%f] with ss %u (is_valid = %d)", res.x,res.y,res.theta,sig_str,res.is_valid);
     //Clean up.
     rovio_response_clean(buf); 
     return true;
@@ -252,6 +264,29 @@ void move_controller::man_drv_callback(const rovio_shared::man_drv::ConstPtr &ms
   // set the values
   drive = msg->drive;
   speed = msg->speed;
+}
+
+bool move_controller::manual_callback(rovio_shared::man_drv_srv::Request &req, rovio_shared::man_drv_srv::Response &res)
+{
+  if (req.drive < rovio_shared::man_drv::MIN_DRIVE_VAL || req.drive > rovio_shared::man_drv::MAX_DRIVE_VAL)
+  {
+    ROS_ERROR("Manual Drive 'drive' value of %i out of range [%i,%i].", req.drive, rovio_shared::man_drv::MIN_DRIVE_VAL, rovio_shared::man_drv::MAX_DRIVE_VAL);
+    return false;
+  }
+  if (req.speed < rovio_shared::man_drv::MIN_SPEED_VAL || req.speed > rovio_shared::man_drv::MAX_SPEED_VAL)
+  {
+    ROS_ERROR("Manual Drive 'speed' value of %i out of range [%i,%i].", req.speed, rovio_shared::man_drv::MIN_SPEED_VAL, rovio_shared::man_drv::MAX_SPEED_VAL);
+    return false;
+  }
+
+  // set the values
+  drive = req.drive;
+  speed = req.speed;
+  ROS_DEBUG("D/S: %d,%d",drive,speed);
+  
+    move_controller::update();
+  
+ return true; 
 }
 
 void move_controller::cmd_vel_callback(const geometry_msgs::Twist::ConstPtr &msg)

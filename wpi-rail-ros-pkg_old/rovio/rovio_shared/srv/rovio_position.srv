@@ -2,3 +2,4 @@
 int16 	x
 int16 	y
 float32 theta
+int32 is_valid

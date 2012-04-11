@@ -11,6 +11,7 @@ FILE(REMOVE_RECURSE
   "../src/rovio_shared/srv/_wav_play.py"
   "../src/rovio_shared/srv/_head_ctrl.py"
   "../src/rovio_shared/srv/_twist_srv.py"
+  "../src/rovio_shared/srv/_man_drv_srv.py"
 )
 
 # Per-language clean rules from dependency scanning.

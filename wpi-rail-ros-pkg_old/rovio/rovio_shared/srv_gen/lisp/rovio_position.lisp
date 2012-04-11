@@ -32,10 +32,10 @@
   "rovio_shared/rovio_positionRequest")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<rovio_position-request>)))
   "Returns md5sum for a message object of type '<rovio_position-request>"
-  "3685765a49e4490fc51d6759409a036a")
+  "7be1f10596b0f5e8fdacfae4637f8191")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'rovio_position-request)))
   "Returns md5sum for a message object of type 'rovio_position-request"
-  "3685765a49e4490fc51d6759409a036a")
+  "7be1f10596b0f5e8fdacfae4637f8191")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<rovio_position-request>)))
   "Returns full string definition for message of type '<rovio_position-request>"
   (cl:format cl:nil "~%~%"))
@@ -66,7 +66,12 @@
     :reader theta
     :initarg :theta
     :type cl:float
-    :initform 0.0))
+    :initform 0.0)
+   (is_valid
+    :reader is_valid
+    :initarg :is_valid
+    :type cl:integer
+    :initform 0))
 )
 
 (cl:defclass rovio_position-response (<rovio_position-response>)
@@ -91,6 +96,11 @@
 (cl:defmethod theta-val ((m <rovio_position-response>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader rovio_shared-srv:theta-val is deprecated.  Use rovio_shared-srv:theta instead.")
   (theta m))
+
+(cl:ensure-generic-function 'is_valid-val :lambda-list '(m))
+(cl:defmethod is_valid-val ((m <rovio_position-response>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader rovio_shared-srv:is_valid-val is deprecated.  Use rovio_shared-srv:is_valid instead.")
+  (is_valid m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <rovio_position-response>) ostream)
   "Serializes a message object of type '<rovio_position-response>"
   (cl:let* ((signed (cl:slot-value msg 'x)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 65536) signed)))
@@ -106,6 +116,12 @@
     (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream))
+  (cl:let* ((signed (cl:slot-value msg 'is_valid)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
+    )
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <rovio_position-response>) istream)
   "Deserializes a message object of type '<rovio_position-response>"
@@ -123,6 +139,12 @@
       (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
     (cl:setf (cl:slot-value msg 'theta) (roslisp-utils:decode-single-float-bits bits)))
+    (cl:let ((unsigned 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'is_valid) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<rovio_position-response>)))
@@ -133,20 +155,21 @@
   "rovio_shared/rovio_positionResponse")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<rovio_position-response>)))
   "Returns md5sum for a message object of type '<rovio_position-response>"
-  "3685765a49e4490fc51d6759409a036a")
+  "7be1f10596b0f5e8fdacfae4637f8191")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'rovio_position-response)))
   "Returns md5sum for a message object of type 'rovio_position-response"
-  "3685765a49e4490fc51d6759409a036a")
+  "7be1f10596b0f5e8fdacfae4637f8191")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<rovio_position-response>)))
   "Returns full string definition for message of type '<rovio_position-response>"
-  (cl:format cl:nil "int16 	x~%int16 	y~%float32 theta~%~%~%~%"))
+  (cl:format cl:nil "int16 	x~%int16 	y~%float32 theta~%int32 is_valid~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'rovio_position-response)))
   "Returns full string definition for message of type 'rovio_position-response"
-  (cl:format cl:nil "int16 	x~%int16 	y~%float32 theta~%~%~%~%"))
+  (cl:format cl:nil "int16 	x~%int16 	y~%float32 theta~%int32 is_valid~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <rovio_position-response>))
   (cl:+ 0
      2
      2
+     4
      4
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <rovio_position-response>))
@@ -155,6 +178,7 @@
     (cl:cons ':x (x msg))
     (cl:cons ':y (y msg))
     (cl:cons ':theta (theta msg))
+    (cl:cons ':is_valid (is_valid msg))
 ))
 (cl:defmethod roslisp-msg-protocol:service-request-type ((msg (cl:eql 'rovio_position)))
   'rovio_position-request)

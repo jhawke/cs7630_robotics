@@ -17,6 +17,7 @@
 #include <rovio_shared/man_drv.h>
 #include <rovio_shared/rovio_http.h>
 #include <rovio_shared/twist_srv.h>
+#include <rovio_shared/man_drv_srv.h>
 #include <string>
 
 /*!
@@ -79,6 +80,8 @@ private:
   
   bool motor_drive_callback(rovio_shared::twist_srv::Request	&req, rovio_shared::twist_srv::Response	&res);
   
+  bool manual_callback(rovio_shared::man_drv_srv::Request &req, rovio_shared::man_drv_srv::Response &res);
+  
   std::string host; /*!< host of the Rovio */
   rovio_http *rovio; /*!< communicates with the Rovio */
   ros::NodeHandle node; /*!< a handle for this ROS node */
@@ -88,6 +91,8 @@ private:
   ros::ServiceServer robot_position;
   
   ros::ServiceServer motor_request;
+  
+  ros::ServiceServer man_driver;
 
   int drive, speed, rotate; /*!< used to move the Rovio in the update function */
 };

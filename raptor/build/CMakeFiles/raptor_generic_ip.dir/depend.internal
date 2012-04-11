@@ -4,7 +4,9 @@
 CMakeFiles/raptor_generic_ip.dir/src/raptor_generic_ip.o
  ../include/blob/BlobContour.h
  ../include/blob/BlobLibraryConfiguration.h
+ ../include/blob/BlobOperators.h
  ../include/blob/BlobResult.h
+ ../include/blob/ComponentLabeling.h
  ../include/blob/blob.h
  ../include/raptor/raptor_generic_ip.h
  ../srv_gen/cpp/include/raptor/obstacle_histogram.h

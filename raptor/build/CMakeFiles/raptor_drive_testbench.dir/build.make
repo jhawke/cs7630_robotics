@@ -75,7 +75,7 @@ CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/ele
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/ros_comm/tools/rosbag/manifest.xml
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/ros_comm/tools/rosbagmigration/manifest.xml
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/common_msgs/geometry_msgs/manifest.xml
-CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/manifest.xml
+CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /home/dev/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/manifest.xml
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/common_msgs/sensor_msgs/manifest.xml
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/pluginlib/manifest.xml
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/ros_comm/utilities/message_filters/manifest.xml
@@ -83,11 +83,11 @@ CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/ele
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/common_rosdeps/manifest.xml
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/image_common/camera_calibration_parsers/manifest.xml
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /home/dev/cs7630_robotics/gscam/manifest.xml
-CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_av/manifest.xml
+CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /home/dev/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_av/manifest.xml
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/manifest.xml
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/joystick_drivers/joy/manifest.xml
-CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_ctrl/manifest.xml
+CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /home/dev/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_ctrl/manifest.xml
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/vision_opencv/opencv2/manifest.xml
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/vision_opencv/cv_bridge/manifest.xml
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
@@ -96,8 +96,8 @@ CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/ele
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/srv_gen/generated
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/ros_comm/tools/topic_tools/srv_gen/generated
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/generated
-CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/msg_gen/generated
-CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /home/dev/cs7630_robotics/wpi-rail-ros-pkg/rovio/rovio_shared/srv_gen/generated
+CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /home/dev/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/msg_gen/generated
+CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /home/dev/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/srv_gen/generated
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/generated
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/common_msgs/sensor_msgs/srv_gen/generated
 CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/msg_gen/generated
@@ -132,17 +132,6 @@ raptor_drive_testbench_OBJECTS = \
 raptor_drive_testbench_EXTERNAL_OBJECTS =
 
 ../bin/raptor_drive_testbench: CMakeFiles/raptor_drive_testbench.dir/src/raptor_drive_testbench.o
-../bin/raptor_drive_testbench: /usr/lib/libopencv_contrib.so.2.3.1
-../bin/raptor_drive_testbench: /usr/lib/libopencv_legacy.so.2.3.1
-../bin/raptor_drive_testbench: /usr/lib/libopencv_objdetect.so.2.3.1
-../bin/raptor_drive_testbench: /usr/lib/libopencv_calib3d.so.2.3.1
-../bin/raptor_drive_testbench: /usr/lib/libopencv_features2d.so.2.3.1
-../bin/raptor_drive_testbench: /usr/lib/libopencv_video.so.2.3.1
-../bin/raptor_drive_testbench: /usr/lib/libopencv_highgui.so.2.3.1
-../bin/raptor_drive_testbench: /usr/lib/libopencv_ml.so.2.3.1
-../bin/raptor_drive_testbench: /usr/lib/libopencv_imgproc.so.2.3.1
-../bin/raptor_drive_testbench: /usr/lib/libopencv_flann.so.2.3.1
-../bin/raptor_drive_testbench: /usr/lib/libopencv_core.so.2.3.1
 ../bin/raptor_drive_testbench: CMakeFiles/raptor_drive_testbench.dir/build.make
 ../bin/raptor_drive_testbench: CMakeFiles/raptor_drive_testbench.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable ../bin/raptor_drive_testbench"

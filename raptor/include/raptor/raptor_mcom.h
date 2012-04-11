@@ -11,12 +11,17 @@
 #ifndef RAPTOR_MCOM_H_
 #define RAPTOR_MCOM_H_
 
+#include <std_msgs/Float32.h>
 #include <geometry_msgs/Twist.h>
 #include <ros/ros.h>
 #include <rovio_shared/man_drv.h>
 #include <raptor/polar_histogram.h>
+#include <std_msgs/Int32.h>
+#include <raptor/light_level_srv.h>
 #include <string>
 #include <vector>
+
+#define NUM_MOVES 12
 
 /*!
  * \class raptor_mcom
@@ -33,13 +38,27 @@ public:
   void system_heartbeat();
   
 private:
-
+  
+  void lls_callback(const std_msgs::Int32::ConstPtr &msg);
+  void lls_relmove_callback(const std_msgs::Float32::ConstPtr &msg);
+  void abs_rotation();
+  void find_best_light();
+  
   ros::NodeHandle node;
   ros::ServiceClient obstacle_detector;
   ros::ServiceClient drive_commander;
+  ros::ServiceClient light_level_finder;
+  ros::ServiceClient man_driver;
+  ros::Subscriber low_level_switch;
+  ros::Subscriber low_level_rel;
+  ros::Publisher low_level_finished;
   std::vector<ros::ServiceClient> behavioral_modules;
+  int low_level_active;
+  bool best_heading_found;
   double sigma;
-  
+  uint32_t light_levels[NUM_MOVES];
+  int current_heading;
+  int moves_remaining;
 };
 
 /*!

@@ -317,19 +317,6 @@ raptor_stalk/fast:
 .PHONY : raptor_stalk/fast
 
 #=============================================================================
-# Target rules for targets named raptor_waypointer_testbench
-
-# Build rule for target.
-raptor_waypointer_testbench: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 raptor_waypointer_testbench
-.PHONY : raptor_waypointer_testbench
-
-# fast build rule for target.
-raptor_waypointer_testbench/fast:
-	$(MAKE) -f CMakeFiles/raptor_waypointer_testbench.dir/build.make CMakeFiles/raptor_waypointer_testbench.dir/build
-.PHONY : raptor_waypointer_testbench/fast
-
-#=============================================================================
 # Target rules for targets named rosbuild_precompile
 
 # Build rule for target.
@@ -635,21 +622,6 @@ src/raptor_stalk.s:
 	$(MAKE) -f CMakeFiles/raptor_stalk.dir/build.make CMakeFiles/raptor_stalk.dir/src/raptor_stalk.s
 .PHONY : src/raptor_stalk.s
 
-# target to build an object file
-src/raptor_waypointer_testbench.o:
-	$(MAKE) -f CMakeFiles/raptor_waypointer_testbench.dir/build.make CMakeFiles/raptor_waypointer_testbench.dir/src/raptor_waypointer_testbench.o
-.PHONY : src/raptor_waypointer_testbench.o
-
-# target to preprocess a source file
-src/raptor_waypointer_testbench.i:
-	$(MAKE) -f CMakeFiles/raptor_waypointer_testbench.dir/build.make CMakeFiles/raptor_waypointer_testbench.dir/src/raptor_waypointer_testbench.i
-.PHONY : src/raptor_waypointer_testbench.i
-
-# target to generate assembly for a file
-src/raptor_waypointer_testbench.s:
-	$(MAKE) -f CMakeFiles/raptor_waypointer_testbench.dir/build.make CMakeFiles/raptor_waypointer_testbench.dir/src/raptor_waypointer_testbench.s
-.PHONY : src/raptor_waypointer_testbench.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -674,7 +646,6 @@ help:
 	@echo "... raptor_ml"
 	@echo "... raptor_relmove"
 	@echo "... raptor_stalk"
-	@echo "... raptor_waypointer_testbench"
 	@echo "... rebuild_cache"
 	@echo "... rosbuild_precompile"
 	@echo "... rosbuild_premsgsrvgen"
@@ -718,9 +689,6 @@ help:
 	@echo "... src/raptor_stalk.o"
 	@echo "... src/raptor_stalk.i"
 	@echo "... src/raptor_stalk.s"
-	@echo "... src/raptor_waypointer_testbench.o"
-	@echo "... src/raptor_waypointer_testbench.i"
-	@echo "... src/raptor_waypointer_testbench.s"
 .PHONY : help
 
 
