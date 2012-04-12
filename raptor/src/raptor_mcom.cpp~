@@ -70,6 +70,7 @@ raptor_mcom::raptor_mcom()
   
   behavioral_modules[0] = node.serviceClient<raptor::polar_histogram>("raptor_relmove_srv");
   behavioral_modules[1] = node.serviceClient<raptor::polar_histogram>("raptor_absmove_srv"); 
+  behavioral_modules[2] = node.serviceClient<raptor::polar_histogram>("raptor_stalk_srv");
   /**************************************/
   
   light_level_finder = node.serviceClient<raptor::light_level_srv>("This_doesnt_exist_yet");
@@ -107,7 +108,7 @@ void raptor_mcom::lls_relmove_callback(const std_msgs::Float32::ConstPtr &msg)
   {
     theta_degrees = 360*(msg->data/(2*PI));
     theta_degrees = theta_degrees%360;
-    moves = round(theta_degrees*(NUM_MOVES/360.0));
+    moves_remaining = round(theta_degrees*(NUM_MOVES/360.0));
      low_level_active = LL_RELMOVE;
      ROS_DEBUG("There was a ll-relmove request. Theta was %f, deg was %d, moves is %d",msg->data,theta_degrees,moves_remaining);
   }

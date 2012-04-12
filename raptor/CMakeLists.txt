@@ -35,6 +35,7 @@ rosbuild_add_executable(raptor_ml			src/raptor_ml.cpp)
 rosbuild_add_executable(ip_test				src/ip_test.cpp)
 rosbuild_add_executable(raptor_relmove			src/raptor_relmove.cpp)
 rosbuild_add_executable(raptor_absmove			src/raptor_absmove.cpp)
+rosbuild_add_executable(raptor_jpeg_publisher		src/raptor_jpeg_publisher.cpp)
 #common commands for building c++ executables and libraries
 #rosbuild_add_library(${PROJECT_NAME} include/blob/blob.cpp)
 target_link_libraries(raptor_stalk 	libblob.a)

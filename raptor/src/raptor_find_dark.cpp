@@ -43,14 +43,15 @@ raptor_find_dark::raptor_find_dark()
     //Subscribe to the image producing publisher. (/gscam/image_raw)
     image_subscription = node.subscribe<sensor_msgs::Image>("/gscam/image_raw",1,&raptor_find_dark::handle_new_image, this);
     //Advertise your service.
-     cv::namedWindow("View",1);
+         cvNamedWindow("imSmooth",1);
+	 cvNamedWindow("arg",1);
+	 cv::namedWindow("View",1);
     vector_gen = node.advertiseService("raptor_find_dark_srv",&raptor_find_dark::get_vector_field,this);
     volume = 1;
 }
 int HSV_filter(int h, int s, int v, int threshold, int hue, int sat, int val) {
 	int FilteredColor[3] = {hue, sat, val}; 
-	int diff =  (FilteredColor[0]-h)*(FilteredColor[0]-h) +
-				(FilteredColor[1]-s)*(FilteredColor[1]-s);
+	int diff =  (FilteredColor[0]-h)*(FilteredColor[0]-h);
 	
 	if(diff < threshold) return abs(diff-threshold); /** If here, it has passed! */
 	return 0; /** With 0 this is discarded */
@@ -126,8 +127,6 @@ double *findDark(int widthRes, int lengthRes, IplImage* img){
 double *findShadow(IplImage *img, int hue1,int sat1,int val1,int val2,int threshold, double blobLowLimit,double blobHighLimit){
 	// Input HSV value of color blob your seeking, acceptable threshold of that color, and Min and Max blob sizes beeing sought out. 
 	//Ouput: pointer to data array, size[#ofblobs*3+1]; Format data=[Number of Blobs, Area1,X of center1, y of center1, Area2,X of center2,y of center2,...,areaN,X of centerN, Y of centerN];
-
- cvShowImage("View",img);
     //cv::imshow("View",cv_ptr->image);
     cv::waitKey(3);
     
@@ -141,7 +140,7 @@ double *findShadow(IplImage *img, int hue1,int sat1,int val1,int val2,int thresh
 	IplImage* planeV = cvCreateImage(cvGetSize(img),8,1); //Brightness
 
 
-
+	
 
 
 	//Blob variables
@@ -151,7 +150,7 @@ double *findShadow(IplImage *img, int hue1,int sat1,int val1,int val2,int thresh
 	CBlobGetYCenter getYCenter;
 	//Output Variable
 	//Gausian Filter
-	cvSmooth(img,imageSmooth,CV_GAUSSIAN,7,9,0,0);
+	cvSmooth(img,imageSmooth,CV_GAUSSIAN,15,9,0,0);
 	//Covert RGB to HSV
 	cvCvtColor(imageSmooth,imageHSV,CV_BGR2HSV);
 	cvCvtPixToPlane(imageHSV, planeH,planeS,planeV,0);//Extract the 3 color components
@@ -163,7 +162,7 @@ double *findShadow(IplImage *img, int hue1,int sat1,int val1,int val2,int thresh
 		for( int x = 0; x < planeH->width*planeH->nChannels; x += planeH->nChannels ){
 			 int f= HSV_filter(h[x],s[x],v[x],threshold,hue1,sat1,val1);
 			 int g= V_filter(v[x],threshold,val2);
-			 if(f&&g){
+			 if(f){
 				 ((uchar *)(i1->imageData + y*i1->widthStep))[x]=255;
 			 }else{
 				 ((uchar *)(i1->imageData + y*i1->widthStep))[x]=0;
@@ -192,11 +191,10 @@ double *findShadow(IplImage *img, int hue1,int sat1,int val1,int val2,int thresh
 		//debug
 		blob.FillBlob(imageSmooth, cvScalar(255, 0, 0)); // This line will give you a visual marker on image for the blob if you want it for testing or something
     }
-    cvNamedWindow("imSmooth",1);
-    cvShowImage("imSmooth",imageSmooth);
+
+    cvShowImage("imSmooth",img);
     //cv::imshow("View",cv_ptr->image);
     cv::waitKey(3);
-    
     
       cvReleaseImage(&imageSmooth);
       cvReleaseImage(&imageHSV);
@@ -204,6 +202,7 @@ double *findShadow(IplImage *img, int hue1,int sat1,int val1,int val2,int thresh
       cvReleaseImage(&planeH);
       cvReleaseImage(&planeS);
       cvReleaseImage(&planeV);
+      
 	return data; //return pointer to data array
 }
 
@@ -219,13 +218,13 @@ bool raptor_find_dark::get_vector_field(raptor::polar_histogram::Request &req, r
   double* Out = new double[360];
 	for(int i=0;i<360;i++)
 		Out[i]=0;
-	int H= {67};// H val of floor
-	int S= {205};//s val
-	int V= {219};//V val 
+	int H= {29};// H val of floor
+	int S= {0};//s val
+	int V= {0};//V val 
 	int V2[2]= {30,230};
 	int I[2]= {1, -1};// Taxis intensity of color (ie towards/away etc)
-	int threshold = 5000;// color search threshold
-	double blobLowLimit = 500;// blob size limits
+	int threshold = 225;// color search threshold
+	double blobLowLimit = 100;// blob size limits
 	double blobHighLimit = 1000000;
 	int viewFieldMin = 159;// view range of robot out of 360
 	int viewFieldMax = 199;
@@ -235,16 +234,19 @@ bool raptor_find_dark::get_vector_field(raptor::polar_histogram::Request &req, r
 	int blobX;
 	int blobY;
 	//////////////////////////////////////////
-	double* darkVal = findDark(1,8,img); // Jeffs Number
-	int closeDark = darkVal[7];
-	double* lightVal = findDark(1,1,img);
-	int totalDark = lightVal[0]; // jefff other number
+	//double* darkVal = findDark(1,8,img); // Jeffs Number
+	//int closeDark = darkVal[7];
+	//double* lightVal = findDark(1,1,img);
+	//int totalDark = lightVal[0]; // jefff other number
 	//////////////////////////////////////////
 	double areaScale = .001;
 	double maxOut = 0;
 	double minOut= 255;
 	//cout<<"size:"<<sizeof(V2)/sizeof(V2[0]);
 	for(int n=0; n<sizeof(V2)/sizeof(V2[0]); n++){
+	  
+	  cvShowImage("arg",img);
+	  cvWaitKey(3);	
 		double* blob= findShadow(img,H,S,V,V2[n],threshold,blobLowLimit,blobHighLimit);
 		if(blob[0]>0){
 		//	cout<<"blobs#:"<<blob[0]<<"  ";
@@ -306,9 +308,12 @@ void raptor_find_dark::handle_new_image(const sensor_msgs::Image::ConstPtr& msg)
   //img = bridge.imgmsg_to_cv(msg, desired_encoding="passthrough");
   if(isFirstImg)
   {
+    
+    
     cvShowImage("View",img);
+    
     //cv::imshow("View",cv_ptr->image);
-    cv::waitKey(3);
+    //cv::waitKey(3);
     //isFirstImg = false;
     //ROS_INFO("ASS"); 
     

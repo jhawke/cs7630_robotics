@@ -252,6 +252,19 @@ raptor_generic_ip/fast:
 .PHONY : raptor_generic_ip/fast
 
 #=============================================================================
+# Target rules for targets named raptor_jpeg_publisher
+
+# Build rule for target.
+raptor_jpeg_publisher: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 raptor_jpeg_publisher
+.PHONY : raptor_jpeg_publisher
+
+# fast build rule for target.
+raptor_jpeg_publisher/fast:
+	$(MAKE) -f CMakeFiles/raptor_jpeg_publisher.dir/build.make CMakeFiles/raptor_jpeg_publisher.dir/build
+.PHONY : raptor_jpeg_publisher/fast
+
+#=============================================================================
 # Target rules for targets named raptor_mcom
 
 # Build rule for target.
@@ -548,6 +561,21 @@ src/raptor_generic_ip.s:
 .PHONY : src/raptor_generic_ip.s
 
 # target to build an object file
+src/raptor_jpeg_publisher.o:
+	$(MAKE) -f CMakeFiles/raptor_jpeg_publisher.dir/build.make CMakeFiles/raptor_jpeg_publisher.dir/src/raptor_jpeg_publisher.o
+.PHONY : src/raptor_jpeg_publisher.o
+
+# target to preprocess a source file
+src/raptor_jpeg_publisher.i:
+	$(MAKE) -f CMakeFiles/raptor_jpeg_publisher.dir/build.make CMakeFiles/raptor_jpeg_publisher.dir/src/raptor_jpeg_publisher.i
+.PHONY : src/raptor_jpeg_publisher.i
+
+# target to generate assembly for a file
+src/raptor_jpeg_publisher.s:
+	$(MAKE) -f CMakeFiles/raptor_jpeg_publisher.dir/build.make CMakeFiles/raptor_jpeg_publisher.dir/src/raptor_jpeg_publisher.s
+.PHONY : src/raptor_jpeg_publisher.s
+
+# target to build an object file
 src/raptor_mcom.o:
 	$(MAKE) -f CMakeFiles/raptor_mcom.dir/build.make CMakeFiles/raptor_mcom.dir/src/raptor_mcom.o
 .PHONY : src/raptor_mcom.o
@@ -641,6 +669,7 @@ help:
 	@echo "... raptor_drive_testbench"
 	@echo "... raptor_find_dark"
 	@echo "... raptor_generic_ip"
+	@echo "... raptor_jpeg_publisher"
 	@echo "... raptor_mcom"
 	@echo "... raptor_mcom_testbench"
 	@echo "... raptor_ml"
@@ -674,6 +703,9 @@ help:
 	@echo "... src/raptor_generic_ip.o"
 	@echo "... src/raptor_generic_ip.i"
 	@echo "... src/raptor_generic_ip.s"
+	@echo "... src/raptor_jpeg_publisher.o"
+	@echo "... src/raptor_jpeg_publisher.i"
+	@echo "... src/raptor_jpeg_publisher.s"
 	@echo "... src/raptor_mcom.o"
 	@echo "... src/raptor_mcom.i"
 	@echo "... src/raptor_mcom.s"

@@ -49,8 +49,8 @@ raptor_stalk::raptor_stalk()
 }
 int HSV_filter(int h, int s, int v, int threshold, int hue, int sat, int val) {
 	int FilteredColor[3] = {hue, sat, val}; 
-	int diff =  (FilteredColor[0]-h)*(FilteredColor[0]-h) +
-				(FilteredColor[1]-s)*(FilteredColor[1]-s);
+	int diff =  (FilteredColor[0]-h)*(FilteredColor[0]-h);//+
+				//(FilteredColor[1]-s)*(FilteredColor[1]-s);
 	
 	if(diff < threshold) return abs(diff-threshold); /** If here, it has passed! */
 	return 0; /** With 0 this is discarded */
@@ -140,11 +140,11 @@ bool raptor_stalk::get_vector_field(raptor::polar_histogram::Request &req, rapto
   double* Out = new double[360];
 	for(int i=0;i<360;i++)
 		Out[i]=0;
-	int H[1]= {67};// H value of all searched colors
+	int H[1]= {60};// H value of all searched colors
 	int S[1]= {205};//s val
 	int V[1]= {219};//V val
 	int I[1]= {1};// Taxis intensity of color (ie towards/away etc)
-	int threshold = 5000;// color search threshold
+	int threshold = 100;// color search threshold
 	double blobLowLimit = 500;// blob size limits
 	double blobHighLimit = 1000000;
 	int viewFieldMin = 159;// view range of robot out of 360

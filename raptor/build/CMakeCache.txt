@@ -192,7 +192,7 @@ TOOLCHAINCONFIG:FILEPATH=TOOLCHAINCONFIG-NOTFOUND
 USERCONFIG:FILEPATH=USERCONFIG-NOTFOUND
 
 //Path to a file.
-_file_name:FILEPATH=/home/dev/cs7630_robotics/raptor/src/raptor_absmove.cpp
+_file_name:FILEPATH=/home/dev/cs7630_robotics/raptor/src/raptor_jpeg_publisher.cpp
 
 //Value Computed by CMake
 raptor_BINARY_DIR:STATIC=/home/dev/cs7630_robotics/raptor/build

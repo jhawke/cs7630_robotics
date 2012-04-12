@@ -23,7 +23,7 @@
 #include <limits.h>
 #include <boost/array.hpp>
 
-#define NUM_BEH_MODS 		2
+#define NUM_BEH_MODS 		3
 
 #define LOOP_RATE 		2
 
@@ -70,6 +70,7 @@ raptor_mcom::raptor_mcom()
   
   behavioral_modules[0] = node.serviceClient<raptor::polar_histogram>("raptor_relmove_srv");
   behavioral_modules[1] = node.serviceClient<raptor::polar_histogram>("raptor_absmove_srv"); 
+  behavioral_modules[2] = node.serviceClient<raptor::polar_histogram>("raptor_stalk_srv");
   /**************************************/
   
   light_level_finder = node.serviceClient<raptor::light_level_srv>("This_doesnt_exist_yet");

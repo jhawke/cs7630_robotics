@@ -1,0 +1,62 @@
+/*!
+ * \file raptor_jpeg_publisher.cpp
+ * \brief Image processing framework.
+ *
+ * This file provides hooks to image subscriptions and sets up the output server for the mcom node.
+ *
+ * \author omernick
+ * \date March 22,2012
+ */
+
+
+#include <raptor/raptor_jpeg_publisher.h>
+
+#include <ros/ros.h>
+#include <image_transport/image_transport.h>
+#include <opencv/cvwimage.h>
+#include <opencv/highgui.h>
+#include <cv_bridge/CvBridge.h>
+#include <std_msgs/String.h>
+
+raptor_jpeg_publisher::raptor_jpeg_publisher()
+{
+  pub = it.advertise("gscam/image_raw", 1);
+  path_listener = node.subscribe<std_msgs::String>("debug_img_path",1,&raptor_jpeg_publisher::setPath,this);
+  is_init = false;
+}
+
+raptor_jpeg_publisher::~raptor_jpeg_publisher()
+{
+
+}
+
+void raptor_jpeg_publisher::publishImage()
+{
+  if(is_init)
+  {
+    cv::WImageBuffer3_b image( cvLoadImage(addr, CV_LOAD_IMAGE_COLOR) );
+    sensor_msgs::ImagePtr msg = sensor_msgs::CvBridge::cvToImgMsg(image.Ipl(), "bgr8");
+    pub.publish(msg);
+  }
+}
+
+void raptor_jpeg_publisher::setPath(std_msgs::String::ConstPtr &msg)
+{
+  addr = msg->data;
+  is_init = true;
+}
+
+int main(int argc, char** argv)
+{
+  ros::init(argc, argv, "raptor_jpeg_publisher");
+  raptor_jpeg_publisher rjp;
+
+  ros::Rate loop_rate(5);
+  
+  while (nh.ok()) 
+  {
+    rjp.publishImage();
+    ros::spinOnce();
+    loop_rate.sleep();
+  }
+}

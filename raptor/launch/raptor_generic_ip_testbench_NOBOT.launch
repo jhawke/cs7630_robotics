@@ -1,0 +1,7 @@
+<launch>
+
+	<node name="jpeg_pub" pkg="raptor" type="raptor_jpeg_publisher" respawn="false" output="screen"/>
+	<node name="ip_core" pkg="raptor" type="raptor_generic_ip" respawn="false" output="screen"/>
+</launch>
+
+

@@ -17,7 +17,6 @@
 
 	<!-- Create an instance of each appropriate node -->
   	<node name="raptor_mcom" pkg="raptor" type="raptor_mcom" respawn="false" output="screen"/>
-	<node name="raptor_drive_testbench" pkg="raptor" type="raptor_drive_testbench" respawn="false" output="screen"/>
 	<node name="raptor_stalk" pkg="raptor" type="raptor_stalk" respawn="false" output="screen"/>
 
 </launch>
