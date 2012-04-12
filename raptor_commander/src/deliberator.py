@@ -32,7 +32,17 @@ class Deliberator():
 
 # SUBSCRIBED DATA - PUSH DATA INTO INTERNAL VARIABLES
     def darknessCallback(self, data):
-        rospy.loginfo(rospy.get_caller_id()+" ts Darkness heard %f",data.data)
+        # If this darkness is better than the previous best, store the value and current location
+        rospy.loginfo(rospy.get_caller_id()+" tsDarkness heard %f",data.data)
+        darknessCoefficient = data.data
+        if darknessCoefficient >= self.darkness:
+            self.darkness = darknessCoefficient
+            resp = self.getRovioPosition()
+            #self.x = response.
+
+    def darknessRegionCallback(self, data):
+        rospy.loginfo(rospy.get_caller_id()+" ts DarknessRegion heard %f",data.data)
+        
         print data.data
         
     def preyCallback(self, data):
@@ -46,7 +56,7 @@ class Deliberator():
     def getRovioPosition(self):
         rospy.wait_for_service('rovio_position')
         try:
-            rovioPositionProxy = rospy.ServiceProxy('advicePD', rovio_shared.srv.rovio_position)
+            rovioPositionProxy = rospy.ServiceProxy('rovio_position', rovio_shared.srv.rovio_position)
             response = rovioPositionProxy()
             return response
         except rospy.ServiceException, e:
@@ -56,8 +66,10 @@ class Deliberator():
     def server(self):
         rospy.init_node('Deliberator')
         
+        # Darkness coefficient for the area near the robot
+        rospy.Subscriber("DARKNESS_COEFF", std_msgs.msg.Float32, self.darknessCallback)
         # Darkness dataset used by the deliberator
-        rospy.Subscriber("DARKNESS_REGION", raptor_commander.msg.darkness_region, self.darknessCallback)
+        rospy.Subscriber("DARKNESS_REGION", raptor_commander.msg.darkness_region, self.darknessRegionCallback)
         # Prey data used by the deliberator - colour of blobs in vision.
         rospy.Subscriber("BLOB_COLOUR", raptor_commander.msg.blob_colour, self.preyCallback)
         

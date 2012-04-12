@@ -12,8 +12,6 @@ import raptor_commander.srv
 import raptor_commander.msg
 import std_msgs
 
-import deliberator
-
 class Enum(set):
     def __getattr__(self, name):
         if name in self:
@@ -82,6 +80,10 @@ class TaskSequencer():
     darkness = 0
     darknessThreshold = 1000
     
+    # PERCENTAGES for advice acceptance
+    fdAdviceAcceptThreshold = 0.9 # Above this, accept the advice outright
+    fdAdviceRejectThreshold = 0.5 # Below this, reject the advice outright. Between these, use the midpoint
+    
     blobX = None
     blobY = None
     blobColour = preyBack    
@@ -89,7 +91,7 @@ class TaskSequencer():
     # NB: ALL GAINS BETWEEN -10 - +10
     behaviourGains = {"FIND_DARK": 0.0, "FIND_BLOB":0.0, "ABS_MOVE":0.0, "REL_MOVE":0.0}
     
-    relMoveParams = {"theta":0.0, "val":0.0, "time_sec":0.0}
+    relMoveParams = {"theta_rad":0.0, "val":0.0, "time_sec":0.0}
     absMoveParams= {"x":0, "y":0, "val":0.0, "time_sec":0.0}
     
     # SET BEHAVIOUR GAINS
@@ -107,10 +109,10 @@ class TaskSequencer():
     
     def relMove(self):
         msg = raptor_commander.msg.rel_pos_req()
-        msg.theta = self.relMoveParams["theta"]
+        msg.theta_rad = self.relMoveParams["theta_rad"]
         msg.val = self.relMoveParams["val"]
         msg.time_sec = self.relMoveParams["time_sec"]
-        self.absMoveParamsPub.publish(msg)
+        self.relMoveParamsPub.publish(msg)
     
     def absMove(self):
         msg = raptor_commander.msg.abs_pos_req()
@@ -118,7 +120,7 @@ class TaskSequencer():
         msg.y = self.absMoveParams["y"]
         msg.val = self.absMoveParams["val"]
         msg.time_sec = self.absMoveParams["time_sec"]
-        self.relMoveParamsPub.publish(msg)
+        self.absMoveParamsPub.publish(msg)
         
     def alignBright(self):
         print "alignBright"
@@ -213,135 +215,176 @@ class TaskSequencer():
     def findDarkResponse(self):
         # 1) Check if we have a good enough spot here
         if self.checkIfDarkFound():
-            rospy.logdebug("ts.ALIGN_BRIGHT")
-            self.currentState = self.RobotStates.ALIGN_BRIGHT
+            self.setState(self.RobotStates.ALIGN_BRIGHT)
             return
         # 2) If not, check with the timeout. If it's passed, ask the deliberator for advice.
         if (self.currentTime - self.findDarkStartTime) > self.maxFindDarkTime:
-            print self.adviceFDClient() # TODO - BROKE!!!
+            fdAdvice = self.adviceFDClient() # TODO - BROKE!!!
+            
+            if fdAdvice.newThreshold > self.fdAdviceAcceptThreshold*self.darknessThreshold:
+                rospy.loginfo("TS: FD failed... Accepting new Threshold. Absmove to given position")
+                self.darknessThreshold = fdAdvice.newThreshold
+                self.setState(self.RobotStates.ABS_MOVE)
+            elif fdAdvice.newThreshold < self.fdAdviceRejectThreshold*self.darknessThreshold:
+                rospy.loginfo("TS: FD failed... Rejecting new Theshold. Relmove randomly")
+                self.setState(self.RobotStates.REL_MOVE)
+            else: # Advice isn't great or horrible... update threshold to a midpoint
+                rospy.loginfo("TS: FD failed... Lowering threshold. Relmove randomly")
+                self.darknessThreshold = (self.darknessThreshold + fdAdvice.newThreshold)/2
+                self.setState(self.RobotStates.REL_MOVE)
+                
             # TODO - FINISH THIS
             # Deliberator provides a suggested new darkness threshold, and the best seen darkness location + value
             # If threshold is >50% lower than current... reject it outright. 
             # If it's between 50% and 10%, take the midpoint
-            # If it's within 10% of the current threshold, just accept it and update the stored threshold. 
-            rospy.logdebug("ts.REL_MOVE")
-            self.currentState = self.RobotStates.REL_MOVE
-            self.relMoveStartTime = self.currentTime
+            # If it's within 10% of the current threshold, just accept it and update the stored threshold. =
+            
             return
         self.findDark()
     
     def relMoveResponse(self):
         if (self.currentTime - self.relMoveStartTime) > self.maxRelMoveTime:
-            rospy.logdebug("ts.FIND_DARK")
-            self.findDarkStartTime = self.currentTime
-            self.currentState = self.RobotStates.FIND_DARK
+            self.setState(self.RobotStates.FIND_DARK)
             return
         
         self.relMove()
         
     def absMoveResponse(self):
         self.absMove() # abs move terminates immediately
-        rospy.logdebug("ts.FIND_DARK")
-        self.findDarkStartTime = self.currentTime
-        self.currentState = self.RobotStates.FIND_DARK
+        self.setState(self.RobotStates.FIND_DARK)
     
     def alignBrightResponse(self):
         self.alignBright() # State only does one action then transitions
-        self.waitForAlignStartTime = self.currentTime
-        rospy.logdebug("ts.WAIT_ALIGN")
-        self.currentState = self.RobotStates.WAIT_ALIGN
+        self.setState(self.RobotStates.WAIT_ALIGN)
     
     def waitAlignResponse(self):
         if self.isBrightAligned():
-            rospy.logdebug("ts.SCAN_FOR_PREY")
-            self.scanForPreyStartTime = self.currentTime
-            self.currentState = self.RobotStates.SCAN_FOR_PREY
+            self.setState(self.RobotStates.SCAN_FOR_PREY)
                     
         elif (self.currentTime - self.waitForAlignStartTime) > self.maxWaitForAlignTime:
-            rospy.logdebug("ts.FIND_DARK")
-            self.findDarkStartTime = self.currentTime
-            self.currentState = self.RobotStates.FIND_DARK
+            self.setState(self.RobotStates.FIND_DARK)
                 
     def scanForPreyResponse(self):
         if self.blobGreen() or self.blobRed(): # If any prey object is seen
-            rospy.logdebug("ts.STALK_PREY")
-            self.currentState = self.RobotStates.STALK_PREY
+            self.setState(self.RobotStates.STALK_PREY)
         elif (self.currentTime - self.scanForPreyStartTime) > self.maxScanForPreyTime: # timeout
-            rospy.logdebug("ts.FIND_DARK")
-            self.findDarkStartTime = self.currentTime
-            self.currentState = self.RobotStates.FIND_DARK
+            self.setState(self.RobotStates.FIND_DARK)
         else:
             self.scanForPrey()
     
     def stalkPreyResponse(self):
         if self.preyLost(): # Failure condition
-            rospy.logdebug("ts.STALK_LOST_PREY")
-            self.currentState = self.RobotStates.STALK_LOST_PREY
-            self.stalkLostPreyStartTime = self.currentTime
+            self.setState(self.RobotStates.STALK_LOST_PREY)
         elif self.checkIfDetected(): # Failure condition
-            rospy.logdebug("ts.PLAY_DEAD")
-            self.currentState = self.RobotStates.PLAY_DEAD
+            self.setState(self.RobotStates.PLAY_DEAD)
         elif self.checkIfCanKillPrey(): # Success!
-            rospy.logdebug("ts.KILL")
-            self.currentState = self.RobotStates.KILL
-            self.killSoundStartTime = self.currentTime
+            self.setState(self.RobotStates.KILL)
         else:
             self.stalkPrey()
     
     def stalkLostPreyResponse(self):
         if self.blobGreen() or self.blobRed(): # Reacquired prey
-            rospy.logdebug("ts.STALK")
-            self.currentState = self.RobotStates.STALK          
+            self.setState(self.RobotStates.STALK)         
         elif (self.currentTime - self.stalkLostPreyStartTime) > self.maxStalkLostPreyTime:
-            rospy.logdebug("ts.FIND_DARK")
-            self.findDarkStartTime = self.currentTime
-            self.currentState = self.RobotStates.FIND_DARK
+            self.setState(self.RobotStates.FIND_DARK)
         else:
             self.wait()
             
     def playDeadResponse(self):
         # TODO: Deliberator world model here.
         if self.blobGreen(): # Prey looks away - immediately stalk
-            rospy.logdebug("ts.STALK")
-            self.currentState = self.RobotStates.STALK
+            self.setState(self.RobotStates.STALK)
         elif self.preyLost(): # IF PREY DOESN'T EXIST ANY MORE. Go into wait state
-            rospy.logdebug("ts.PLAY_DEAD_LOST_PREY")
-            self.currentState = self.RobotStates.PLAY_DEAD_LOST_PREY
-            self.playDeadLostPreyStartTime = self.currentTime
+            self.setState(self.PLAY_DEAD_LOST_PREY)
         else: # A red blob must still be visible
             # If object centroid is growing in area, or the centroid is moving downwards in the FOV (ie towards robot) 
             if True: # TODO - MAKE THIS THE FLEE CONDITION
-                rospy.logdebug("ts.FLEE")
-                self.currentState = self.RobotStates.FLEE
-                self.fleeStartTime = self.currentTime
+                self.setState(self.RobotStates.FLEE)
             
     def playDeadLostPreyResponse(self):
         if (self.currentTime - self.playDeadLostPreyStartTime) > self.maxPlayDeadLostPreyTime:
-            rospy.logdebug("ts.FIND_DARK")
-            self.findDarkStartTime = self.currentTime
-            self.currentState = self.RobotStates.FIND_DARK
+            self.setState(self.RobotStates.FIND_DARK)
         else:
             self.wait()
     
     def fleeResponse(self):
         if self.blobGreen(): # If we see Green - stalk again
-            rospy.logdebug("ts.STALK_PREY")
-            self.currentState = self.RobotStates.STALK_PREY        
+            self.setState(self.RobotStates.STALK_PREY)        
         elif (self.currentTime - self.fleeStartTime) > self.maxFleeTime:
-            rospy.logdebug("ts.FIND_DARK")
-            self.findDarkStartTime = self.currentTime
-            self.currentState = self.RobotStates.FIND_DARK
+            self.setState(self.RobotStates.FIND_DARK)
         else:
             self.flee()
     
     def killResponse(self):
         if (self.currentTime - self.killSoundStartTime) > self.maxKillSoundTime:
-            rospy.logdebug("ts.FIND_DARK")
-            self.findDarkStartTime = self.currentTime
-            self.currentState = self.RobotStates.FIND_DARK
+            self.setState(self.RobotStates.FIND_DARK)
             return
         self.playKillSound()
     
+    def setState(self, state):
+        if self.currentState == self.RobotStates.INIT:
+            rospy.logdebug("ts.INIT")
+            self.currentState = self.RobotStates.INIT
+        
+        elif state == self.RobotStates.FIND_DARK:
+            rospy.logdebug("ts.FIND_DARK")
+            self.findDarkStartTime = self.currentTime
+            self.currentState = self.RobotStates.FIND_DARK
+        
+        elif state == self.RobotStates.REL_MOVE:
+            rospy.logdebug("ts.REL_MOVE")
+            self.currentState = self.RobotStates.REL_MOVE
+            self.relMoveStartTime = self.currentTime
+        
+        elif state == self.RobotStates.ABS_MOVE:
+            rospy.logdebug("ts.ABS_MOVE")
+            self.currentState = self.RobotStates.ABS_MOVE
+            self.absMoveStartTime = self.currentTime
+        
+        elif state == self.RobotStates.ALIGN_BRIGHT:
+            rospy.logdebug("ts.ALIGN_BRIGHT")
+            self.currentState = self.RobotStates.ALIGN_BRIGHT
+        
+        elif state == self.RobotStates.WAIT_ALIGN:
+            rospy.logdebug("ts.WAIT_ALIGN")
+            self.waitForAlignStartTime = self.currentTime
+            self.currentState = self.RobotStates.WAIT_ALIGN
+              
+        elif state == self.RobotStates.SCAN_FOR_PREY:
+            rospy.logdebug("ts.SCAN_FOR_PREY")
+            self.scanForPreyStartTime = self.currentTime
+            self.currentState = self.RobotStates.SCAN_FOR_PREY
+            
+        elif state == self.RobotStates.STALK_PREY:
+            rospy.logdebug("ts.STALK_PREY")
+            self.currentState = self.RobotStates.STALK_PREY
+        
+        elif state == self.RobotStates.STALK_LOST_PREY:
+            rospy.logdebug("ts.STALK_LOST_PREY")
+            self.currentState = self.RobotStates.STALK_LOST_PREY
+            self.stalkLostPreyStartTime = self.currentTime
+                
+        elif state == self.RobotStates.PLAY_DEAD:
+            rospy.logdebug("ts.PLAY_DEAD")
+            self.currentState = self.RobotStates.PLAY_DEAD
+        
+        elif state == self.RobotStates.PLAY_DEAD_LOST_PREY:
+            rospy.logdebug("ts.PLAY_DEAD_LOST_PREY")
+            self.currentState = self.RobotStates.PLAY_DEAD_LOST_PREY
+            self.playDeadLostPreyStartTime = self.currentTime
+        
+        elif state == self.RobotStates.FLEE:
+            rospy.logdebug("ts.FLEE")
+            self.currentState = self.RobotStates.FLEE
+            self.fleeStartTime = self.currentTime
+        
+        elif state == self.RobotStates.KILL:
+            rospy.logdebug("ts.KILL")
+            self.currentState = self.RobotStates.KILL
+            self.killSoundStartTime = self.currentTime
+            
+        else:
+            rospy.logdebug("ts broken state") 
     
     # MAIN STATE ENGINE
     def checkForStateChange(self):
