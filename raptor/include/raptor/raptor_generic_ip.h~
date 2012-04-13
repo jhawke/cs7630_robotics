@@ -37,13 +37,13 @@ class raptor_generic_ip
 public:
   raptor_generic_ip();
   ~raptor_generic_ip();
-  
+
 private:
   bool get_vector_field(raptor::obstacle_histogram::Request &req, raptor::obstacle_histogram::Response &res);
   void handle_new_image(const sensor_msgs::Image::ConstPtr& msg);
  void alter_darkval(const std_msgs::Int16::ConstPtr &msg);
  
- int16_t dark_thresh_val;
+ 
  
   IplImage* img;
   IplImage donkey_kong;

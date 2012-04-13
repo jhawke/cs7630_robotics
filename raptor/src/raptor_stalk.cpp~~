@@ -42,9 +42,9 @@
 
 using namespace std;
 
-int JifI;//choosey moms choose Jif!!!!!!!!!1
-int JifX;
+int JifX;//choosey moms choose Jif!!!!!!!!!1111111111
 int JifY;
+int JifI;
 
 raptor_stalk::raptor_stalk()
 {
@@ -52,16 +52,17 @@ raptor_stalk::raptor_stalk()
     //Subscribe to the image producing publisher. (/gscam/image_raw)
     image_subscription = node.subscribe<sensor_msgs::Image>("/gscam/image_raw",1,&raptor_stalk::handle_new_image, this);
     //Advertise your service.
-     cv::namedWindow("Stalk_Raw",1);
-     cv::namedWindow("Stalk_Goal",1);
+     cv::namedWindow("View",1);
+     cv::namedWindow("Stalker_goal",1);
     vector_gen = node.advertiseService("raptor_stalk_srv",&raptor_stalk::get_vector_field,this);
     volume = 1;
-    int JifBlobX=0;
-  
+    JifX=0;
+    JifY=0;
+    JifI=0;
 }
 int HSV_filter(int h, int s, int v, int threshold, int hue, int sat, int val) {
 	int FilteredColor[3] = {hue, sat, val}; 
-	int diff = min(abs(h-FilteredColor[0]),abs(180+h-FilteredColor[0]));//
+	int diff = min(abs(h-FilteredColor[0]),abs(180+h-FilteredColor[0]));//+
 				//(FilteredColor[1]-s)*(FilteredColor[1]-s);
 	
 	if((diff < threshold)&&(v>MIN_BRIGHT)&&(s>MIN_SAT)) return abs(diff-threshold); /** If here, it has passed! */
@@ -70,9 +71,9 @@ int HSV_filter(int h, int s, int v, int threshold, int hue, int sat, int val) {
 double *findBlob(IplImage *img, IplImage *imageDisplay, int hue,int sat,int val,int threshold, double blobLowLimit,double blobHighLimit){
 	// Input HSV value of color blob your seeking, acceptable threshold of that color, and Min and Max blob sizes beeing sought out. 
 	//Ouput: pointer to data array, size[#ofblobs*3+1]; Format data=[Number of Blobs, Area1,X of center1, y of center1, Area2,X of center2,y of center2,...,areaN,X of centerN, Y of centerN];
-    //cvShowImage("View",img);
+    cvShowImage("View",img);
     //cv::imshow("View",cv_ptr->image);
-    //cv::waitKey(3);
+    cv::waitKey(3);
     
 
 	// Image variables
@@ -117,8 +118,6 @@ double *findBlob(IplImage *img, IplImage *imageDisplay, int hue,int sat,int val,
 	double *data= new double[blobs.GetNumBlobs()*3+1];
 	data[0]=blobs.GetNumBlobs();// Set first data value to total number of blobs
 	//cout<<data[0]<<"  ";
-	if(data[0])
-	  JifY=0;
 	for (int i = 0; i < blobs.GetNumBlobs(); i++ ){ // Get Blob Data 
 	    blob = blobs.GetBlob(i);//cycle through each blob
 		//data[i*3+1]=blob.area;//blob area
@@ -131,7 +130,7 @@ double *findBlob(IplImage *img, IplImage *imageDisplay, int hue,int sat,int val,
 		  if(hue==0)
 		    JifI=1;
 		  else
-		    JifI=-1;
+		    JifI=0;
 		}
 		//debug
 		if(hue==0){
@@ -140,8 +139,8 @@ double *findBlob(IplImage *img, IplImage *imageDisplay, int hue,int sat,int val,
 		  blob.FillBlob(imageDisplay, cvScalar(255, 0, 0)); // This line will give you a visual marker on image for the blob if you want it for testing or something
 		}
     }
-    //cvNamedWindow("imSmooth",1);
-    //cvShowImage("imSmooth",imageSmooth);
+    cvNamedWindow("imSmooth",1);
+    cvShowImage("imSmooth",imageSmooth);
     //cv::imshow("View",cv_ptr->image);
     cv::waitKey(3);
     
@@ -162,10 +161,7 @@ raptor_stalk::~raptor_stalk()
 
 bool raptor_stalk::get_vector_field(raptor::polar_histogram::Request &req, raptor::polar_histogram::Response &res)
 {
-	JifI=0;
-	JifX=0;
-	JifY=0;
-	IplImage* imageDisplay = cvCloneImage(img);//Gausian Filtered image
+	IplImage* imageDisplay = cvCreateImage( cvGetSize(img),8,3);//Gausian Filtered image
 	double* Out = new double[360];
 	for(int i=0;i<360;i++)
 		Out[i]=0;
@@ -173,7 +169,6 @@ bool raptor_stalk::get_vector_field(raptor::polar_histogram::Request &req, rapto
 	int S[2]= {205,0};//s val
 	int V[2]= {219,0};//V val
 	int I[2]= {1,-1};// Taxis intensity of color (ie towards/away etc)
-	
 	int threshold = 5;// color search threshold
 	double blobLowLimit = 500;// blob size limits
 	double blobHighLimit = 1000000;
@@ -202,8 +197,8 @@ bool raptor_stalk::get_vector_field(raptor::polar_histogram::Request &req, rapto
 			}
 		}
 	}
-	ROS_INFO("X: %d Y: %d  I: %d",JifX,JifY,JifI);
-	cvShowImage("Stalk_Goal",imageDisplay);
+	//ROS_INFO("X: %d Y: %d  I: %d",JifX,JifY,JifI);
+	cvShowImage("Stalker_goal",imageDisplay);
 	for(int i=0;i<360;i++)
 	{
 	  if(Out[i]>100){Out[i]=100;}
@@ -235,7 +230,7 @@ void raptor_stalk::handle_new_image(const sensor_msgs::Image::ConstPtr& msg)
   //img = bridge.imgmsg_to_cv(msg, desired_encoding="passthrough");
   if(isFirstImg)
   {
-    cv::imshow("Stalk_Raw",cv_ptr->image);
+    //cv::imshow("View",cv_ptr->image);
     cv::waitKey(3);
     //isFirstImg = false;
     //ROS_INFO("ASS"); 

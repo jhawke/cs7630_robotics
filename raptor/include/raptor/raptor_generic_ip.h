@@ -40,11 +40,12 @@ public:
 
 private:
   bool get_vector_field(raptor::obstacle_histogram::Request &req, raptor::obstacle_histogram::Response &res);
+  //void snv(const std_msgs::Int16 &msg);
   void handle_new_image(const sensor_msgs::Image::ConstPtr& msg);
- void alter_darkval(const std_msgs::Int16::ConstPtr &msg);
+ void alter_thrsval(const std_msgs::Int16::ConstPtr &msg);
  
  
- 
+ int threshold;
   IplImage* img;
   IplImage donkey_kong;
   cv::Mat kong;

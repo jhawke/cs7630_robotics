@@ -66,6 +66,7 @@ CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/ros_com
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/include/ros/service_traits.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/include/std_msgs/header_deprecated_def.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/Header.h
+CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/Int16.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/include/ros/assert.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/include/ros/console.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/include/ros/static_assert.h
@@ -84,7 +85,6 @@ CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/vision_
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/vision_opencv/cv_bridge/include/cv_bridge/cv_bridge.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /usr/local/include/opencv/cv.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /usr/local/include/opencv/cxcore.h
-CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /usr/local/include/opencv/highgui.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /usr/local/include/opencv2/calib3d/calib3d.hpp
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /usr/local/include/opencv2/core/core.hpp
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /usr/local/include/opencv2/core/core_c.h

@@ -25,7 +25,7 @@ int main(int argc, char** argv)
   cv::WImageBuffer3_b image( cvLoadImage(argv[1], CV_LOAD_IMAGE_COLOR) );
   sensor_msgs::ImagePtr msg = sensor_msgs::CvBridge::cvToImgMsg(image.Ipl(), "bgr8");
   
-  ros::Rate loop_rate(.01);
+  ros::Rate loop_rate(.1);
   while (nh.ok()) {
     pub.publish(msg);
     ros::spinOnce();
