@@ -107,8 +107,8 @@ double *findBlob(IplImage *img, IplImage *imageDisplay, int hue,int sat,int val,
 			 }
 		}
 	}//debug
-	cvNamedWindow("i1",1);
-	cvShowImage("i1",i1);
+	//cvNamedWindow("i1",1);
+	//cvShowImage("i1",i1);
 	cvWaitKey(3);
 	//Blob stuff
 	blobs = CBlobResult(i1,NULL,0);   //Get blobs of image

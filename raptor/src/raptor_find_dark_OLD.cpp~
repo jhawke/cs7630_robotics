@@ -35,15 +35,12 @@
 
 #define YOUR_MOTHER "town bicycle"
 #define MAX_V 255
-#define VALUE_LOW_LIM 30
+#define VALUE_LOW_LIM 15
 #define START_THRESH 15
 #define OBSTACLE_THRESHOLD 5
-#define MIN_BRIGHT 10
-#define MIN_SAT 10
-#define HIGH_PERCENT .45
+
+#define HIGH_PERCENT .33
 #define LOW_PERCENT .10
-#define MASK_MIN_BLOB 200
-#define LARGE_MIN_BRIGHT 20
 
 using namespace std;
 int* xCent;
@@ -65,20 +62,19 @@ raptor_find_dark::raptor_find_dark()
      cv::namedWindow("Dark_Hue",1);
      cv::namedWindow("Dark_Triscale",1);
      cv::namedWindow("Dark_ObsDet",1);
-     cv::namedWindow("Dark_ObsDetPre",1);
      cv::namedWindow("Dark_Detected",1);
      //img=cvCreateImage(cvSize(640,480),IPL_DEPTH_8U,3); 
     vector_gen = node.advertiseService("raptor_find_dark_srv",&raptor_find_dark::get_vector_field,this);
     volume = 1;
 }
-int HSV_filter(int h, int s, int v, int m, int threshold_hue,int threshold_low ,int threshold_high,int threshold_mid,int ref_hue, int ref_sat, int ref_val) {
+int HSV_filter(int h, int s, int v, int threshold_hue,int threshold_low ,int threshold_high,int threshold_mid,int ref_hue, int ref_sat, int ref_val) {
 	int FilteredColor[3] = {ref_hue, ref_sat, ref_val}; 
 	int diff = abs((h-FilteredColor[0]));//*(h-FilteredColor[0])+(s-FilteredColor[1])*(s-FilteredColor[1]));
 	//int diff = abs(FilteredColor[0]-h);
 	
 	//ROS_INFO("FC[2] is %d",FilteredColor[2]);
-	if(m==0||((diff>threshold_hue)&&(!(v<LARGE_MIN_BRIGHT)))){return 0;}//don't care
-	if((v<threshold_low)){return 1;}//abs(diff-threshold); /** If here, it has passed! */
+	if((diff > threshold_hue)&&(!(v<VALUE_LOW_LIM))){return 0;}//don't care
+	else if((v<threshold_low)){return 1;}//abs(diff-threshold); /** If here, it has passed! */
 	else if(v>(threshold_high)){return 4;}
 	else if(v>threshold_mid){return 3;}
 	return 2; /** With 3 this is discarded */
@@ -159,7 +155,6 @@ double findShadow(IplImage *l_img, int hue,int sat,int val,int threshold, double
     
 
 	// Image variables
-	IplImage* local_copy = cvCloneImage(l_img);
 	IplImage* imageSmooth = cvCreateImage( cvGetSize(l_img),8,3);//Gausian Filtered image
 	IplImage* imageSuperSmooth = cvCreateImage( cvGetSize(l_img),8,3);//Gausian Filtered image
 	IplImage* imageHSV = cvCreateImage( cvGetSize(l_img),8,3); //HSV image
@@ -172,12 +167,7 @@ double findShadow(IplImage *l_img, int hue,int sat,int val,int threshold, double
 	IplImage* planeSmoothV = cvCreateImage(cvGetSize(l_img),8,1); //Brightness
 	IplImage* imageSmoothHSV = cvCreateImage( cvGetSize(l_img),8,3); //HSV image
 	IplImage* obsdetmask = cvCreateImage( cvGetSize(l_img),8,1); //Obs det mask
-	IplImage* obsdetmask_dil = cvCreateImage( cvGetSize(l_img),8,1); //Obs det mask
-	IplImage* obsdetmask_b = cvCreateImage( cvGetSize(l_img),8,1); //Obs det mask
-	IplImage* obsdetmask_bdil = cvCreateImage( cvGetSize(l_img),8,1); //Obs det mask
 	//Blob variables
-	CBlobResult mask_bls;
-	CBlob	mask_bl;
 	CBlobResult blobs;
 	CBlob blob;
 	CBlobResult blobs1;
@@ -213,15 +203,14 @@ double findShadow(IplImage *l_img, int hue,int sat,int val,int threshold, double
 		unsigned char* v = &CV_IMAGE_ELEM( planeV, unsigned char, y, 0 );
 		for( int x = 0; x < planeH->width*planeH->nChannels; x += planeH->nChannels ){
 		  //if(x<5){ROS_INFO("hsv[x] is %d,%d,%d",h[x],v[x],x]);}
-			//int f= HSV_filter(h[x],s[x],v[x],threshold,minDarknessValue,maxDarknessValue,midDarknessValue,hue,sat,val);
-			int diff = abs((h[x]-hue));
-			if(((diff < threshold)||(v[x]<MIN_BRIGHT)||(s[x]<MIN_SAT)))
-			{ 
+			 //int f= HSV_filter(h[x],s[x],v[x],threshold,minDarknessValue,maxDarknessValue,midDarknessValue,hue,sat,val);
+			
+			if((abs(h[x]-hue)<threshold)||s{
 			  ((uchar *)(obsdetmask->imageData + y*obsdetmask->widthStep))[x]=255;
 			   if(v[x]<minDark)
 			   {minDark=v[x];}
-			    if(v[x]>maxDark)
-			    {maxDark=v[x];}
+			  if(v[x]>maxDark)
+			  {maxDark=v[x];}
 			}
 			else
 			{
@@ -229,18 +218,10 @@ double findShadow(IplImage *l_img, int hue,int sat,int val,int threshold, double
 			}
 		}
 	}//debug
-	cvDilate(obsdetmask,obsdetmask_dil,NULL,3);
-	cvShowImage("Dark_ObsDetPre",obsdetmask_dil);
-	mask_bls = CBlobResult(obsdetmask_dil,NULL,0);
-	mask_bls.Filter(mask_bls,B_EXCLUDE,CBlobGetArea(),B_LESS,MASK_MIN_BLOB); // Filter Blobs with min and max size
-	mask_bls.GetNthBlob( CBlobGetArea(), 0, mask_bl );
-	cvSet(obsdetmask_b, cvScalar(0,0,0));
-	mask_bl.FillBlob(obsdetmask_b,CV_RGB(255,255,255));
-	cvDilate(obsdetmask_b,obsdetmask_bdil,NULL,7);
-	cvShowImage("Dark_ObsDet",obsdetmask_bdil);
+	cvShowImage("Dark_ObsDet",obsdetmask);
 	cvWaitKey(3);
 	minDarknessValue=((maxDark-minDark)*LOW_PERCENT)+minDark;
-	if(minDarknessValue<VALUE_LOW_LIM){minDarknessValue=VALUE_LOW_LIM;}
+	if(minDarknessValue<VALUE_LOW_LIM){minDarknessValue=VALUE_LOW_LIM);
 	maxDarknessValue=(maxDark)-((maxDark-minDark)*HIGH_PERCENT);
 	midDarknessValue = .5*(minDarknessValue+maxDarknessValue);
 	ROS_INFO("minDark = %d, maxDark = %d, minDV = %d, maxDV = %d",minDark,maxDark,minDarknessValue,maxDarknessValue);
@@ -248,11 +229,10 @@ double findShadow(IplImage *l_img, int hue,int sat,int val,int threshold, double
 		unsigned char* h = &CV_IMAGE_ELEM( planeH, unsigned char, y, 0 );
 		unsigned char* s = &CV_IMAGE_ELEM( planeS, unsigned char, y, 0 );
 		unsigned char* v = &CV_IMAGE_ELEM( planeV, unsigned char, y, 0 );
-		unsigned char* m = &CV_IMAGE_ELEM( obsdetmask_bdil, unsigned char, y, 0 );
 		for( int x = 0; x < planeH->width*planeH->nChannels; x += planeH->nChannels ){
 		  //if(x<5){ROS_INFO("hsv[x] is %d,%d,%d",h[x],v[x],x]);}
-			 int f = HSV_filter(h[x],s[x],v[x],m[x],threshold,minDarknessValue,maxDarknessValue,midDarknessValue,hue,sat,val);
-			 if((f==0))//Non-floor
+			 int f= HSV_filter(h[x],s[x],v[x],threshold,minDarknessValue,maxDarknessValue,midDarknessValue,hue,sat,val);
+			 if(f==0)	//Non-floor
 			 {
 				 ((uchar *)(i1->imageData + y*i1->widthStep))[x]=0;
 				 ((uchar *)(i_ts->imageData + y*i_ts->widthStep))[x]=0;
@@ -315,7 +295,7 @@ double findShadow(IplImage *l_img, int hue,int sat,int val,int threshold, double
 		yCent[i]= getYCenter(blob); //X max
 		valCent[i]= 1; //Y max 
 		//debug
-		blob.FillBlob(local_copy, cvScalar(255, 0, 0)); // This line will give you a visual marker on image for the blob if you want it for testing or something
+		blob.FillBlob(imageSmooth, cvScalar(255, 0, 0)); // This line will give you a visual marker on image for the blob if you want it for testing or something
       }    
       //ROS_INFO("loop 1 done.");
       cvWaitKey(3);
@@ -328,19 +308,15 @@ double findShadow(IplImage *l_img, int hue,int sat,int val,int threshold, double
 		valCent[blobs.GetNumBlobs()+i]= -1;
 
 		  //debug
-		  blob.FillBlob(local_copy, cvScalar(0, 255, 0)); // This line will give you a visual marker on image for the blob if you want it for testing or something
+		  blob.FillBlob(imageSmooth, cvScalar(0, 255, 0)); // This line will give you a visual marker on image for the blob if you want it for testing or something
       }    
     //
    
-   cvShowImage("Dark_Detected",local_copy);
+   cvShowImage("Dark_Detected",imageSmooth);
     //cv::imshow("View",cv_ptr->image);
     cv::waitKey(3);
     
-    //TODO:Jeff's stuff here: average brightness of bottom 1/8th.
     
-    //TODO:My stuff: Brightness of the whole image.
-    
-      cvReleaseImage(&local_copy);
       cvReleaseImage(&imageSmooth);
       cvReleaseImage(&imageSuperSmooth);
       cvReleaseImage(&imageHSV);
@@ -353,9 +329,6 @@ double findShadow(IplImage *l_img, int hue,int sat,int val,int threshold, double
       cvReleaseImage(&planeS);
       cvReleaseImage(&planeV);
       cvReleaseImage(&obsdetmask);
-      cvReleaseImage(&obsdetmask_dil);
-      cvReleaseImage(&obsdetmask_b);
-      cvReleaseImage(&obsdetmask_bdil);
       return data; //return pointer to data array
 }
 
@@ -378,13 +351,13 @@ bool raptor_find_dark::get_vector_field(raptor::polar_histogram::Request &req, r
 	  int V= 0;//V val 
 	  int V2[1]= {30};
 	  //int I[1]= {1};// Taxis intensity of color (ie towards/away etc)
-	  int threshold = 22;// color search threshold
+	  int threshold = 15;// color search threshold
 	  double blobLowLimit = 100;// blob size limits
 	  double blobHighLimit = 1000000;
 	  int viewFieldMin = 159;// view range of robot out of 360
 	  int viewFieldMax = 199;
 	  int triangleSlope = 50; // triangle slope for fuzzyfilter
-	  int depthIntensity[5] = {0,0,100,75,50};
+	  int depthIntensity[5] = {100,100,100,75,50};
 	  int intensity;
 	  int blobX;
 	  int blobY;

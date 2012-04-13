@@ -38,6 +38,8 @@
 #define YOUR_MOTHER "town bicycle"
 #define MAX_V 255
 #define VALUE_LIM 30
+#define MIN_BRIGHT 70
+#define MIN_SAT 70
 #define START_THRESH 15
 #define OBSTACLE_THRESHOLD 5
 using namespace std;
@@ -123,12 +125,12 @@ double *findObstacle(IplImage *l_img, int hue,int sat,int val,int threshold, dou
 				 ((uchar *)(i1->imageData + y*i1->widthStep))[x]=0;
 				 ((uchar *)(i_ts->imageData + y*i_ts->widthStep))[x]=0;
 			 }
-			 if(f==2)
+			 else if(f==2)
 			 {
 				((uchar *)(i1->imageData + y*i1->widthStep))[x]=0;
 				((uchar *)(i_ts->imageData + y*i_ts->widthStep))[x]=127;
 			 }
-			 if(f==0)
+			 else if(f==0)
 			 {
 				 ((uchar *)(i_ts->imageData + y*i_ts->widthStep))[x]=255;
 				 ((uchar *)(i1->imageData + y*i1->widthStep))[x]=255;

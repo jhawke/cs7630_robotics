@@ -221,7 +221,7 @@ double findShadow(IplImage *l_img, int hue,int sat,int val,int threshold, double
 	cvShowImage("Dark_ObsDet",obsdetmask);
 	cvWaitKey(3);
 	minDarknessValue=((maxDark-minDark)*LOW_PERCENT)+minDark;
-	if(minDarknessValue<VALUE_LOW_LIM){minDarknessValue=VALUE_LOW_LIM);
+	if(minDarknessValue<VALUE_LOW_LIM){minDarknessValue=VALUE_LOW_LIM;}
 	maxDarknessValue=(maxDark)-((maxDark-minDark)*HIGH_PERCENT);
 	midDarknessValue = .5*(minDarknessValue+maxDarknessValue);
 	ROS_INFO("minDark = %d, maxDark = %d, minDV = %d, maxDV = %d",minDark,maxDark,minDarknessValue,maxDarknessValue);
