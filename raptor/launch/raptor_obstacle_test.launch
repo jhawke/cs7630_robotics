@@ -10,7 +10,15 @@
 	<!-- Create an instance of each appropriate node -->
   	<node name="rovio_audio" pkg="rovio_av" type="rovio_audio" respawn="false" output="screen"/>
 	<node name="gscam" pkg="gscam" type="gscam" respawn="false" output="screen"/>
-	<node name="findDard" pkg="raptor" type="raptor_find_dark" respawn="false" output="screen"/>
-</launch>
 
+	<!-- Create an instance of each appropriate node -->
+  	<node name="rovio_move" pkg="rovio_ctrl" type="rovio_move" respawn="false" output="screen"/>
+	<node name="rovio_head" pkg="rovio_ctrl" type="rovio_head" respawn="false" output="screen"/>
+
+	<!-- Create an instance of each appropriate node -->
+  	<node name="raptor_mcom" pkg="raptor" type="raptor_mcom" respawn="false" output="screen"/>
+	<node name="raptor_stalk" pkg="raptor" type="raptor_stalk" respawn="false" output="screen"/>
+	<node name="raptor_obsdet" pkg="raptor" type="raptor_generic_ip" respawn="false" output="screen"/>
+
+</launch>
 

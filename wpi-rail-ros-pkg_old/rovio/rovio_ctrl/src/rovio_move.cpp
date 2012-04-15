@@ -21,6 +21,8 @@
 #include <sstream>
 #include <string>
 
+#define MIN_TURN_COMMAND 10
+
 #define NUM_MSG 1
 #define PI 3.14159265
 #define SIG_THRESH 6000
@@ -79,12 +81,13 @@ move_controller::~move_controller()
 
 void move_controller::update()
 {
+      ROS_INFO("Drive is %d, speed is %d",drive,speed);
   // check for a rotation command
   if (rotate > 0)
   {
     rotate = 10-rotate;
-    if(rotate>10){rotate=10;}
     if(rotate<1){rotate=1;}
+    if(rotate>MIN_TURN_COMMAND){rotate=MIN_TURN_COMMAND;}
     ROS_DEBUG("Rotate: %d",rotate);
     // build the URL command and send it
     stringstream ss;
@@ -95,8 +98,8 @@ void move_controller::update()
   else if (rotate < 0)
   {
     rotate = 10+rotate;
-    if(rotate>10){rotate=10;}
     if(rotate<1){rotate=1;}
+    if(rotate>MIN_TURN_COMMAND){rotate=MIN_TURN_COMMAND;}
     ROS_DEBUG("Rotate: [neg-sense] %d",rotate);
     // build the URL command and send it
     stringstream ss;
@@ -107,6 +110,8 @@ void move_controller::update()
     // check for a drive command
   if (drive > 0)
   {
+    speed = 1;
+    ROS_INFO("Drive is %d, speed is %d",drive,speed);
     // build the URL command and send it
     stringstream ss;
     ss << "http://" << host.c_str() << "/rev.cgi?Cmd=nav&action=18&drive=" << drive << "&speed=" << speed;

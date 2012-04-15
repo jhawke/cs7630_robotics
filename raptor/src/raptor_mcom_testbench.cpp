@@ -29,7 +29,7 @@ raptor_mcom_testbench::raptor_mcom_testbench()
   
     testgen_1 = node.advertiseService("mcom_tester_1",&raptor_mcom_testbench::tester_1,this);
     testgen_2 = node.advertiseService("mcom_tester_2",&raptor_mcom_testbench::tester_2,this);
-    testgen_3 = node.advertiseService("obstacle_detection_srv",&raptor_mcom_testbench::tester_obs,this);
+    testgen_3 = node.advertiseService("raptor_obs_det_srv",&raptor_mcom_testbench::tester_obs,this);
     output_srv = node.advertiseService("rovio_move_srv",&raptor_mcom_testbench::move_com,this);
     test_index = 0;
     test_index2 = 0;

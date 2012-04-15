@@ -38,7 +38,8 @@
 #define YOUR_MOTHER "town bicycle"
 #define MAX_V 255
 #define VALUE_LIM 30
-#define START_THRESH 15
+#define START_THRESH 22
+#define V_THRESHOLD 20
 #define OBSTACLE_THRESHOLD 5
 using namespace std;
 
@@ -60,8 +61,9 @@ raptor_generic_ip::raptor_generic_ip()
      cv::namedWindow("Obstacle_Triscale",1);
      cv::namedWindow("Obstacle_Binary",1);
      cv::namedWindow("Obstacle_Detected",1);
+     cvMoveWindow("Obstacle_Detected",1920/2,0);
      //img=cvCreateImage(cvSize(640,480),IPL_DEPTH_8U,3); 
-    vector_gen = node.advertiseService("raptor_generic_ip_srv",&raptor_generic_ip::get_vector_field,this);
+    vector_gen = node.advertiseService("raptor_obs_det_srv",&raptor_generic_ip::get_vector_field,this);
     volume = 1;
 }
 void raptor_generic_ip::alter_thrsval(const std_msgs::Int16::ConstPtr &msg)
@@ -74,9 +76,9 @@ int HSV_filter(int h, int s, int v, int threshold,int thresholdS, int ref_hue, i
 	int diff = abs((h-FilteredColor[0]));//*(h-FilteredColor[0])+(s-FilteredColor[1])*(s-FilteredColor[1]));
 	//int diff = abs(FilteredColor[0]-h);
 	
-	//ROS_INFO("FC[2] is %d",FilteredColor[2]);
+	//ROS_INFO("Threshold_S is",FilteredColor[2]);
 	if(diff < threshold){return 1;}
-	else if(s<thresholdS){return 2;}//abs(diff-threshold); /** If here, it has passed! */
+	else if(s<thresholdS||v<V_THRESHOLD){return 2;}//abs(diff-threshold); /** If here, it has passed! */
 	return 0; /** With 0 this is discarded */
 }
 double *findObstacle(IplImage *l_img, int hue,int sat,int val,int threshold, double blobLowLimit,double blobHighLimit){
@@ -194,9 +196,9 @@ bool raptor_generic_ip::get_vector_field(raptor::obstacle_histogram::Request &re
 	int viewFieldMin = 159;// view range of robot out of 360
 	int viewFieldMax = 200;
 	int triangleSlope[1] = {2};//{0,0,0,0,3,2,1,1}; // triangle slope for fuzzyfilter
-	int depthIntensity[1] = {10};//{0,0,0,0,5,5,10,15};
+	int depthIntensity[1] = {30};//{0,0,0,0,5,5,10,15};
 	//
-	int H= 60;// H value of all searched colors
+	int H= 75;// H value of all searched colors
 	int S= 120;//s val
 	int V= 219;//V val
 	//int threshold = 5;// color search threshold

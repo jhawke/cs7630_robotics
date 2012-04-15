@@ -23,9 +23,9 @@
 #include <limits.h>
 #include <boost/array.hpp>
 
-#define NUM_BEH_MODS 		6
+#define NUM_BEH_MODS 		4
 
-#define LOOP_RATE 		2
+#define LOOP_RATE 		.5
 
 //FOV parameters. Needs to be synced with histogram message types.
 #define FOV_START 		159
@@ -74,8 +74,6 @@ raptor_mcom::raptor_mcom()
   behavioral_modules[1] = node.serviceClient<raptor::polar_histogram>("raptor_absmove_srv"); 
   behavioral_modules[2] = node.serviceClient<raptor::polar_histogram>("raptor_stalk_srv");
   behavioral_modules[3] = node.serviceClient<raptor::polar_histogram>("raptor_find_dark_srv");
-  behavioral_modules[4] = node.serviceClient<raptor::polar_histogram>("mcom_tester_1"); 
-  behavioral_modules[5] = node.serviceClient<raptor::polar_histogram>("mcom_tester_2"); 
   /**************************************/
   
   light_level_finder = node.serviceClient<raptor::light_level_srv>("This_doesnt_exist_yet");
@@ -301,7 +299,7 @@ void raptor_mcom::system_heartbeat()
 	bool is_all_block = true;
 	for(int i = 0; i<FOV_SIZE; i++)
 	{
-	  is_all_block = is_all_block&&(!is_free[i]);
+	  is_all_block = is_all_block&&(is_free[i]!=0);
 	}
 	if(!is_all_block)
 	{
@@ -310,16 +308,30 @@ void raptor_mcom::system_heartbeat()
 	  d_com.request.linear.x = FORWARD_SPEED_MAX*(max_vect/(float)(MAX_INPUT_LEVEL-MIN_INPUT_LEVEL));
 	  //We want to find the nearest non-obstacled path to the goal.
 	  //Bias is toward a path in the FOV, only going out-of-FOV if no non-obstacled path exists.
-	  goal_loc = max_loc-FOV_START;
-	  int closest=1000;
-	  for(int i = 0; i<41; i++)
+	  int down=0;
+	  int up=0;
+	  int start = (max_loc-FOV_START);
+	  if(start<0){start=0;}
+	  if(start>(FOV_SIZE-1)){start=(FOV_SIZE-1);}
+	  ROS_DEBUG("Starting downward examination. Start is %d", start);
+	  while(((max_loc-down)>=FOV_START)&&(is_free[start-down]!=0))
 	  {
-	    if(is_free[i])
-	    {
-	      goal_loc = goal_loc<(abs(goal_loc-i))?closest:i;
-	    }
+	    down++;
 	  }
-	  goal_loc+=FOV_START;
+	  ROS_DEBUG("Minimum de-increment: %d",down);
+	  while(((max_loc+up)<=FOV_END)&&(is_free[start+up]!=0))
+	  {
+	    up++;
+	  }
+	  ROS_DEBUG("Minimum up-increment: %d",up);
+	  if(down<up)
+	  {
+	    goal_loc = max_loc-down;
+	  }
+	  else
+	  {
+	    goal_loc = max_loc+up;
+	  }
 	}
 	else	//This is what happens if the entire fov is obstacled.
 	{

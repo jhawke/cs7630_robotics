@@ -41,7 +41,7 @@
 #define MIN_BRIGHT 10
 #define MIN_SAT 10
 #define HIGH_PERCENT .45
-#define LOW_PERCENT .10
+#define LOW_PERCENT .20
 #define MASK_MIN_BLOB 200
 #define LARGE_MIN_BRIGHT 20
 
@@ -190,14 +190,25 @@ double findShadow(IplImage *l_img, int hue,int sat,int val,int threshold, double
 	cvSmooth(l_img,imageSuperSmooth,CV_GAUSSIAN,41,41,0,0);
 	//cvShowImage("View2a",imageSmooth);
 	
+	
+	
 	//Covert RGB to HSV
 	cvCvtColor(imageSmooth,imageHSV,CV_BGR2HSV);
 	cvCvtColor(imageSuperSmooth,imageSmoothHSV,CV_BGR2HSV);
 	cvCvtPixToPlane(imageSuperSmooth,NULL,NULL,planeSmoothV,0);
 	cvCvtPixToPlane(imageHSV, planeH,planeS,planeV,0);//Extract the 3 color components
+	cvSetImageROI(imageHSV,cvRect(0,imageHSV->height/3,imageHSV->width,imageHSV->height*2/3));
+	IplImage* planeH1 = cvCreateImage(cvGetSize(imageHSV),8,1); //Hue
+	IplImage* planeS1 = cvCreateImage(cvGetSize(imageHSV),8,1); //Saturation
+	IplImage* planeV1 = cvCreateImage(cvGetSize(imageHSV),8,1); //Brightness
+	cvCvtPixToPlane(imageHSV, planeH1,planeS1,planeV1,0);//Extract the 3 color components
+	cvResetImageROI(imageHSV);
+	
+	
 	cvShowImage("Dark_Value",planeV);
 	cvShowImage("Dark_Sat",planeS);
 	cvShowImage("Dark_Hue",planeH);
+	cvSet(obsdetmask, cvScalar(0,0,0));
 	cv::waitKey(3);
 	
 	
@@ -207,17 +218,17 @@ double findShadow(IplImage *l_img, int hue,int sat,int val,int threshold, double
 	int maxDarknessValue = 0;
 	int midDarknessValue = 0;
 	//Filter image for desired Color, output image with only desired color highlighted remaining
-	for( int y = 0; y < planeH->height; y++ ){
-		unsigned char* h = &CV_IMAGE_ELEM( planeH, unsigned char, y, 0 );
-		unsigned char* s = &CV_IMAGE_ELEM( planeS, unsigned char, y, 0 );
-		unsigned char* v = &CV_IMAGE_ELEM( planeV, unsigned char, y, 0 );
-		for( int x = 0; x < planeH->width*planeH->nChannels; x += planeH->nChannels ){
+	for( int y = 0; y < planeH1->height; y++ ){
+		unsigned char* h = &CV_IMAGE_ELEM( planeH1, unsigned char, y, 0 );
+		unsigned char* s = &CV_IMAGE_ELEM( planeS1, unsigned char, y, 0 );
+		unsigned char* v = &CV_IMAGE_ELEM( planeV1, unsigned char, y, 0 );
+		for( int x = 0; x < planeH1->width*planeH1->nChannels; x += planeH1->nChannels ){
 		  //if(x<5){ROS_INFO("hsv[x] is %d,%d,%d",h[x],v[x],x]);}
 			//int f= HSV_filter(h[x],s[x],v[x],threshold,minDarknessValue,maxDarknessValue,midDarknessValue,hue,sat,val);
 			int diff = abs((h[x]-hue));
 			if(((diff < threshold)||(v[x]<MIN_BRIGHT)||(s[x]<MIN_SAT)))
 			{ 
-			  ((uchar *)(obsdetmask->imageData + y*obsdetmask->widthStep))[x]=255;
+			  ((uchar *)(obsdetmask->imageData + (y+planeH->height-planeH1->height)*obsdetmask->widthStep))[x]=255;
 			   if(v[x]<minDark)
 			   {minDark=v[x];}
 			    if(v[x]>maxDark)
@@ -225,18 +236,18 @@ double findShadow(IplImage *l_img, int hue,int sat,int val,int threshold, double
 			}
 			else
 			{
-			  ((uchar *)(obsdetmask->imageData + y*obsdetmask->widthStep))[x]=0;
+			  ((uchar *)(obsdetmask->imageData + (y+planeH->height-planeH1->height)*obsdetmask->widthStep))[x]=0;
 			}
 		}
 	}//debug
-	cvDilate(obsdetmask,obsdetmask_dil,NULL,3);
+	cvDilate(obsdetmask,obsdetmask_dil,NULL,1);
 	cvShowImage("Dark_ObsDetPre",obsdetmask_dil);
 	mask_bls = CBlobResult(obsdetmask_dil,NULL,0);
 	mask_bls.Filter(mask_bls,B_EXCLUDE,CBlobGetArea(),B_LESS,MASK_MIN_BLOB); // Filter Blobs with min and max size
 	mask_bls.GetNthBlob( CBlobGetArea(), 0, mask_bl );
 	cvSet(obsdetmask_b, cvScalar(0,0,0));
 	mask_bl.FillBlob(obsdetmask_b,CV_RGB(255,255,255));
-	cvDilate(obsdetmask_b,obsdetmask_bdil,NULL,7);
+	cvDilate(obsdetmask_b,obsdetmask_bdil,NULL,5);
 	cvShowImage("Dark_ObsDet",obsdetmask_bdil);
 	cvWaitKey(3);
 	minDarknessValue=((maxDark-minDark)*LOW_PERCENT)+minDark;
@@ -352,6 +363,9 @@ double findShadow(IplImage *l_img, int hue,int sat,int val,int threshold, double
       cvReleaseImage(&planeH);
       cvReleaseImage(&planeS);
       cvReleaseImage(&planeV);
+      cvReleaseImage(&planeH1);
+      cvReleaseImage(&planeS1);
+      cvReleaseImage(&planeV1);
       cvReleaseImage(&obsdetmask);
       cvReleaseImage(&obsdetmask_dil);
       cvReleaseImage(&obsdetmask_b);
@@ -373,7 +387,7 @@ bool raptor_find_dark::get_vector_field(raptor::polar_histogram::Request &req, r
     double* Out = new double[360];
 	  for(int i=0;i<360;i++)
 		  Out[i]=0;
-	  int H= 60;// H val of floor
+	  int H= 75;// H val of floor
 	  int S= 0;//s val
 	  int V= 0;//V val 
 	  int V2[1]= {30};

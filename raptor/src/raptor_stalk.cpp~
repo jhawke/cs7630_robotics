@@ -54,6 +54,8 @@ raptor_stalk::raptor_stalk()
     //Advertise your service.
      cv::namedWindow("Stalk_Raw",1);
      cv::namedWindow("Stalk_Goal",1);
+     cvMoveWindow("Stalk_Goal",0,1080/2);
+     cvMoveWindow("Stalk_Raw",0,0);
     vector_gen = node.advertiseService("raptor_stalk_srv",&raptor_stalk::get_vector_field,this);
     volume = 1;
     int JifBlobX=0;
@@ -169,22 +171,22 @@ bool raptor_stalk::get_vector_field(raptor::polar_histogram::Request &req, rapto
 	double* Out = new double[360];
 	for(int i=0;i<360;i++)
 		Out[i]=0;
-	int H[2]= {0,30};// H value of all searched colors
-	int S[2]= {205,0};//s val
-	int V[2]= {219,0};//V val
-	int I[2]= {1,-1};// Taxis intensity of color (ie towards/away etc)
+	int H[3]= {0,120,20};// H value of all searched colors
+	int S[3]= {205,0,0};//s val
+	int V[3]= {219,0,0};//V val
+	float I[3]= {1,-1.5,-0.5};// Taxis intensity of color (ie towards/away etc)
 	
-	int threshold = 5;// color search threshold
-	double blobLowLimit = 500;// blob size limits
+	int threshold[3] = {10,10,10};// color search threshold
+	double blobLowLimit = 750;// blob size limits
 	double blobHighLimit = 1000000;
 	int viewFieldMin = 159;// view range of robot out of 360
 	int viewFieldMax = 199;
-	int triangleSlope = 10; // triangle slope for fuzzyfilter
-	int depthIntensity[5] = {100,100,100,75,50};
+	float triangleSlope = 5; // triangle slope for fuzzyfilter
+	int depthIntensity[5] = {100,100,100,50,20};
 	//
 
 	for(int n=0; n<sizeof(H)/sizeof(H[0]); n++){
-		double* blob= findBlob(img,imageDisplay,H[n],S[n],V[n],threshold,blobLowLimit,blobHighLimit);
+		double* blob= findBlob(img,imageDisplay,H[n],S[n],V[n],threshold[n],blobLowLimit,blobHighLimit);
 		for(int j=0; j<blob[0];j++){
 			int blobX= blob[j*3+2];
 			int blobY= blob[j*3+3];
