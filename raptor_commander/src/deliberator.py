@@ -29,6 +29,7 @@ class Deliberator():
     def giveAdvicePlayDead(self, req):
         rospy.loginfo("deliberator.giveAdvicePlayDead")
         return raptor_commander.srv.getAdviceDETResponse(self.approachSpeed) 
+    
 
 # SUBSCRIBED DATA - PUSH DATA INTO INTERNAL VARIABLES
     def darknessCallback(self, data):
@@ -42,7 +43,6 @@ class Deliberator():
 
     def darknessRegionCallback(self, data):
         rospy.loginfo(rospy.get_caller_id()+" ts DarknessRegion heard %f",data.data)
-        
         print data.data
         
     def preyCallback(self, data):
@@ -74,8 +74,8 @@ class Deliberator():
         rospy.Subscriber("BLOB_COLOUR", raptor_commander.msg.blob_colour, self.preyCallback)
         
         # (serviceName, serviceType, function) 
-        fdAdvice = rospy.Service('adviceFD', raptor_commander.srv.getAdviceFD, self.giveAdviceFindDark)
-        detAdvice = rospy.Service('advicePD', raptor_commander.srv.getAdvicePD, self.giveAdvicePlayDead)
+        self.fdAdvice = rospy.Service('adviceFD', raptor_commander.srv.getAdviceFD, self.giveAdviceFindDark)
+        self.detAdvice = rospy.Service('advicePD', raptor_commander.srv.getAdvicePD, self.giveAdvicePlayDead)
         
         
         rospy.loginfo("Deliberator Ready.")

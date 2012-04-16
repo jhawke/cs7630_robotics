@@ -40,18 +40,38 @@ import roslib; roslib.load_manifest('rospy_tutorials')
 
 import rospy
 import std_msgs
+import raptor_commander.srv
+import raptor_commander.msg
+import rovio_shared.srv
+
+import time
+
+preyFront = -1
+preyBack = 1
+preyGone = 0
+
 
 def talker():
-    pub = rospy.Publisher('PREY', std_msgs.msg.Float32MultiArray)
-    rospy.init_node('talker', anonymous=True)
+    rospy.init_node('sequencerTest')
+    
+    darkPub = rospy.Publisher("DARKNESS_COEFF", std_msgs.msg.Float32)
+        # Prey data used by the task sequencer - colour of blobs in vision.
+    blobColPub = rospy.Pubisher("BLOB_COLOUR", raptor_commander.msg.blob_colour)
+    
     r = rospy.Rate(1) # 10hz
     while not rospy.is_shutdown():
-        preyData = [0.0, 1.1, 2.2]
+        
+        msg = raptor_commander.msg.blob_colour()
+        msg.x = 0
+        msg.y = 0
+        msg.colourID = preyGone
+        
+        # Move to FIND_DARK
+        time.sleep(2)
+        darkPub.publish(5000.0)
+        time.sleep(11)
         
         
-        d = std_msgs.msg.MultiArrayDimension(label='PreyData', size = len(preyData))
-        l = std_msgs.msg.MultiArrayLayout(dim=[d])
-        msg = std_msgs.msg.Float32MultiArray(layout=l, data=preyData)
         
         rospy.loginfo(msg)
         pub.publish(msg)

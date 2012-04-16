@@ -38,7 +38,8 @@ class TaskSequencer():
                         "PLAY_DEAD", \
                         "PLAY_DEAD_LOST_PREY", \
                         "FLEE", \
-                        "KILL"])
+                        "KILL", \
+                        "DEBUG"])
     currentState = RobotStates.INIT
     
     # Parameters used by the functions to determine state transition conditions. 
@@ -86,14 +87,16 @@ class TaskSequencer():
     
     blobX = None
     blobY = None
-    blobColour = preyBack    
+    blobColour = preyGone   
+    
+    killThreshold = 390 
     
     # NB: ALL GAINS BETWEEN -10 - +10
     behaviourGains = {"FIND_DARK": 0.0, "FIND_BLOB":0.0, "ABS_MOVE":0.0, "REL_MOVE":0.0}
     
     relMoveParams = {"theta_rad":0.0, "val":0.0, "time_sec":0.0}
     absMoveParams= {"x":0, "y":0, "val":0.0, "time_sec":0.0}
-    
+     
     # SET BEHAVIOUR GAINS
     def zeroBehaviourGains(self):
         self.behaviourGains["FIND_DARK"] = 0.0
@@ -210,6 +213,18 @@ class TaskSequencer():
     def isBrightAligned(self):
         print "isBrightAligned"
     
+    def preyLost(self):
+        if self.blobGreen() == False and self.blobRed() == False:
+            return True
+        else:
+            return False
+        
+    def checkIfCanKillPrey(self):
+        if self.blobGreen() and self.blobY > self.killThreshold:
+            return True
+        else: 
+            return False
+    
     
     # FUNCTIONS FOR EACH STATE RESPONSE (INCLUDING TRANSITION CONDITIONS)
     def findDarkResponse(self):
@@ -284,7 +299,7 @@ class TaskSequencer():
     
     def stalkLostPreyResponse(self):
         if self.blobGreen() or self.blobRed(): # Reacquired prey
-            self.setState(self.RobotStates.STALK)         
+            self.setState(self.RobotStates.STALK_PREY)         
         elif (self.currentTime - self.stalkLostPreyStartTime) > self.maxStalkLostPreyTime:
             self.setState(self.RobotStates.FIND_DARK)
         else:
@@ -293,7 +308,7 @@ class TaskSequencer():
     def playDeadResponse(self):
         # TODO: Deliberator world model here.
         if self.blobGreen(): # Prey looks away - immediately stalk
-            self.setState(self.RobotStates.STALK)
+            self.setState(self.RobotStates.STALK_PREY)
         elif self.preyLost(): # IF PREY DOESN'T EXIST ANY MORE. Go into wait state
             self.setState(self.PLAY_DEAD_LOST_PREY)
         else: # A red blob must still be visible
@@ -322,77 +337,77 @@ class TaskSequencer():
         self.playKillSound()
     
     def setState(self, state):
-        if self.currentState == self.RobotStates.INIT:
-            rospy.logdebug("ts.INIT")
+        if state == self.RobotStates.INIT:
+            rospy.loginfo("ts.INIT")
             self.currentState = self.RobotStates.INIT
         
         elif state == self.RobotStates.FIND_DARK:
-            rospy.logdebug("ts.FIND_DARK")
+            rospy.loginfo("ts.FIND_DARK")
             self.findDarkStartTime = self.currentTime
             self.currentState = self.RobotStates.FIND_DARK
         
         elif state == self.RobotStates.REL_MOVE:
-            rospy.logdebug("ts.REL_MOVE")
+            rospy.loginfo("ts.REL_MOVE")
             self.currentState = self.RobotStates.REL_MOVE
             self.relMoveStartTime = self.currentTime
         
         elif state == self.RobotStates.ABS_MOVE:
-            rospy.logdebug("ts.ABS_MOVE")
+            rospy.loginfo("ts.ABS_MOVE")
             self.currentState = self.RobotStates.ABS_MOVE
             self.absMoveStartTime = self.currentTime
         
         elif state == self.RobotStates.ALIGN_BRIGHT:
-            rospy.logdebug("ts.ALIGN_BRIGHT")
+            rospy.loginfo("ts.ALIGN_BRIGHT")
             self.currentState = self.RobotStates.ALIGN_BRIGHT
         
         elif state == self.RobotStates.WAIT_ALIGN:
-            rospy.logdebug("ts.WAIT_ALIGN")
+            rospy.loginfo("ts.WAIT_ALIGN")
             self.waitForAlignStartTime = self.currentTime
             self.currentState = self.RobotStates.WAIT_ALIGN
               
         elif state == self.RobotStates.SCAN_FOR_PREY:
-            rospy.logdebug("ts.SCAN_FOR_PREY")
+            rospy.loginfo("ts.SCAN_FOR_PREY")
             self.scanForPreyStartTime = self.currentTime
             self.currentState = self.RobotStates.SCAN_FOR_PREY
             
         elif state == self.RobotStates.STALK_PREY:
-            rospy.logdebug("ts.STALK_PREY")
+            rospy.loginfo("ts.STALK_PREY")
             self.currentState = self.RobotStates.STALK_PREY
         
         elif state == self.RobotStates.STALK_LOST_PREY:
-            rospy.logdebug("ts.STALK_LOST_PREY")
+            rospy.loginfo("ts.STALK_LOST_PREY")
             self.currentState = self.RobotStates.STALK_LOST_PREY
             self.stalkLostPreyStartTime = self.currentTime
                 
         elif state == self.RobotStates.PLAY_DEAD:
-            rospy.logdebug("ts.PLAY_DEAD")
+            rospy.loginfo("ts.PLAY_DEAD")
             self.currentState = self.RobotStates.PLAY_DEAD
         
         elif state == self.RobotStates.PLAY_DEAD_LOST_PREY:
-            rospy.logdebug("ts.PLAY_DEAD_LOST_PREY")
+            rospy.loginfo("ts.PLAY_DEAD_LOST_PREY")
             self.currentState = self.RobotStates.PLAY_DEAD_LOST_PREY
             self.playDeadLostPreyStartTime = self.currentTime
         
         elif state == self.RobotStates.FLEE:
-            rospy.logdebug("ts.FLEE")
+            rospy.loginfo("ts.FLEE")
             self.currentState = self.RobotStates.FLEE
             self.fleeStartTime = self.currentTime
         
         elif state == self.RobotStates.KILL:
-            rospy.logdebug("ts.KILL")
+            rospy.loginfo("ts.KILL")
             self.currentState = self.RobotStates.KILL
             self.killSoundStartTime = self.currentTime
-            
+        
+        elif state == self.RobotStates.DEBUG:
+            rospy.loginfo("ts.DEBUG")
+            self.currentState = self.RobotStates.DEBUG
         else:
-            rospy.logdebug("ts broken state") 
+            rospy.logerr("ts broken state") 
     
     # MAIN STATE ENGINE
     def checkForStateChange(self):
         if self.currentState == self.RobotStates.INIT:
-            rospy.logdebug("ts.INIT")
-            self.currentState = self.RobotStates.FIND_DARK
-            self.findDarkStartTime = self.currentTime
-            rospy.logdebug("ts.FIND_DARK")
+            self.setState(self.RobotStates.FIND_DARK)
             self.zeroBehaviourGains()
         
         elif self.currentState == self.RobotStates.FIND_DARK:
@@ -430,9 +445,12 @@ class TaskSequencer():
         
         elif self.currentState == self.RobotStates.KILL:
             self.killResponse()
-            
+        
+        elif self.currentState == self.RobotStates.DEBUG: # DO NOTHING
+            self.setBehaviourGains(0.0, 0.0, 0.0, 0.0)
+        
         else:
-            rospy.logdebug("ts broken state")
+            rospy.logerr("ts broken state")
     
     # SUBSCRIBED DATA - PUSH DATA INTO INTERNAL VARIABLES
     def darknessCallback(self, data):
@@ -466,6 +484,56 @@ class TaskSequencer():
             return response
         except rospy.ServiceException, e:
             print "Service call failed: %s"%e
+            
+    def switchStateService(self, req):
+        rospy.loginfo("Switch state service %s" % (req.newState))
+        if req.newState == 0:
+            self.setState(self.RobotStates.INIT)
+        
+        elif req.newState == 1:
+            self.setState(self.RobotStates.FIND_DARK)
+        
+        elif req.newState == 2:
+            self.setState(self.RobotStates.REL_MOVE)
+        
+        elif req.newState == 3:
+            self.setState(self.RobotStates.ABS_MOVE)
+        
+        elif req.newState == 4:
+            self.setState(self.RobotStates.ALIGN_BRIGHT)
+        
+        elif req.newState == 5:
+            self.setState(self.RobotStates.WAIT_ALIGN)
+              
+        elif req.newState == 6:
+            self.setState(self.RobotStates.SCAN_FOR_PREY)
+            
+        elif req.newState == 7:
+            self.setState(self.RobotStates.STALK_PREY)
+        
+        elif req.newState == 8:
+            self.setState(self.RobotStates.STALK_LOST_PREY)
+                
+        elif req.newState == 9:
+            self.setState(self.RobotStates.PLAY_DEAD)
+        
+        elif req.newState == 10:
+            self.setState(self.RobotStates.PLAY_DEAD_LOST_PREY)
+        
+        elif req.newState == 11:
+            self.setState(self.RobotStates.FLEE)
+        
+        elif req.newState == 12:
+            self.setState(self.RobotStates.KILL)
+        
+        elif req.newState == -1:
+            self.setState(self.RobotStates.DEBUG)
+            
+        else:
+            rospy.logdebug("srv switchState broken state") 
+            
+            
+        return raptor_commander.srv.switchStateResponse()
     
     # MAIN FUNCTION
     def execute(self):
@@ -485,9 +553,13 @@ class TaskSequencer():
         # Prey data used by the task sequencer - colour of blobs in vision.
         rospy.Subscriber("BLOB_COLOUR", raptor_commander.msg.blob_colour, self.preyCallback)
         
-        
-        
         rospy.init_node('TaskSequencer')
+        # State change service, used for testing.
+        self.stateService = rospy.Service('switchState', raptor_commander.srv.switchState, self.switchStateService)
+        
+        rospy.loginfo('Sequencer initialised')
+        self.setState(self.RobotStates.DEBUG)
+        
         r = rospy.Rate(self.publishRate)
         while not rospy.is_shutdown():
             self.currentTime = rospy.get_time() 
@@ -497,13 +569,13 @@ class TaskSequencer():
             self.checkForStateChange()
             
             # Publish behavioural primitive gains
-            rospy.loginfo(str) # Timestamp string
+            #rospy.loginfo(str) # Timestamp string
             self.stalkPub.publish(self.behaviourGains['FIND_DARK'])
             self.findDarkPub.publish(self.behaviourGains['FIND_BLOB'])
             self.absMovePub.publish(self.behaviourGains['ABS_MOVE'])
             self.relMovePub.publish(self.behaviourGains['REL_MOVE'])
             
-            pub.publish(str)
+            #pub.publish(str)
             r.sleep()
         
 if __name__ == '__main__':
