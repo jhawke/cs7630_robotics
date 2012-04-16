@@ -45,7 +45,7 @@ raptor_mcom_testbench::~raptor_mcom_testbench()
 bool raptor_mcom_testbench::move_com(raptor::twist_srv::Request &req, raptor::twist_srv::Response &res)
 {
 
-  ROS_DEBUG("Recieved a move command of l:[%g,%g,%g] r:[%g,%g,%g]",req.linear.x,req.linear.y,req.linear.z,req.angular.x,req.angular.y,req.angular.z);
+  ROS_DEBUG("Recieved a command: l:[%g,%g,%g] r:[%g,%g,%g]",req.linear.x,req.linear.y,req.linear.z,req.angular.x,req.angular.y,req.angular.z);
     
   return true;
 }

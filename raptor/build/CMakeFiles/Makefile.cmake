@@ -71,6 +71,7 @@ SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/raptor_drive_testbench.dir/DependInfo.cmake"
   "CMakeFiles/raptor_find_dark.dir/DependInfo.cmake"
   "CMakeFiles/raptor_generic_ip.dir/DependInfo.cmake"
+  "CMakeFiles/raptor_jpeg_publisher.dir/DependInfo.cmake"
   "CMakeFiles/raptor_mcom.dir/DependInfo.cmake"
   "CMakeFiles/raptor_mcom_testbench.dir/DependInfo.cmake"
   "CMakeFiles/raptor_ml.dir/DependInfo.cmake"

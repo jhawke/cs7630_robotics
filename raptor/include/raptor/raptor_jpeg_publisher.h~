@@ -1,0 +1,39 @@
+/*!
+ * \file raptor_jpeg_publisher.h
+ * \brief Image processing framework.
+ *
+ * This file provides hooks to image subscriptions and sets up the output server for the mcom node.
+ *
+ * \author omernick
+ * \date March 22,2012
+ */
+
+#ifndef _RAPTOR_JPEG_PUBLISHER_
+#define _RAPTOR_JPEG_PUBLISHER_
+
+#include <ros/ros.h>
+#include <image_transport/image_transport.h>
+#include <opencv/cvwimage.h>
+#include <opencv/highgui.h>
+#include <cv_bridge/CvBridge.h>
+#include <std_msgs/String.h>
+
+class raptor_jpeg_publisher
+{
+public:
+  raptor_jpeg_publisher();
+  ~raptor_jpeg_publisher();
+  void publishImage();
+  ros::NodeHandle node;
+  image_transport::Publisher pub;
+  ros::Subscriber path_listener;
+  std::string addr;
+  bool is_init;
+private:
+    void setPath(std_msgs::String::ConstPtr &msg);
+
+
+
+};
+
+#endif

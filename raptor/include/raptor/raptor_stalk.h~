@@ -1,5 +1,5 @@
 /*!
- * \file raptor_generic_ip.h
+ * \file raptor_stalk.h
  * \brief Image processing framework.
  *
  * This file provides hooks to image subscriptions and sets up the output server for the mcom node.
@@ -8,8 +8,8 @@
  * \date March 22,2012
  */
 
-#ifndef RAPTOR_GENERIC_IP_H_
-#define RAPTOR_GENERIC_IP_H_
+#ifndef RAPTOR_STALK_H_
+#define RAPTOR_STALK_H_
 
 #include <ros/ros.h>
 #include <sensor_msgs/Image.h>
@@ -26,11 +26,11 @@
 #include <blob/blob.h>
 #include <blob/BlobResult.h>
 
-class raptor_generic_ip
+class raptor_stalk
 {
 public:
-  raptor_generic_ip();
-  ~raptor_generic_ip();
+  raptor_stalk();
+  ~raptor_stalk();
   
 private:
   bool get_vector_field(raptor::polar_histogram::Request &req, raptor::polar_histogram::Response &res);
@@ -43,7 +43,8 @@ private:
   int volume;
   
   ros::NodeHandle node;
-  
+  sensor_msgs::CvBridge bridge;
+  cv_bridge::CvImagePtr cv_ptr;
   ros::Subscriber image_subscription;
   ros::ServiceServer vector_gen;
 };

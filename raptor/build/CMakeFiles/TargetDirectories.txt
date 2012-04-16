@@ -10,6 +10,7 @@
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_drive_testbench.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_find_dark.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_generic_ip.dir
+/home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_jpeg_publisher.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_mcom.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_mcom_testbench.dir
 /home/dev/cs7630_robotics/raptor/build/CMakeFiles/raptor_ml.dir

@@ -10,7 +10,6 @@
 
 #ifndef RAPTOR_FIND_DARK_H_
 #define RAPTOR_FIND_DARK_H_
-
 #include <ros/ros.h>
 #include <sensor_msgs/Image.h>
 #include <raptor/polar_histogram.h>
@@ -20,9 +19,17 @@
 #include <boost/array.hpp>
 #include <cxcore.h>
 #include <iostream>
-#include <cv.h>
-#include <highgui.h>
+#include <opencv/cv.h>
+#include <sensor_msgs/image_encodings.h>
+#include <opencv2/highgui/highgui.hpp>
 #include <math.h>
+#include <cv_bridge/cv_bridge.h>
+#include "cv_bridge/CvBridge.h"
+#include <image_transport/image_transport.h>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <blob/blob.h>
+#include <blob/BlobResult.h>
+#include <std_msgs/Int16.h>
 
 class raptor_find_dark
 {
@@ -33,17 +40,22 @@ public:
 private:
   bool get_vector_field(raptor::polar_histogram::Request &req, raptor::polar_histogram::Response &res);
   void handle_new_image(const sensor_msgs::Image::ConstPtr& msg);
+  void alter_thrsval(const std_msgs::Int16::ConstPtr &msg);
  
-  IplImage donkey_kong;
+  int threshold;
   IplImage* img;
-  
+  IplImage donkey_kong;
+  cv::Mat kong;
   bool isFirstImg;
   int volume;
-  
+  sensor_msgs::CvBridge bridge;
+  cv_bridge::CvImagePtr cv_ptr;
   ros::NodeHandle node;
   
+  ros::Subscriber dark_thresh;
   ros::Subscriber image_subscription;
   ros::ServiceServer vector_gen;
+  
 };
 
 int main(int argc, char **argv);

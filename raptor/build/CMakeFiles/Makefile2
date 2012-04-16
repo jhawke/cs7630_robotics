@@ -442,13 +442,48 @@ clean: CMakeFiles/raptor_generic_ip.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/raptor_jpeg_publisher.dir
+
+# All Build rule for target.
+CMakeFiles/raptor_jpeg_publisher.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+	$(MAKE) -f CMakeFiles/raptor_jpeg_publisher.dir/build.make CMakeFiles/raptor_jpeg_publisher.dir/depend
+	$(MAKE) -f CMakeFiles/raptor_jpeg_publisher.dir/build.make CMakeFiles/raptor_jpeg_publisher.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  35
+	@echo "Built target raptor_jpeg_publisher"
+.PHONY : CMakeFiles/raptor_jpeg_publisher.dir/all
+
+# Include target in all.
+all: CMakeFiles/raptor_jpeg_publisher.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/raptor_jpeg_publisher.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 30
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/raptor_jpeg_publisher.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev/cs7630_robotics/raptor/build/CMakeFiles 0
+.PHONY : CMakeFiles/raptor_jpeg_publisher.dir/rule
+
+# Convenience name for target.
+raptor_jpeg_publisher: CMakeFiles/raptor_jpeg_publisher.dir/rule
+.PHONY : raptor_jpeg_publisher
+
+# clean rule for target.
+CMakeFiles/raptor_jpeg_publisher.dir/clean:
+	$(MAKE) -f CMakeFiles/raptor_jpeg_publisher.dir/build.make CMakeFiles/raptor_jpeg_publisher.dir/clean
+.PHONY : CMakeFiles/raptor_jpeg_publisher.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/raptor_jpeg_publisher.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/raptor_mcom.dir
 
 # All Build rule for target.
 CMakeFiles/raptor_mcom.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/raptor_mcom.dir/build.make CMakeFiles/raptor_mcom.dir/depend
 	$(MAKE) -f CMakeFiles/raptor_mcom.dir/build.make CMakeFiles/raptor_mcom.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  35
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  36
 	@echo "Built target raptor_mcom"
 .PHONY : CMakeFiles/raptor_mcom.dir/all
 
@@ -483,7 +518,7 @@ clean: CMakeFiles/raptor_mcom.dir/clean
 CMakeFiles/raptor_mcom_testbench.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/raptor_mcom_testbench.dir/build.make CMakeFiles/raptor_mcom_testbench.dir/depend
 	$(MAKE) -f CMakeFiles/raptor_mcom_testbench.dir/build.make CMakeFiles/raptor_mcom_testbench.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  36
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  37
 	@echo "Built target raptor_mcom_testbench"
 .PHONY : CMakeFiles/raptor_mcom_testbench.dir/all
 
@@ -518,7 +553,7 @@ clean: CMakeFiles/raptor_mcom_testbench.dir/clean
 CMakeFiles/raptor_ml.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/raptor_ml.dir/build.make CMakeFiles/raptor_ml.dir/depend
 	$(MAKE) -f CMakeFiles/raptor_ml.dir/build.make CMakeFiles/raptor_ml.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  37
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  38
 	@echo "Built target raptor_ml"
 .PHONY : CMakeFiles/raptor_ml.dir/all
 
@@ -553,7 +588,7 @@ clean: CMakeFiles/raptor_ml.dir/clean
 CMakeFiles/raptor_relmove.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/raptor_relmove.dir/build.make CMakeFiles/raptor_relmove.dir/depend
 	$(MAKE) -f CMakeFiles/raptor_relmove.dir/build.make CMakeFiles/raptor_relmove.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  38
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  39
 	@echo "Built target raptor_relmove"
 .PHONY : CMakeFiles/raptor_relmove.dir/all
 
@@ -588,7 +623,7 @@ clean: CMakeFiles/raptor_relmove.dir/clean
 CMakeFiles/raptor_stalk.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/raptor_stalk.dir/build.make CMakeFiles/raptor_stalk.dir/depend
 	$(MAKE) -f CMakeFiles/raptor_stalk.dir/build.make CMakeFiles/raptor_stalk.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  39
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles  40
 	@echo "Built target raptor_stalk"
 .PHONY : CMakeFiles/raptor_stalk.dir/all
 
@@ -620,8 +655,8 @@ clean: CMakeFiles/raptor_stalk.dir/clean
 # Target rules for target CMakeFiles/rosbuild_precompile.dir
 
 # All Build rule for target.
-CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_genmsg.dir/all
 CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_gensrv.dir/all
+CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_genmsg.dir/all
 CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_genmsg_libexe.dir/all
 	$(MAKE) -f CMakeFiles/rosbuild_precompile.dir/build.make CMakeFiles/rosbuild_precompile.dir/depend
 	$(MAKE) -f CMakeFiles/rosbuild_precompile.dir/build.make CMakeFiles/rosbuild_precompile.dir/build
