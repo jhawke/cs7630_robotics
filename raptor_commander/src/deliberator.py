@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 '''
 Created on 9/04/2012
 
@@ -9,16 +11,23 @@ import raptor_commander.srv
 import raptor_commander.msg
 import rovio_shared.srv
 import std_msgs
+import math
 
 class Deliberator():
     
+    preyFront = -1
+    preyBack = 1
+    preyGone = 0
+    
     # Previous best dark spot
     x = 0
-    y = 1
-    darkness = 2
-    newThreshold = 3
+    y = 0
+    darkness = 255
+    newThreshold = 255
     
     # Approach speed
+    lastX = 0
+    lastY = 0
     approachSpeed = 0
     
     # Provided service functions.
@@ -28,30 +37,40 @@ class Deliberator():
         
     def giveAdvicePlayDead(self, req):
         rospy.loginfo("deliberator.giveAdvicePlayDead")
-        return raptor_commander.srv.getAdviceDETResponse(self.approachSpeed) 
+        return raptor_commander.srv.getAdvicePDResponse(self.approachSpeed) 
     
 
 # SUBSCRIBED DATA - PUSH DATA INTO INTERNAL VARIABLES
     def darknessCallback(self, data):
         # If this darkness is better than the previous best, store the value and current location
-        rospy.loginfo(rospy.get_caller_id()+" tsDarkness heard %f",data.data)
+        # rospy.loginfo(rospy.get_caller_id()+" d_Darkness heard %f",data.data)
         darknessCoefficient = data.data
-        if darknessCoefficient >= self.darkness:
+        if darknessCoefficient <= self.darkness:
             self.darkness = darknessCoefficient
-            resp = self.getRovioPosition()
+            #resp = self.getRovioPosition()
             #self.x = response.
 
     def darknessRegionCallback(self, data):
-        rospy.loginfo(rospy.get_caller_id()+" ts DarknessRegion heard %f",data.data)
-        print data.data
+        self.darknessRegion = data.data
+        #print data.data
         
     def preyCallback(self, data):
         #rospy.loginfo(rospy.get_caller_id()+"I heard %f",data.data)
-        print 'preyCallback'
-        x = data.data.x
-        y = data.data.y
-        colour = data.data.colourID
-        print "x %s, y %s, colour %s" % (x,y,colour)
+        #print 'd_preyCallback'
+        self.colour = data.colourID
+        
+        self.lastX = self.x
+        self.lastY = self.y
+        
+        self.x = data.x
+        self.y = data.y
+        
+        self.approachSpeed = self.y - self.lastY
+        
+        if self.approachSpeed < 0:
+	    self.approachSpeed = 0
+        
+        #print "x %s, y %s, colour %s" % (self.x,self.y,self.colour)
 
     def getRovioPosition(self):
         rospy.wait_for_service('rovio_position')

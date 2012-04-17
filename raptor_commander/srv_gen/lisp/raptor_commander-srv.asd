@@ -8,4 +8,6 @@
     (:file "_package_getAdvicePD" :depends-on ("_package"))
     (:file "getAdviceFD" :depends-on ("_package_getAdviceFD"))
     (:file "_package_getAdviceFD" :depends-on ("_package"))
+    (:file "switchState" :depends-on ("_package_switchState"))
+    (:file "_package_switchState" :depends-on ("_package"))
   ))

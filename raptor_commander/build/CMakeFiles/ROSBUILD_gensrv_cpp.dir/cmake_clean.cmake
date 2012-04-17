@@ -1,13 +1,14 @@
 FILE(REMOVE_RECURSE
-  "../src/raptor_commander/msg"
-  "../src/raptor_commander/srv"
   "../msg_gen"
   "../srv_gen"
+  "../src/raptor_commander/msg"
+  "../src/raptor_commander/srv"
   "../msg_gen"
   "../srv_gen"
   "CMakeFiles/ROSBUILD_gensrv_cpp"
   "../srv_gen/cpp/include/raptor_commander/getAdvicePD.h"
   "../srv_gen/cpp/include/raptor_commander/getAdviceFD.h"
+  "../srv_gen/cpp/include/raptor_commander/switchState.h"
 )
 
 # Per-language clean rules from dependency scanning.

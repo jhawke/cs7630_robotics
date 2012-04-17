@@ -1,8 +1,8 @@
 FILE(REMOVE_RECURSE
-  "../src/raptor_commander/msg"
-  "../src/raptor_commander/srv"
   "../msg_gen"
   "../srv_gen"
+  "../src/raptor_commander/msg"
+  "../src/raptor_commander/srv"
   "../msg_gen"
   "../srv_gen"
   "CMakeFiles/ROSBUILD_gensrv_lisp"
@@ -12,6 +12,9 @@ FILE(REMOVE_RECURSE
   "../srv_gen/lisp/getAdviceFD.lisp"
   "../srv_gen/lisp/_package.lisp"
   "../srv_gen/lisp/_package_getAdviceFD.lisp"
+  "../srv_gen/lisp/switchState.lisp"
+  "../srv_gen/lisp/_package.lisp"
+  "../srv_gen/lisp/_package_switchState.lisp"
 )
 
 # Per-language clean rules from dependency scanning.
