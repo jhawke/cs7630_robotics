@@ -33,6 +33,7 @@
 #include <sensor_msgs/image_encodings.h>
 #include <boost/array.hpp>
 #include <std_msgs/Int16.h>
+#include <std_msgs/Float32.h>
 
 class raptor_stalk
 {
@@ -43,17 +44,20 @@ public:
 private:
   bool get_vector_field(raptor::polar_histogram::Request &req, raptor::polar_histogram::Response &res);
   void handle_new_image(const sensor_msgs::Image::ConstPtr& msg);
+  void adjust_gain(const std_msgs::Float32::ConstPtr& msg);
  
   IplImage donkey_kong;
   IplImage* img;
   
   bool isFirstImg;
-  int volume;
+  float volume;
   
   ros::NodeHandle node;
   sensor_msgs::CvBridge bridge;
   cv_bridge::CvImagePtr cv_ptr;
+  ros::Publisher target_centroid;
   ros::Subscriber image_subscription;
+  ros::Subscriber stalk_volume;
   ros::ServiceServer vector_gen;
 };
 

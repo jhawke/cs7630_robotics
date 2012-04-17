@@ -11,6 +11,7 @@ CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: ../include/raptor/raptor_stalk.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: ../srv_gen/cpp/include/raptor/obstacle_histogram.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: ../srv_gen/cpp/include/raptor/polar_histogram.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: ../src/raptor_stalk.cpp
+CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /home/dev/cs7630_robotics/raptor_commander/msg_gen/cpp/include/raptor_commander/blob_colour.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/common_msgs/sensor_msgs/include/sensor_msgs/image_encodings.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/cpp/include/sensor_msgs/CameraInfo.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/cpp/include/sensor_msgs/Image.h
@@ -65,6 +66,7 @@ CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/ros_com
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/include/ros/message_traits.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/include/ros/service_traits.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/include/std_msgs/header_deprecated_def.h
+CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/Float32.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/Header.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/Int16.h
 CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/include/ros/assert.h

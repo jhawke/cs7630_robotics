@@ -12,6 +12,7 @@ CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o
  ../srv_gen/cpp/include/raptor/obstacle_histogram.h
  ../srv_gen/cpp/include/raptor/polar_histogram.h
  /home/dev/cs7630_robotics/raptor/src/raptor_stalk.cpp
+ /home/dev/cs7630_robotics/raptor_commander/msg_gen/cpp/include/raptor_commander/blob_colour.h
  /opt/ros/electric/stacks/common_msgs/sensor_msgs/include/sensor_msgs/image_encodings.h
  /opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/cpp/include/sensor_msgs/CameraInfo.h
  /opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/cpp/include/sensor_msgs/Image.h
@@ -66,6 +67,7 @@ CMakeFiles/raptor_stalk.dir/src/raptor_stalk.o
  /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/include/ros/message_traits.h
  /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/include/ros/service_traits.h
  /opt/ros/electric/stacks/ros_comm/messages/std_msgs/include/std_msgs/header_deprecated_def.h
+ /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/Float32.h
  /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/Header.h
  /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/Int16.h
  /opt/ros/electric/stacks/ros_comm/tools/rosconsole/include/ros/assert.h

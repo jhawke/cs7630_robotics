@@ -32,7 +32,9 @@
 #include <sensor_msgs/image_encodings.h>
 #include <boost/array.hpp>
 #include <std_msgs/Int16.h>
+#include <std_msgs/Float32.h>
 #include <algorithm>
+#include <raptor_commander/blob_colour.h>
 //Put any local defines here.
 
 #define YOUR_MOTHER "town bicycle"
@@ -42,7 +44,7 @@
 
 using namespace std;
 
-int JifI;//choosey moms choose Jif!!!!!!!!!1
+int JifI;
 int JifX;
 int JifY;
 
@@ -51,19 +53,28 @@ raptor_stalk::raptor_stalk()
   isFirstImg = true;
     //Subscribe to the image producing publisher. (/gscam/image_raw)
     image_subscription = node.subscribe<sensor_msgs::Image>("/gscam/image_raw",1,&raptor_stalk::handle_new_image, this);
+    stalk_volume = node.subscribe<std_msgs::Float32>("STALK_GAIN",1,&raptor_stalk::adjust_gain,this);
     //Advertise your service.
      cv::namedWindow("Stalk_Raw",1);
      cv::namedWindow("Stalk_Goal",1);
      cvMoveWindow("Stalk_Goal",0,1080/2);
      cvMoveWindow("Stalk_Raw",0,0);
     vector_gen = node.advertiseService("raptor_stalk_srv",&raptor_stalk::get_vector_field,this);
-    volume = 1;
+    target_centroid = node.advertise<raptor_commander::blob_colour>("BLOB_COLOUR",2);
+    volume = 0;
     int JifBlobX=0;
   
 }
+
+void raptor_stalk::adjust_gain(const std_msgs::Float32::ConstPtr& msg)
+{
+   volume = msg->data;
+   ROS_DEBUG("Stalk volume updated to %f.",volume);
+}
+
 int HSV_filter(int h, int s, int v, int threshold, int hue, int sat, int val) {
 	int FilteredColor[3] = {hue, sat, val}; 
-	int diff = min(abs(h-FilteredColor[0]),abs(180+h-FilteredColor[0]));//
+	int diff = min(abs(h-FilteredColor[0]),abs((180+FilteredColor[0])-h));//
 				//(FilteredColor[1]-s)*(FilteredColor[1]-s);
 	
 	if((diff < threshold)&&(v>MIN_BRIGHT)&&(s>MIN_SAT)) return abs(diff-threshold); /** If here, it has passed! */
@@ -84,29 +95,41 @@ double *findBlob(IplImage *img, IplImage *imageDisplay, int hue,int sat,int val,
 	IplImage* planeH = cvCreateImage(cvGetSize(img),8,1); //Hue
 	IplImage* planeS = cvCreateImage(cvGetSize(img),8,1); //Saturation
 	IplImage* planeV = cvCreateImage(cvGetSize(img),8,1); //Brightness
-	//Blob variables
+	//Blob variablestarget_centroid
 	CBlobResult blobs;
 	CBlob blob;
 	CBlobGetXCenter getXCenter;
 	CBlobGetYCenter getYCenter;
 	//Output Variable
-	//Gausian Filter
+	//Gausian Filtertarget_centroid
 	cvSmooth(img,imageSmooth,CV_GAUSSIAN,7,9,0,0);
 	//Covert RGB to HSV
 	cvCvtColor(imageSmooth,imageHSV,CV_BGR2HSV);
 	cvCvtPixToPlane(imageHSV, planeH,planeS,planeV,0);//Extract the 3 color components
+	cvSetImageROI(imageHSV,cvRect(0,imageHSV->height/3,imageHSV->width,imageHSV->height*2/3));
+	IplImage* planeH1 = cvCreateImage(cvGetSize(imageHSV),8,1); //Hue
+	IplImage* planeS1 = cvCreateImage(cvGetSize(imageHSV),8,1); //Saturation
+	IplImage* planeV1 = cvCreateImage(cvGetSize(imageHSV),8,1); //Brightness
+	cvCvtPixToPlane(imageHSV, planeH1,planeS1,planeV1,0);//Extract the 3 color components
+	cvResetImageROI(imageHSV);
 	//Filter image for desired Color, output image with only desired color highlighted remaining
 	for( int y = 0; y < planeH->height; y++ ){
-		unsigned char* h = &CV_IMAGE_ELEM( planeH, unsigned char, y, 0 );
-		unsigned char* s = &CV_IMAGE_ELEM( planeS, unsigned char, y, 0 );
-		unsigned char* v = &CV_IMAGE_ELEM( planeV, unsigned char, y, 0 );
-		for( int x = 0; x < planeH->width*planeH->nChannels; x += planeH->nChannels ){
+		if(y >= planeH1->height){
+		  for( int x = 0; x < planeH->width*planeH->nChannels; x += planeH->nChannels ){
+		    ((uchar *)(i1->imageData + (y-planeH1->height)*i1->widthStep))[x]=0;
+		  }
+		}else{
+		unsigned char* h = &CV_IMAGE_ELEM( planeH1, unsigned char, y, 0 );
+		unsigned char* s = &CV_IMAGE_ELEM( planeS1, unsigned char, y, 0 );
+		unsigned char* v = &CV_IMAGE_ELEM( planeV1, unsigned char, y, 0 );
+		for( int x = 0; x < planeH1->width*planeH1->nChannels; x += planeH1->nChannels ){
 			 int f= HSV_filter(h[x],s[x],v[x],threshold,hue,sat,val);
 			 if(f){
-				 ((uchar *)(i1->imageData + y*i1->widthStep))[x]=255;
+				 ((uchar *)(i1->imageData + (y+planeH->height-planeH1->height)*i1->widthStep))[x]=255;
 			 }else{
-				 ((uchar *)(i1->imageData + y*i1->widthStep))[x]=0;
+				 ((uchar *)(i1->imageData + (y+planeH->height-planeH1->height)*i1->widthStep))[x]=0;
 			 }
+		}
 		}
 	}//debug
 	//cvNamedWindow("i1",1);
@@ -154,6 +177,9 @@ double *findBlob(IplImage *img, IplImage *imageDisplay, int hue,int sat,int val,
       cvReleaseImage(&planeH);
       cvReleaseImage(&planeS);
       cvReleaseImage(&planeV);
+      cvReleaseImage(&planeH1);
+      cvReleaseImage(&planeS1);
+      cvReleaseImage(&planeV1);
 	return data; //return pointer to data array
 }
 
@@ -200,11 +226,21 @@ bool raptor_stalk::get_vector_field(raptor::polar_histogram::Request &req, rapto
 				if(val<0) val=0;
 				val*=I[n];
 				Out[k]+=val;
-				//ROS_INFO("I[n] is %d and val is %d",I[n],val);
+				//ROS_INFO("I[n] is %d and val is %d",I[n],raptor_commander::blob_colour bcm;
 			}
 		}
 	}
-	ROS_INFO("X: %d Y: %d  I: %d",JifX,JifY,JifI);
+	ROS_DEBUG("X: %d Y: %d  I: %d",JifX,JifY,JifI);
+	//if(JifI!=0)
+	if(true)
+	{
+	  raptor_commander::blob_colour bcm;
+	  bcm.x=JifX;
+	  bcm.y=JifY;
+	  bcm.colourID=JifI;
+	  target_centroid.publish(bcm);
+	  ROS_INFO("Published.");
+	}
 	cvShowImage("Stalk_Goal",imageDisplay);
 	for(int i=0;i<360;i++)
 	{
@@ -231,7 +267,7 @@ void raptor_stalk::handle_new_image(const sensor_msgs::Image::ConstPtr& msg)
    ROS_ERROR("cv_bridge exception: %s", e.what());
    return;
    }
-  donkey_kong=(IplImage)cv_ptr->image; //IT'S ON LIKE DONKEY KONG
+  donkey_kong=(IplImage)cv_ptr->image; 
   img = &donkey_kong;
   //img= cvGetImage(&(cv_ptr->image),&stub);
   //img = bridge.imgmsg_to_cv(msg, desired_encoding="passthrough");
@@ -239,12 +275,9 @@ void raptor_stalk::handle_new_image(const sensor_msgs::Image::ConstPtr& msg)
   {
     cv::imshow("Stalk_Raw",cv_ptr->image);
     cv::waitKey(3);
-    //isFirstImg = false;
-    //ROS_INFO("ASS"); 
     
   }
   
-  //Put your pre-handler shite in here. You can just copy the latest or some damn thing.
 }
 
 int main(int argc, char **argv)

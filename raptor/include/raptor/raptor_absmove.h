@@ -17,10 +17,11 @@
 #include <ros/ros.h>
 #include <rovio_shared/rovio_position.h>
 #include <raptor/polar_histogram.h>
-#include <raptor/abs_pos_req.h>
+#include <raptor_commander/abs_pos_req.h>
 #include <string>
 #include <limits.h>
 #include <boost/array.hpp>
+#include <std_msgs/Float32.h>
 
 class raptor_absmove
 {
@@ -36,9 +37,13 @@ ros::NodeHandle node;
 ros::ServiceClient location_request;
 ros::Subscriber location_setter;
 ros::ServiceServer vector_output;
+ros::Subscriber absmove_volume;
 
-void register_new_location(const raptor::abs_pos_req::ConstPtr &msg);
+void register_new_location(const raptor_commander::abs_pos_req::ConstPtr &msg);
 bool give_location(raptor::polar_histogram::Request &req, raptor::polar_histogram::Response &res);
+void adjust_gain(const std_msgs::Float32::ConstPtr& msg);
+
+float volume;
 
 bool loc_is_registered;
 int16_t goal_x;

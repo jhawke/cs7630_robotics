@@ -35,7 +35,6 @@
 
 //Put any local defines here.
 
-#define YOUR_MOTHER "town bicycle"
 #define MAX_V 255
 #define VALUE_LIM 30
 #define START_THRESH 22
@@ -271,12 +270,12 @@ void raptor_generic_ip::handle_new_image(const sensor_msgs::Image::ConstPtr& msg
    ROS_ERROR("cv_bridge exception: %s", e.what());
    return;
    }
-  donkey_kong=(IplImage)cv_ptr->image; //IT'S ON LIKE DONKEY KONG
+  donkey_kong=(IplImage)cv_ptr->image; 
   img = &donkey_kong;
     cvShowImage("Obstacle_Raw",img);
     cv::waitKey(3);
   isFirstImg = true;
-// your pre-handler shite in here. You can just copy the latest or some damn thing.
+
 }
 
 int main(int argc, char **argv)

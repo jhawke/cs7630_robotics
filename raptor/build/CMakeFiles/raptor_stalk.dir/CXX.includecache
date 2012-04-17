@@ -105,6 +105,8 @@ boost/array.hpp
 -
 std_msgs/Int16.h
 -
+std_msgs/Float32.h
+-
 
 ../srv_gen/cpp/include/raptor/obstacle_histogram.h
 string
@@ -201,8 +203,34 @@ boost/array.hpp
 -
 std_msgs/Int16.h
 -
+std_msgs/Float32.h
+-
 algorithm
 -
+raptor_commander/blob_colour.h
+-
+
+/home/dev/cs7630_robotics/raptor_commander/msg_gen/cpp/include/raptor_commander/blob_colour.h
+string
+-
+vector
+-
+map
+-
+ostream
+-
+ros/serialization.h
+/home/dev/cs7630_robotics/raptor_commander/msg_gen/cpp/include/raptor_commander/ros/serialization.h
+ros/builtin_message_traits.h
+/home/dev/cs7630_robotics/raptor_commander/msg_gen/cpp/include/raptor_commander/ros/builtin_message_traits.h
+ros/message_operations.h
+/home/dev/cs7630_robotics/raptor_commander/msg_gen/cpp/include/raptor_commander/ros/message_operations.h
+ros/time.h
+/home/dev/cs7630_robotics/raptor_commander/msg_gen/cpp/include/raptor_commander/ros/time.h
+ros/macros.h
+/home/dev/cs7630_robotics/raptor_commander/msg_gen/cpp/include/raptor_commander/ros/macros.h
+ros/assert.h
+/home/dev/cs7630_robotics/raptor_commander/msg_gen/cpp/include/raptor_commander/ros/assert.h
 
 /opt/ros/electric/stacks/common_msgs/sensor_msgs/include/sensor_msgs/image_encodings.h
 string
@@ -853,6 +881,28 @@ boost/type_traits/remove_const.hpp
 -
 
 /opt/ros/electric/stacks/ros_comm/messages/std_msgs/include/std_msgs/header_deprecated_def.h
+
+/opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/Float32.h
+string
+-
+vector
+-
+map
+-
+ostream
+-
+ros/serialization.h
+/opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/ros/serialization.h
+ros/builtin_message_traits.h
+/opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/ros/builtin_message_traits.h
+ros/message_operations.h
+/opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/ros/message_operations.h
+ros/time.h
+/opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/ros/time.h
+ros/macros.h
+/opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/ros/macros.h
+ros/assert.h
+/opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/ros/assert.h
 
 /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/Header.h
 string

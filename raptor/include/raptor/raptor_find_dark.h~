@@ -30,6 +30,8 @@
 #include <blob/blob.h>
 #include <blob/BlobResult.h>
 #include <std_msgs/Int16.h>
+#include <raptor/light_level_srv.h>
+#include <std_msgs/Float32.h>
 
 class raptor_find_dark
 {
@@ -39,20 +41,29 @@ public:
   
 private:
   bool get_vector_field(raptor::polar_histogram::Request &req, raptor::polar_histogram::Response &res);
+  bool get_darkness(raptor::light_level_srv::Request &req, raptor::light_level_srv::Response &res);
   void handle_new_image(const sensor_msgs::Image::ConstPtr& msg);
- void alter_thrsval(const std_msgs::Int16::ConstPtr &msg);
-  IplImage donkey_kong;
+  void alter_thrsval(const std_msgs::Int16::ConstPtr &msg);
+  void adjust_gain(const std_msgs::Float32::ConstPtr& msg);
+   
+  int threshold;
   IplImage* img;
-  
+  IplImage donkey_kong;
+  cv::Mat kong;
   bool isFirstImg;
-  int volume;
-  
-  ros::NodeHandle node;
+  float volume;
   sensor_msgs::CvBridge bridge;
   cv_bridge::CvImagePtr cv_ptr;
+  ros::NodeHandle node;
   
+  ros::Subscriber fd_volume;
+  
+  ros::Publisher near_light_sense;
+  ros::Subscriber dark_thresh;
   ros::Subscriber image_subscription;
   ros::ServiceServer vector_gen;
+  ros::ServiceServer light_sense;
+  
 };
 
 int main(int argc, char **argv);

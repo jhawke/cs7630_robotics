@@ -91,6 +91,7 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/raptor/msg/__init__.py
 ../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
 ../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/joystick_drivers/joy/manifest.xml
 ../src/raptor/msg/_abs_pos_req.py: /home/dev/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_ctrl/manifest.xml
+../src/raptor/msg/_abs_pos_req.py: /home/dev/cs7630_robotics/raptor_commander/manifest.xml
 ../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/vision_opencv/opencv2/manifest.xml
 ../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/vision_opencv/cv_bridge/manifest.xml
 ../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
@@ -106,6 +107,8 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/raptor/msg/__init__.py
 ../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/msg_gen/generated
 ../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/srv_gen/generated
 ../src/raptor/msg/_abs_pos_req.py: /opt/ros/electric/stacks/joystick_drivers/joy/msg_gen/generated
+../src/raptor/msg/_abs_pos_req.py: /home/dev/cs7630_robotics/raptor_commander/msg_gen/generated
+../src/raptor/msg/_abs_pos_req.py: /home/dev/cs7630_robotics/raptor_commander/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/raptor/msg/_abs_pos_req.py"
 	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --noinitpy /home/dev/cs7630_robotics/raptor/msg/abs_pos_req.msg
@@ -153,6 +156,7 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/raptor/msg/__init__.py
 ../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
 ../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/joystick_drivers/joy/manifest.xml
 ../src/raptor/msg/_rel_pos_req.py: /home/dev/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_ctrl/manifest.xml
+../src/raptor/msg/_rel_pos_req.py: /home/dev/cs7630_robotics/raptor_commander/manifest.xml
 ../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/vision_opencv/opencv2/manifest.xml
 ../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/vision_opencv/cv_bridge/manifest.xml
 ../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
@@ -168,6 +172,8 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/raptor/msg/__init__.py
 ../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/msg_gen/generated
 ../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/srv_gen/generated
 ../src/raptor/msg/_rel_pos_req.py: /opt/ros/electric/stacks/joystick_drivers/joy/msg_gen/generated
+../src/raptor/msg/_rel_pos_req.py: /home/dev/cs7630_robotics/raptor_commander/msg_gen/generated
+../src/raptor/msg/_rel_pos_req.py: /home/dev/cs7630_robotics/raptor_commander/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/raptor/msg/_rel_pos_req.py"
 	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --noinitpy /home/dev/cs7630_robotics/raptor/msg/rel_pos_req.msg
@@ -215,6 +221,7 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/raptor/msg/__init__.py
 ../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
 ../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/joystick_drivers/joy/manifest.xml
 ../src/raptor/msg/_Vector3.py: /home/dev/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_ctrl/manifest.xml
+../src/raptor/msg/_Vector3.py: /home/dev/cs7630_robotics/raptor_commander/manifest.xml
 ../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/vision_opencv/opencv2/manifest.xml
 ../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/vision_opencv/cv_bridge/manifest.xml
 ../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
@@ -230,6 +237,8 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/raptor/msg/__init__.py
 ../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/msg_gen/generated
 ../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/srv_gen/generated
 ../src/raptor/msg/_Vector3.py: /opt/ros/electric/stacks/joystick_drivers/joy/msg_gen/generated
+../src/raptor/msg/_Vector3.py: /home/dev/cs7630_robotics/raptor_commander/msg_gen/generated
+../src/raptor/msg/_Vector3.py: /home/dev/cs7630_robotics/raptor_commander/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/raptor/msg/_Vector3.py"
 	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --noinitpy /home/dev/cs7630_robotics/raptor/msg/Vector3.msg

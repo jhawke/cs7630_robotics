@@ -196,7 +196,7 @@ bool raptor_generic_ip::get_vector_field(raptor::obstacle_histogram::Request &re
 	int viewFieldMin = 159;// view range of robot out of 360
 	int viewFieldMax = 200;
 	int triangleSlope[1] = {2};//{0,0,0,0,3,2,1,1}; // triangle slope for fuzzyfilter
-	int depthIntensity[1] = {10};//{0,0,0,0,5,5,10,15};
+	int depthIntensity[1] = {30};//{0,0,0,0,5,5,10,15};
 	//
 	int H= 75;// H value of all searched colors
 	int S= 120;//s val

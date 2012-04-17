@@ -8,6 +8,7 @@ CMakeFiles/raptor_absmove.dir/src/raptor_absmove.o
  ../srv_gen/cpp/include/raptor/polar_histogram.h
  ../srv_gen/cpp/include/raptor/twist_srv.h
  /home/dev/cs7630_robotics/raptor/src/raptor_absmove.cpp
+ /home/dev/cs7630_robotics/raptor_commander/msg_gen/cpp/include/raptor_commander/abs_pos_req.h
  /home/dev/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_shared/srv_gen/cpp/include/rovio_shared/rovio_position.h
  /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/include/ros/advertise_options.h
  /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/include/ros/advertise_service_options.h
@@ -49,6 +50,7 @@ CMakeFiles/raptor_absmove.dir/src/raptor_absmove.o
  /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/include/ros/message_operations.h
  /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/include/ros/message_traits.h
  /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/include/ros/service_traits.h
+ /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/Float32.h
  /opt/ros/electric/stacks/ros_comm/tools/rosconsole/include/ros/assert.h
  /opt/ros/electric/stacks/ros_comm/tools/rosconsole/include/ros/console.h
  /opt/ros/electric/stacks/ros_comm/tools/rosconsole/include/ros/static_assert.h

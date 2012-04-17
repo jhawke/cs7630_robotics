@@ -14,6 +14,7 @@
   <depend package="rovio_av"/>
   <depend package="rovio_ctrl"/>
   <depend package="rovio_shared"/>
+  <depend package="raptor_commander"/>
   <depend package="cv_bridge"/>
   <depend package="sensor_msgs"/>
   <depend package="opencv2"/>

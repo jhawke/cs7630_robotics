@@ -25,7 +25,7 @@
 
 #define NUM_BEH_MODS 		6
 
-#define LOOP_RATE 		4
+#define LOOP_RATE 		1
 
 //FOV parameters. Needs to be synced with histogram message types.
 #define FOV_START 		159
@@ -40,7 +40,7 @@
 #define MIN_INPUT_LEVEL		-100
 
 //empiricially determine these.
-#define CONST_P			.05
+#define CONST_P			.03
 #define CONST_I			.00
 
 #define LL_FINDLIGHT		1
@@ -78,7 +78,7 @@ raptor_mcom::raptor_mcom()
   behavioral_modules[5] = node.serviceClient<raptor::polar_histogram>("mcom_tester_2"); 
   /**************************************/
   
-  light_level_finder = node.serviceClient<raptor::light_level_srv>("This_doesnt_exist_yet");
+  light_level_finder = node.serviceClient<raptor::light_level_srv>("raptor_full_bright_srv");
   //Publish drive command data.
   drive_commander = node.serviceClient<rovio_shared::twist_srv>("rovio_move_srv");
   man_driver = node.serviceClient<rovio_shared::man_drv_srv>("rovio_man_drv");
@@ -109,7 +109,7 @@ void raptor_mcom::lls_relmove_callback(const std_msgs::Float32::ConstPtr &msg)
 {
   float moves_float;
   int theta_degrees;
-  if(msg->data>0)
+  if(msg->data>=0)
   {
     theta_degrees = 360*(msg->data/(2*PI));
     theta_degrees = theta_degrees%360;
@@ -119,7 +119,7 @@ void raptor_mcom::lls_relmove_callback(const std_msgs::Float32::ConstPtr &msg)
   }
   else
   {
-   ROS_ERROR("The low-level absmove does not accept zero or negative numbers."); 
+   ROS_ERROR("The low-level absmove does not accept negative numbers."); 
   }
 
 }
@@ -129,12 +129,12 @@ void raptor_mcom::find_best_light()
   if(!best_heading_found)
     {
       raptor::light_level_srv srv;
-      //if(light_level_finder.call(srv))
+      if(light_level_finder.call(srv))
       if(true)
       {
-	//light_levels[current_heading]=srv.response.light_level;
-	light_levels[current_heading]=current_heading;
-	ROS_DEBUG("Light level at %d is %d",current_heading,light_levels[current_heading]);
+	light_levels[current_heading]=srv.response.light_level;
+	//light_levels[current_heading]=current_heading;
+	ROS_INFO("Light level at %d is %d",current_heading,light_levels[current_heading]);
 	current_heading++;
       }
       if(current_heading==NUM_MOVES)
@@ -145,11 +145,11 @@ void raptor_mcom::find_best_light()
 	for(int i = 0; i<NUM_MOVES;i++)
 	{
 	  temp = light_levels[i];
-	  ROS_DEBUG("LLi is %d comp to %d.",temp,val);
+	  ROS_INFO("LLi is %d comp to %d.",temp,val);
 	  
 	  if(temp>val)
 	  {
-	    ROS_DEBUG("Comp hit.");
+	    ROS_INFO("Comp hit.");
 	   loc = i;
 	   val =temp;
 	  }
@@ -157,7 +157,7 @@ void raptor_mcom::find_best_light()
 	}
 	current_heading = loc;
 	best_heading_found=true;
-	ROS_DEBUG("Found best heading at %d",current_heading);
+	ROS_INFO("Found best heading at %d",current_heading);
       }
     }
     else
@@ -194,6 +194,11 @@ void raptor_mcom::abs_rotation()
   ROS_DEBUG("Moves remaining: %d",moves_remaining);
   if(moves_remaining<=0)
   {
+      rovio_shared::man_drv_srv srv;
+      srv.request.drive = 1;
+      srv.request.speed = 1;
+      man_driver.call(srv);
+    
    low_level_active=LL_NONE; 
   }
 }

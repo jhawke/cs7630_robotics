@@ -19,6 +19,7 @@
 #include <string>
 #include <limits.h>
 #include <boost/array.hpp>
+#include <std_msgs/Float32.h>
 
 #define REMAINDER .9
 #define NUM_UNITS 10
@@ -27,22 +28,32 @@ using namespace std;
 
 raptor_absmove::raptor_absmove()
 {
+    volume = 0;
     //Advertise the waypoint setting service
-    location_setter = node.subscribe<raptor::abs_pos_req>("set_abs_waypoint",1,&raptor_absmove::register_new_location,this);
+    location_setter = node.subscribe<raptor_commander::abs_pos_req>("ABS_MOVE_PARAMS",1,&raptor_absmove::register_new_location,this);
     //Advertise the vector output service
     vector_output = node.advertiseService("raptor_absmove_srv",&raptor_absmove::give_location,this);
     //Subscribe to the locational service
     location_request = node.serviceClient<rovio_shared::rovio_position>("rovio_position");
+    absmove_volume = node.subscribe<std_msgs::Float32>("ABS_MOVE_GAIN",1,&raptor_absmove::adjust_gain,this);
     ROS_INFO("Absolute waypointer initialized.");
     loc_is_registered = false;
 }
 
+
+
 raptor_absmove::~raptor_absmove()
 {
-  
+ 
 }
 
-void raptor_absmove::register_new_location(const raptor::abs_pos_req::ConstPtr &msg)
+void raptor_absmove::adjust_gain(const std_msgs::Float32::ConstPtr& msg)
+{
+    volume = msg->data;
+   ROS_INFO("Absmove volume updated to %f",volume);
+}
+
+void raptor_absmove::register_new_location(const raptor_commander::abs_pos_req::ConstPtr &msg)
 {
   loc_is_registered = true;
   goal_x = msg->x;
@@ -65,7 +76,7 @@ bool raptor_absmove::give_location(raptor::polar_histogram::Request &req, raptor
     {
 //    if(true)
 //    {
-//     srv.response.x = 200;
+//     srv.response.x = 200;stalk
 //      srv.response.y = 200;
 //      srv.response.theta = 3.1415;
       ROS_DEBUG("Get-loc returned with %d,%d,%g",srv.response.x,srv.response.y,srv.response.theta);
@@ -101,6 +112,12 @@ bool raptor_absmove::give_location(raptor::polar_histogram::Request &req, raptor
       }
     }
   }
+  
+  for(int i = 0; i<360; i++)
+  {
+   arr_out[i]*=volume; 
+  }
+  
   res.hist = arr_out;
   return true;
 }

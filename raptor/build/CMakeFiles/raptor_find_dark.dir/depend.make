@@ -8,6 +8,7 @@ CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.o: ../include/blob/BlobResu
 CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.o: ../include/blob/ComponentLabeling.h
 CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.o: ../include/blob/blob.h
 CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.o: ../include/raptor/raptor_find_dark.h
+CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.o: ../srv_gen/cpp/include/raptor/light_level_srv.h
 CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.o: ../srv_gen/cpp/include/raptor/obstacle_histogram.h
 CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.o: ../srv_gen/cpp/include/raptor/polar_histogram.h
 CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.o: ../src/raptor_find_dark.cpp
@@ -65,6 +66,7 @@ CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.o: /opt/ros/electric/stacks
 CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.o: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/include/ros/message_traits.h
 CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.o: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp_traits/include/ros/service_traits.h
 CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.o: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/include/std_msgs/header_deprecated_def.h
+CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.o: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/Float32.h
 CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.o: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/Header.h
 CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.o: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/Int16.h
 CMakeFiles/raptor_find_dark.dir/src/raptor_find_dark.o: /opt/ros/electric/stacks/ros_comm/tools/rosconsole/include/ros/assert.h

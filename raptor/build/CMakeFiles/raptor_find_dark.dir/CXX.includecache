@@ -101,6 +101,34 @@ blob/BlobResult.h
 -
 std_msgs/Int16.h
 -
+raptor/light_level_srv.h
+-
+std_msgs/Float32.h
+-
+
+../srv_gen/cpp/include/raptor/light_level_srv.h
+string
+-
+vector
+-
+map
+-
+ostream
+-
+ros/serialization.h
+../srv_gen/cpp/include/raptor/ros/serialization.h
+ros/builtin_message_traits.h
+../srv_gen/cpp/include/raptor/ros/builtin_message_traits.h
+ros/message_operations.h
+../srv_gen/cpp/include/raptor/ros/message_operations.h
+ros/time.h
+../srv_gen/cpp/include/raptor/ros/time.h
+ros/macros.h
+../srv_gen/cpp/include/raptor/ros/macros.h
+ros/assert.h
+../srv_gen/cpp/include/raptor/ros/assert.h
+ros/service_traits.h
+../srv_gen/cpp/include/raptor/ros/service_traits.h
 
 ../srv_gen/cpp/include/raptor/obstacle_histogram.h
 string
@@ -192,6 +220,10 @@ blob/blob.h
 blob/BlobResult.h
 -
 boost/array.hpp
+-
+raptor/light_level_srv.h
+-
+std_msgs/Float32.h
 -
 
 /opt/ros/electric/stacks/common_msgs/sensor_msgs/include/sensor_msgs/image_encodings.h
@@ -843,6 +875,28 @@ boost/type_traits/remove_const.hpp
 -
 
 /opt/ros/electric/stacks/ros_comm/messages/std_msgs/include/std_msgs/header_deprecated_def.h
+
+/opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/Float32.h
+string
+-
+vector
+-
+map
+-
+ostream
+-
+ros/serialization.h
+/opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/ros/serialization.h
+ros/builtin_message_traits.h
+/opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/ros/builtin_message_traits.h
+ros/message_operations.h
+/opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/ros/message_operations.h
+ros/time.h
+/opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/ros/time.h
+ros/macros.h
+/opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/ros/macros.h
+ros/assert.h
+/opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/ros/assert.h
 
 /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/std_msgs/Header.h
 string

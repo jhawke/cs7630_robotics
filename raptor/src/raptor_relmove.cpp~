@@ -16,7 +16,7 @@
 #include <ros/ros.h>
 #include <rovio_shared/rovio_position.h>
 #include <raptor/polar_histogram.h>
-#include <raptor/rel_pos_req.h>
+#include <raptor_commander/rel_pos_req.h>
 #include <string>
 #include <limits.h>
 #include <boost/array.hpp>
@@ -28,10 +28,12 @@ using namespace std;
 
 raptor_relmove::raptor_relmove()
 {
-   loc_is_registered = false;
+    volume = 1;
+    loc_is_registered = false;
     //Advertise the waypoint setting service
-    location_setter = node.subscribe<raptor::rel_pos_req>("set_rel_waypoint",1,&raptor_relmove::register_new_location,this);
-    location_ll_setter = node.subscribe<raptor::rel_pos_req>("set_rel_waypoint_ll",1,&raptor_relmove::register_new_location_ll,this);
+    relmove_vol = node.subscribe<std_msgs::Float32>("REL_MOVE_GAIN",1,&raptor_relmove::adjust_gain,this);
+    location_setter = node.subscribe<raptor_commander::rel_pos_req>("REL_MOVE_PARAMS",1,&raptor_relmove::register_new_location,this);
+    location_ll_setter = node.subscribe<raptor_commander::rel_pos_req>("REL_MOVE_PARAMS_LL",1,&raptor_relmove::register_new_location_ll,this);
     mcom_ll_relmover = node.advertise<std_msgs::Float32>("mcom_ll_relmove",1);
     //Advertise the vector output service
     
@@ -45,22 +47,29 @@ raptor_relmove::~raptor_relmove()
 {
   
 }
-void raptor_relmove::register_new_location_ll(const raptor::rel_pos_req::ConstPtr &msg)
+
+void raptor_relmove::adjust_gain(const std_msgs::Float32::ConstPtr& msg)
+{
+   volume = msg->data;
+   ROS_INFO("Relmove volume updated to %f",volume);
+}
+
+void raptor_relmove::register_new_location_ll(const raptor_commander::rel_pos_req::ConstPtr &msg)
 {
   loc_is_registered = true;
-  std_msgs::Float32 msg;
-  msg.data = msg->theta_rad;
-  mcom_ll_relmover.publish(msg);
+  std_msgs::Float32 msg_out;
+  msg_out.data = msg->theta_rad;
+  mcom_ll_relmover.publish(msg_out);
       //Get current Rovio location.
   ROS_DEBUG("Low-level relative rotation request recieved.");
 }
-void raptor_relmove::register_new_location(const raptor::rel_pos_req::ConstPtr &msg)
+void raptor_relmove::register_new_location(const raptor_commander::rel_pos_req::ConstPtr &msg)
 {
   loc_is_registered = true;
   goal_theta = msg->theta_rad;
   goal_val = msg->val;
       //Get current Rovio location.
-  ROS_DEBUG("Calling get-loc.");
+  ROS_INFO("Calling get-loc.");
   rovio_shared::rovio_position srv;
   if(location_request.call(srv))
   //if(true)  
@@ -129,6 +138,12 @@ bool raptor_relmove::give_location(raptor::polar_histogram::Request &req, raptor
       }
     }
   }
+  
+  for(int i = 0; i<360; i++)
+  {
+   arr_out[i]*=volume; 
+  }
+  
   res.hist = arr_out;
   return true;
 }

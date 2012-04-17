@@ -21,6 +21,7 @@
 #include <string>
 #include <limits.h>
 #include <boost/array.hpp>
+#include <std_msgs/Float32.h>
 
 class raptor_absmove
 {
@@ -34,11 +35,15 @@ private:
 
 ros::NodeHandle node;
 ros::ServiceClient location_request;
-ros::ServiceServer location_setter;
+ros::Subscriber location_setter;
 ros::ServiceServer vector_output;
+ros::Subscriber absmove_volume;
 
 void register_new_location(const raptor::abs_pos_req::ConstPtr &msg);
 bool give_location(raptor::polar_histogram::Request &req, raptor::polar_histogram::Response &res);
+void adjust_gain(const std_msgs::Float32::ConstPtr& msg);
+
+float volume;
 
 bool loc_is_registered;
 int16_t goal_x;

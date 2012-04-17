@@ -88,6 +88,7 @@ CMakeFiles/raptor_ml.dir/src/raptor_ml.o: /opt/ros/electric/stacks/common_msgs/d
 CMakeFiles/raptor_ml.dir/src/raptor_ml.o: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
 CMakeFiles/raptor_ml.dir/src/raptor_ml.o: /opt/ros/electric/stacks/joystick_drivers/joy/manifest.xml
 CMakeFiles/raptor_ml.dir/src/raptor_ml.o: /home/dev/cs7630_robotics/wpi-rail-ros-pkg_old/rovio/rovio_ctrl/manifest.xml
+CMakeFiles/raptor_ml.dir/src/raptor_ml.o: /home/dev/cs7630_robotics/raptor_commander/manifest.xml
 CMakeFiles/raptor_ml.dir/src/raptor_ml.o: /opt/ros/electric/stacks/vision_opencv/opencv2/manifest.xml
 CMakeFiles/raptor_ml.dir/src/raptor_ml.o: /opt/ros/electric/stacks/vision_opencv/cv_bridge/manifest.xml
 CMakeFiles/raptor_ml.dir/src/raptor_ml.o: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
@@ -103,6 +104,8 @@ CMakeFiles/raptor_ml.dir/src/raptor_ml.o: /opt/ros/electric/stacks/common_msgs/s
 CMakeFiles/raptor_ml.dir/src/raptor_ml.o: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/msg_gen/generated
 CMakeFiles/raptor_ml.dir/src/raptor_ml.o: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/srv_gen/generated
 CMakeFiles/raptor_ml.dir/src/raptor_ml.o: /opt/ros/electric/stacks/joystick_drivers/joy/msg_gen/generated
+CMakeFiles/raptor_ml.dir/src/raptor_ml.o: /home/dev/cs7630_robotics/raptor_commander/msg_gen/generated
+CMakeFiles/raptor_ml.dir/src/raptor_ml.o: /home/dev/cs7630_robotics/raptor_commander/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/dev/cs7630_robotics/raptor/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/raptor_ml.dir/src/raptor_ml.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/raptor_ml.dir/src/raptor_ml.o -c /home/dev/cs7630_robotics/raptor/src/raptor_ml.cpp

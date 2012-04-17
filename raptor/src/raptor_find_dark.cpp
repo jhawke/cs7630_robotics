@@ -30,17 +30,18 @@
 #include <blob/blob.h>
 #include <blob/BlobResult.h>
 #include <boost/array.hpp>
+#include <raptor/light_level_srv.h>
+#include <std_msgs/Float32.h>
 
 //Put any local defines here.
 
-#define YOUR_MOTHER "town bicycle"
 #define MAX_V 255
 #define VALUE_LOW_LIM 30
 #define START_THRESH 15
 #define OBSTACLE_THRESHOLD 5
 #define MIN_BRIGHT 10
 #define MIN_SAT 10
-#define HIGH_PERCENT .45
+#define HIGH_PERCENT .20
 #define LOW_PERCENT .20
 #define MASK_MIN_BLOB 200
 #define LARGE_MIN_BRIGHT 20
@@ -58,6 +59,7 @@ raptor_find_dark::raptor_find_dark()
     //Subscribe to the image producing publisher. (/gscam/image_raw)
     dark_thresh = node.subscribe<std_msgs::Int16>("fd_debug_thresh",1,&raptor_find_dark::alter_thrsval,this);
     image_subscription = node.subscribe<sensor_msgs::Image>("/gscam/image_raw",1,&raptor_find_dark::handle_new_image, this);
+    near_light_sense = node.advertise<std_msgs::Float32>("DARKNESS_COEFF",2);
     //Advertise your service.
      cv::namedWindow("Dark_Raw",1);
      cv::namedWindow("Dark_Sat",1);
@@ -68,9 +70,18 @@ raptor_find_dark::raptor_find_dark()
      cv::namedWindow("Dark_ObsDetPre",1);
      cv::namedWindow("Dark_Detected",1);
      //img=cvCreateImage(cvSize(640,480),IPL_DEPTH_8U,3); 
+    fd_volume = node.subscribe<std_msgs::Float32>("FIND_DARK_GAIN",1,&raptor_find_dark::adjust_gain,this);
     vector_gen = node.advertiseService("raptor_find_dark_srv",&raptor_find_dark::get_vector_field,this);
-    volume = 1;
+    light_sense = node.advertiseService("raptor_full_bright_srv",&raptor_find_dark::get_darkness,this);
+    volume = 0;
 }
+
+void raptor_find_dark::adjust_gain(const std_msgs::Float32::ConstPtr& msg)
+{
+   volume = msg->data;
+   ROS_DEBUG("FD volume updated to %f",volume);
+}
+
 int HSV_filter(int h, int s, int v, int m, int threshold_hue,int threshold_low ,int threshold_high,int threshold_mid,int ref_hue, int ref_sat, int ref_val) {
 	int FilteredColor[3] = {ref_hue, ref_sat, ref_val}; 
 	int diff = abs((h-FilteredColor[0]));//*(h-FilteredColor[0])+(s-FilteredColor[1])*(s-FilteredColor[1]));
@@ -88,7 +99,7 @@ void raptor_find_dark::alter_thrsval(const std_msgs::Int16::ConstPtr &msg)
   //dark_thresh_val = msg->data;
   threshold = msg->data;
 }
-double *findDark(int widthRes, int lengthRes, IplImage* img){
+double findDark(int x, int y,int width,int height, IplImage* img){
 	// To convert from ros to iplimage
 	//img = bridge.imgmsg_to_cv(image_message, desired_encoding="passthrough");
 
@@ -99,8 +110,7 @@ double *findDark(int widthRes, int lengthRes, IplImage* img){
 
 	 function outputs the avg brightness of grid of set resolution. The higher the returned value for the grid the brighter the grid location is. 
 	*/
-		double *s = new double[widthRes*lengthRes]; // set size of output int
-
+		cvSetImageROI(img,cvRect(x,y,width,height));
 		//Full HSV color Image
 		IplImage* imageHSV = cvCreateImage( cvGetSize(img),8,3); 
 		cvCvtColor(img,imageHSV,CV_BGR2HSV);
@@ -112,41 +122,18 @@ double *findDark(int widthRes, int lengthRes, IplImage* img){
 		cvCvtPixToPlane(imageHSV, planeH,planeS,planeV,0);//Extract the 3 color components
 
 		//Intialize Loop Variables
-		int widthint= (int) planeV->width/widthRes; // pixel width of grid
-		int lengthint= (int) planeV->height/lengthRes;//pixel height (length) of grid
-		double n= 0; // total num of pixels per section
-		IplImage* grid= cvCreateImage(cvSize(widthint,lengthint),imageHSV->depth,1); //Grid Image
-		ROS_DEBUG("preloop");
-		//Loop cycling throught each grid of image and calculating average brigntness of each grid
-		for(int w=0; w<widthRes; w++){
-			for(int l=0; l<lengthRes;l++){
-				s[w*lengthRes+l]=0;
-				cvSetImageROI(planeV,cvRect(widthint*w,lengthint*l,widthint,lengthint));
-				cvCopy(planeV,grid);
-				cvResetImageROI(planeV);
-				n=0;
-				for( int y = 1; y <= grid->height; y++ ){
-				   unsigned char* row = &CV_IMAGE_ELEM( grid, unsigned char, y, 0 );
-				   for( int x = 1; x <= grid->width*grid->nChannels; x += grid->nChannels ){
-					   s[w*lengthRes+l]+=(MAX_V-row[x]); // access the pixel in the first channel 
-					   n++;
-					   }
-				}
 
-				s[w*lengthRes+l]/=n;
-				//cout<<w*lengthRes+l<<"_";
-				//cout<<s[w*2+1]<<"  ";
-			}
-		}
+		double dark= cvMean(planeV);
+		
 		ROS_DEBUG("prerelease");
 		cvReleaseImage(&planeH);
 		cvReleaseImage(&planeS);
 		cvReleaseImage(&planeV);
 		cvReleaseImage(&imageHSV);
-		cvReleaseImage(&grid);
 		ROS_DEBUG("done");
+		cvResetImageROI(img);
 		//Output
-		return s;
+		return dark;
 
 }
 
@@ -293,7 +280,7 @@ double findShadow(IplImage *l_img, int hue,int sat,int val,int threshold, double
 				 ((uchar *)(i_ts->imageData + y*i_ts->widthStep))[x]=255;
 				 ((uchar *)(i1->imageData + y*i1->widthStep))[x]=0;
 				 ((uchar *)(i2->imageData + y*i2->widthStep))[x]=255;
-			 }else{		//meh
+			 }else{	
 			   
 			 }
 		}
@@ -313,7 +300,10 @@ double findShadow(IplImage *l_img, int hue,int sat,int val,int threshold, double
 	valCent = new int[blobs.GetNumBlobs()+blobs1.GetNumBlobs()];
 	
 	ROS_INFO("size:%d  ",blobs.GetNumBlobs()+blobs1.GetNumBlobs());
-	double data=blobs.GetNumBlobs()+blobs1.GetNumBlobs();// Set first data value to total number of blobs
+	double data;
+	if(maxDark>190)
+	{
+	 data=blobs.GetNumBlobs()+blobs1.GetNumBlobs();// Set first data value to total number of blobs
 	//cout<<data[0]<<"  ";
 	int k=0;
 	//ROS_INFO("Blobs gotten.");
@@ -321,9 +311,9 @@ double findShadow(IplImage *l_img, int hue,int sat,int val,int threshold, double
 	for (int i = 0; i < blobs.GetNumBlobs(); i++ )
 	{ // Get Blob Data 
 	    blob = blobs.GetBlob(i);//cycle through each blob
-		//data[i*3+1]=blob.area;//blob area
+		//data[i*3+1]=blob.area;//blob areaEFF
 		xCent[i]= getXCenter(blob); //X min
-		yCent[i]= getYCenter(blob); //X max
+		yCent[i]= getYCenter(blob); //X max	
 		valCent[i]= 1; //Y max 
 		//debug
 		blob.FillBlob(local_copy, cvScalar(255, 0, 0)); // This line will give you a visual marker on image for the blob if you want it for testing or something
@@ -341,15 +331,31 @@ double findShadow(IplImage *l_img, int hue,int sat,int val,int threshold, double
 		  //debug
 		  blob.FillBlob(local_copy, cvScalar(0, 255, 0)); // This line will give you a visual marker on image for the blob if you want it for testing or something
       }    
+	  
+	}else{
     //
+	data=blobs.GetNumBlobs();// Set first data value to total number of blobs
+	//cout<<data[0]<<"  ";
+	int k=0;
+	//ROS_INFO("Blobs gotten.");
+	cvWaitKey(3);
+	for (int i = 0; i < blobs.GetNumBlobs(); i++ )
+	{ // Get Blob Data 
+	    blob = blobs.GetBlob(i);//cycle through each blob
+		//data[i*3+1]=blob.area;//blob areaEFF
+		xCent[i]= getXCenter(blob); //X min
+		yCent[i]= getYCenter(blob); //X max
+		valCent[i]= 1; //Y max 
+		//debug
+		blob.FillBlob(local_copy, cvScalar(255, 0, 0)); // This line will give you a visual marker on image for the blob if you want it for testing or something
+      }    
    
+   
+      }
    cvShowImage("Dark_Detected",local_copy);
     //cv::imshow("View",cv_ptr->image);
     cv::waitKey(3);
     
-    //TODO:Jeff's stuff here: average brightness of bottom 1/8th.
-    
-    //TODO:My stuff: Brightness of the whole image. (In seperate file.)
     
       cvReleaseImage(&local_copy);
       cvReleaseImage(&imageSmooth);
@@ -378,12 +384,20 @@ raptor_find_dark::~raptor_find_dark()
   cvDestroyAllWindows();
 }
 
+bool raptor_find_dark::get_darkness(raptor::light_level_srv::Request &req, raptor::light_level_srv::Response &res)
+{
+  double darkVal = findDark(0,0,img->width,img->height,img);
+  ROS_INFO("COWS. FI: %f",darkVal);
+  res.light_level = (int32_t)darkVal;
+  return true;
+}
+
 bool raptor_find_dark::get_vector_field(raptor::polar_histogram::Request &req, raptor::polar_histogram::Response &res)
 {
   if(isFirstImg)
   {
     ROS_DEBUG("Function 'name' called.");
-    //Your image processing shit goes here.
+ 
     double* Out = new double[360];
 	  for(int i=0;i<360;i++)
 		  Out[i]=0;
@@ -403,10 +417,10 @@ bool raptor_find_dark::get_vector_field(raptor::polar_histogram::Request &req, r
 	  int blobX;
 	  int blobY;
 	  //////////////////////////////////////////
-	  //double* darkVal = findDark(1,8,img); // Jeffs Number
-	  //int closeDark = darkVal[7];
-	  //double* lightVal = findDark(1,1,img);
-	  //int totalDark = lightVal[0]; // jefff other number
+	  double closeDarkVal = findDark(0,img->height/3,img->width,img->height*2/3,img);
+	  std_msgs::Float32 cdv_msg;
+	  cdv_msg.data = closeDarkVal;
+	  near_light_sense.publish(cdv_msg);
 	  //////////////////////////////////////////
 	  double areaScale = .001;
 	  double maxOut = 0;
@@ -458,7 +472,9 @@ bool raptor_find_dark::get_vector_field(raptor::polar_histogram::Request &req, r
 	  for(int i=0;i<360;i++){
 	   /* Out[i]+= minOut +range/2;
 	    Out[i]*= (200/range);
-	 */   res.hist[i]=(int)(Out[i]*volume);}
+	 */   res.hist[i]=(int)(Out[i]*volume);
+	    
+	  }
   }
     else
   {
@@ -485,7 +501,7 @@ void raptor_find_dark::handle_new_image(const sensor_msgs::Image::ConstPtr& msg)
    ROS_ERROR("cv_bridge exception: %s", e.what());
    return;
    }
-  donkey_kong=(IplImage)cv_ptr->image; //IT'S ON LIKE DONKEY KONG
+  donkey_kong=(IplImage)cv_ptr->image; 
   img = &donkey_kong;
   //img= cvGetImage(&(cv_ptr->image),&stub);
   //img = bridge.imgmsg_to_cv(msg, desired_encoding="passthrough");
@@ -498,7 +514,7 @@ void raptor_find_dark::handle_new_image(const sensor_msgs::Image::ConstPtr& msg)
 
   }
   
-  //Put your pre-handler shite in here. You can just copy the latest or some damn thing.
+
 }
 
 int main(int argc, char **argv)
